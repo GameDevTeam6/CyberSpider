@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] float _speed = 3.0f;
     private Vector3 _moveVec = Vector3.zero;
+    public float _jumpHeight = 10;
 
     private bool canJump = true;
 
@@ -30,7 +31,7 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed && canJump)
         {
-            _rigidbody.AddForce(Vector2.up * 10, ForceMode2D.Impulse);
+            _rigidbody.AddForce(Vector2.up * _jumpHeight, ForceMode2D.Impulse);
             canJump = false;
         }
     }
