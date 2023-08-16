@@ -8,23 +8,37 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] float _speed = 3.0f;
+    [SerializeField] Animator _animator;
     private Vector3 _moveVec = Vector3.zero;
     public float _jumpHeight = 10;
-
     private bool canJump = true;
 
     private void Update()
     {
         transform.Translate(_speed * Time.deltaTime * _moveVec);
-        //_rigidbody.AddForce(_speed * Time.deltaTime * _moveVec);
     }
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        //transform.Translate(context.ReadValue<Vector2>() * _speed * Time.deltaTime);
-        //_rigidbody.AddForce(context.ReadValue<Vector2>() * _speed);
+        Debug.Log(context.ReadValue<Vector2>());
+        if (context.ReadValue<Vector2>().x == 1)
+        {
+            Debug.Log("Right");
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else if (context.ReadValue<Vector2>().x == -1)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        }
+
+        _animator.SetBool("isRunning", true);
         Vector3 inputVec = context.ReadValue<Vector2>();
         _moveVec = new Vector3(inputVec.x, inputVec.y, 0);
+
+        if (context.canceled)
+        {
+            _animator.SetBool("isRunning", false);
+        }
     }
 
     public void OnJump(InputAction.CallbackContext context)
