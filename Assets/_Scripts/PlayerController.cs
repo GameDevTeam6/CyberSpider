@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,16 +21,7 @@ public class PlayerController : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        Debug.Log(context.ReadValue<Vector2>());
-        if (context.ReadValue<Vector2>().x == 1)
-        {
-            Debug.Log("Right");
-            gameObject.GetComponent<SpriteRenderer>().flipX = true;
-        }
-        else if (context.ReadValue<Vector2>().x == -1)
-        {
-            gameObject.GetComponent<SpriteRenderer>().flipX = false;
-        }
+        CheckDirection(context);
 
         _animator.SetBool("isRunning", true);
         Vector3 inputVec = context.ReadValue<Vector2>();
@@ -40,11 +32,24 @@ public class PlayerController : MonoBehaviour
             _animator.SetBool("isRunning", false);
         }
     }
+    // Function checks running direction of player and flips the sprite on the x axis if necessary
+    public void CheckDirection(InputAction.CallbackContext context)
+    {
+        if (context.ReadValue<Vector2>().x == 1)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        }
+        else if (context.ReadValue<Vector2>().x == -1)
+        {
+            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        }
+    }
 
     public void OnJump(InputAction.CallbackContext context)
     {
         if (context.performed && canJump)
         {
+            _animator.SetTrigger("isJump");
             _rigidbody.AddForce(Vector2.up * _jumpHeight, ForceMode2D.Impulse);
             canJump = false;
         }
@@ -61,6 +66,7 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Collided");
             canJump = true;
+            _animator.ResetTrigger("isJump");
         }
     }
 }
