@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 6785629604417737569}
   - component: {fileID: 8649977419383046049}
   - component: {fileID: 7672354447638925922}
-  - component: {fileID: 7723393906699128633}
   - component: {fileID: 8354178619761551342}
   m_Layer: 0
   m_Name: cqcKey
-  m_TagString: Untagged
+  m_TagString: CQCKey
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,19 +121,6 @@ CapsuleCollider2D:
   m_Offset: {x: -0.1051588, y: -0.18320988}
   m_Size: {x: 3.210307, y: 3.5767348}
   m_Direction: 0
---- !u!114 &7723393906699128633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 456041647594646643}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f0803eda48b6834cabd8095fd0c27f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 5b971cc11f529f341a64bbe21a4c34d3, type: 2}
 --- !u!114 &8354178619761551342
 MonoBehaviour:
   m_ObjectHideFlags: 0

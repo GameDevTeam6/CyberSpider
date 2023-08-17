@@ -57,14 +57,14 @@ public class PlayerController : MonoBehaviour
 
     public void OnFire(InputAction.CallbackContext context)
     {
-        Debug.Log("Fire!");
+        //Debug.Log("Fire!");
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Platform"))
         {
-            Debug.Log("Collided");
+            //Debug.Log("Collided");
             canJump = true;
             _animator.ResetTrigger("isJump");
         }

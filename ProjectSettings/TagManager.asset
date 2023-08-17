@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Platform
   - Weapon
+  - CQCKey
+  - HealthPickup
+  - SpeedPickup
   layers:
   - Default
   - TransparentFX
