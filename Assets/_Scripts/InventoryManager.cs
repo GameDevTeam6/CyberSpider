@@ -6,23 +6,26 @@ using UnityEngine.UIElements;
 
 public class InventoryManager : MonoBehaviour
 {
-    public static InventoryManager Instance;
-    public List<Item> Items = new List<Item>();
-
-    public GameObject invPanel;
-
-    private void Awake()
+    public InventorySlot[] inventorySlots;
+    public GameObject inventoryItemPrefab;
+    public void AddItem(Item item)
     {
-        Instance = this; 
+        for (int i = 0; i < inventorySlots.Length; i++)
+        {
+            InventorySlot slot = inventorySlots[i];
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            if (itemInSlot != null)
+            {
+                SpawnNewItem(item, slot);
+                return;
+            }
+        }
     }
 
-    public void Add(Item item)
+    void SpawnNewItem(Item item, InventorySlot slot)
     {
-        Items.Add(item);
-    }
-
-    public void Remove(Item item)
-    {
-        Items.Remove(item);
+        GameObject newItemGO = Instantiate(inventoryItemPrefab, slot.transform);
+        InventoryItem inventoryItem = newItemGO.GetComponent<InventoryItem>();
+        inventoryItem.InitializeItem(item);
     }
 }

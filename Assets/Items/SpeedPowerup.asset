@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41c4f80e2de6dab4a9ec5ead1720f7ad, type: 3}
   m_Name: SpeedPowerup
   m_EditorClassIdentifier: 
-  id: 3
-  itemName: Speed Powerup
-  value: 10
-  stat: 1
-  Icon: {fileID: 21300000, guid: 82c0b8fa7dfd8604b81123d22a45984b, type: 3}
+  image: {fileID: 21300000, guid: 82c0b8fa7dfd8604b81123d22a45984b, type: 3}
+  type: 0
+  actionType: 0
+  range: {x: 5, y: 4}
+  stackable: 1

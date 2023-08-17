@@ -1,26 +1,31 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Xml.Serialization;
 using UnityEngine;
 
-public class ItemPickup : MonoBehaviour
+public class ItemPickUp : MonoBehaviour
 {
-    public Item item;
+    public GameObject obj;
+    public InventoryManager inventoryManager;
+    //public Item[] itemsToPickup;
 
-    // Function that adds item to inventory and destroys item in env
-    void Pickup()
+    private Item item;
+
+    private void Start()
     {
-        InventoryManager.Instance.Add(item);
-        gameObject.SetActive(false);
-        //Destroy(gameObject);
+        inventoryManager = obj.GetComponent<InventoryManager>();
+        item = GetComponent<ItemInfo>().item;
     }
 
-    // Detect is item has collider with player
+    //public void PickupItem(int id)
+    //{
+    //    inventoryManager.AddItem(itemsToPickup[id]);
+    //}
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Pickup();
+            inventoryManager.AddItem(item);
         }
     }
 }

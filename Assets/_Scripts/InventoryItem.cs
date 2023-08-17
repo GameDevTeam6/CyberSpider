@@ -1,18 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class InventoryItem : MonoBehaviour
+public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    [HideInInspector] public Item item;
+
+    [Header("UI")]
+    public Image image;
+
+    [HideInInspector] public Transform parentAfterDrag;
+
+    public void InitializeItem(Item newItem)
     {
-        
+        item = newItem;
+        image.sprite = newItem.image;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnBeginDrag(PointerEventData eventData)
     {
-        
+        image.raycastTarget = false;
+        parentAfterDrag = transform.parent;
+        transform.SetParent(transform.root);
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        transform.position = Input.mousePosition;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        image.raycastTarget = true;
+        transform.SetParent(parentAfterDrag);
     }
 }
