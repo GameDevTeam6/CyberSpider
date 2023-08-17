@@ -1,43 +1,89 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
+using TMPro;
+using System.Runtime.CompilerServices;
 
 public class InventoryManager : MonoBehaviour
 {
-    [SerializeField] protected List<GameObject> inventory = new List<GameObject>();
-    private GameObject onHand;
-    private GameObject offHand;
+    public static InventoryManager Instance;
+    public List<Item> Items = new List<Item>();
 
-    private bool onHandEquipped = false;
+    [SerializeField] private GameObject inventoryPanel;
 
-    // Start is called before the first frame update
-    void Start()
+    //public Transform ItemContent;
+    //public GameObject InventoryItem;
+
+    private void Awake()
     {
-        onHand = transform.Find("onHand").gameObject;
+        Instance = this; 
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Add(Item item)
     {
-        
+        Items.Add(item);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void Remove(Item item)
     {
-        if (collision.gameObject.CompareTag("Weapon"))
+        Items.Remove(item);
+    }
+
+    private void ItemToInventoryPanel()
+    {
+        foreach (var item in Items)
         {
-            inventory.Add(collision.gameObject);
-            if (!onHandEquipped)
-            {
-                EquipWeapon(collision.gameObject);
-            }
-            //collision.gameObject.SetActive(false);
+            GameObject obj;
+
         }
     }
 
-    private void EquipWeapon(GameObject weapon)
-    {
-        weapon.transform.parent = onHand.transform;
-        onHandEquipped = true;
-    }
+    //public void ListItems()
+    //{
+    //    foreach (var item in Items)
+    //    {
+    //        GameObject obj = Instantiate(InventoryItem, ItemContent);
+    //        var itemName = item.itemName;
+    //        var itemicon = item.Icon;
+    //    }
+    //}
+
+    //[SerializeField] protected List<GameObject> inventory = new List<GameObject>();
+    //private GameObject onHand;
+    //private GameObject offHand;
+
+    //private bool onHandEquipped = false;
+
+    //// Start is called before the first frame update
+    //void Start()
+    //{
+    //    onHand = transform.Find("onHand").gameObject;
+    //}
+
+    //// Update is called once per frame
+    //void Update()
+    //{
+
+    //}
+
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Weapon"))
+    //    {
+    //        inventory.Add(collision.gameObject);
+    //        if (!onHandEquipped)
+    //        {
+    //            EquipWeapon(collision.gameObject);
+    //        }
+    //        //collision.gameObject.SetActive(false);
+    //    }
+    //}
+
+    //private void EquipWeapon(GameObject weapon)
+    //{
+    //    weapon.transform.parent = onHand.transform;
+    //    onHandEquipped = true;
+    //}
 }
