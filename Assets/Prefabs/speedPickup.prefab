@@ -11,11 +11,10 @@ GameObject:
   - component: {fileID: 4838544150156829921}
   - component: {fileID: 4047128327754958503}
   - component: {fileID: 6470039933696467790}
-  - component: {fileID: -3601242357834808844}
   - component: {fileID: -8283661812013540841}
   m_Layer: 0
   m_Name: speedPickup
-  m_TagString: SpeedPickup
+  m_TagString: Pickup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,20 +121,6 @@ CapsuleCollider2D:
   m_Offset: {x: 0.026205301, y: -0.05241084}
   m_Size: {x: 1.8993707, y: 3.3144655}
   m_Direction: 0
---- !u!114 &-3601242357834808844
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4539624069993624274}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ba44fcb272633f48bc6b61c4043ea9f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryManager: {fileID: 0}
-  itemsToPickup: []
 --- !u!114 &-8283661812013540841
 MonoBehaviour:
   m_ObjectHideFlags: 0

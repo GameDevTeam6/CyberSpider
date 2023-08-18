@@ -9,6 +9,7 @@ TagManager:
   - CQCKey
   - HealthPickup
   - SpeedPickup
+  - Pickup
   layers:
   - Default
   - TransparentFX
