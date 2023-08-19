@@ -1,14 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using static UnityEditor.Progress;
 
 public class InventoryManager : MonoBehaviour
 {
     private int maxStackItems = 4;
     public InventorySlot[] inventorySlots;
     public GameObject inventoryItemPrefab;
+
+    private int selectedSlot = -1;
+
+    private void Start()
+    {
+        //ChangeSelectedSlot(0);
+    }
+
+    private void Update()
+    {
+        if (Input.inputString != null)
+        {
+            bool isNumber = int.TryParse(Input.inputString, out int number);
+            if (isNumber && number > 0 && number < 5)
+            {
+                Debug.Log(number);
+                ChangeSelectedSlot(number - 1);
+            }
+        }
+    }
+
+    void ChangeSelectedSlot(int newSlot)
+    {
+        if (selectedSlot >= 0)
+        {
+            inventorySlots[selectedSlot].Deselect();
+        }
+        inventorySlots[newSlot].Select();
+        selectedSlot = newSlot;
+    }
+
     public bool AddItem(Item item)
     {
         // Check if inv already has same item type
@@ -48,5 +81,23 @@ public class InventoryManager : MonoBehaviour
         GameObject newItemGO = Instantiate(inventoryItemPrefab, slot.transform);
         InventoryItem inventoryItem = newItemGO.GetComponent<InventoryItem>();
         inventoryItem.InitializeItem(item);
+    }
+
+    public Item GetSelectedItem()
+    {
+        if (selectedSlot < 0) 
+        {
+            Debug.Log("No slot selected");
+            return null;
+        } 
+        InventorySlot slot = inventorySlots[selectedSlot];
+		InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+		if (itemInSlot == null)
+		{
+            Debug.Log("No item in selected slot");
+		    return null;
+		} else {
+			return itemInSlot.item;
+        }
     }
 }
