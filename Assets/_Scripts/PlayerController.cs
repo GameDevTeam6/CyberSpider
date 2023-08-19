@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class PlayerController : MonoBehaviour
 {
@@ -59,17 +58,30 @@ public class PlayerController : MonoBehaviour
 
     public void UseItem(InputAction.CallbackContext context)
     {
-        Item selectedItem = _inventoryManager.GetSelectedItem();
+        Debug.Log("Use item method running");
+        //// Get selected item
+        //InventoryItem selectedItem = _inventoryManager.GetSelectedItem();
 
-        if (selectedItem != null)
-        {
-            Debug.Log("using item: " + selectedItem);
-        }
-        else
-        {
-            return;
-            //Debug.Log("no item selected");
-        }
+        //// Check that item is not null
+        //if (selectedItem != null)
+        //{
+        //    if (selectedItem.item.consumable)
+        //    {
+        //        Debug.Log("using consumable : " + selectedItem.item);
+        //        selectedItem.count--;
+        //        Debug.Log("Consumable count remaining: " + selectedItem.count);
+        //        selectedItem.RefreshCount();
+        //        if (selectedItem.count <= 0)
+        //        {
+        //            Debug.Log("Supply of item finished, Destroying item");
+        //            Destroy(selectedItem.gameObject);
+        //        }
+        //    }
+        //    else
+        //    {
+        //        // Implement non-consumable code
+        //    }
+        //}
     }
 
     void OnCollisionEnter2D(Collision2D col)

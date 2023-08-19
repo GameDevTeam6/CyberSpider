@@ -12,6 +12,7 @@ public class Item : ScriptableObject
     public ActionType actionType;
     public Vector2Int range = new Vector2Int(5, 4);
     public bool stackable = false;
+    public bool consumable = false;
 
 }
 
