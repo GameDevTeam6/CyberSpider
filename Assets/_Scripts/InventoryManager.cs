@@ -1,43 +1,103 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.UIElements;
+using static UnityEditor.Progress;
 
 public class InventoryManager : MonoBehaviour
 {
-    [SerializeField] protected List<GameObject> inventory = new List<GameObject>();
-    private GameObject onHand;
-    private GameObject offHand;
+    private int maxStackItems = 4;
+    public InventorySlot[] inventorySlots;
+    public GameObject inventoryItemPrefab;
 
-    private bool onHandEquipped = false;
+    private int selectedSlot = -1;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        onHand = transform.Find("onHand").gameObject;
+        //ChangeSelectedSlot(0);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Weapon"))
+        if (Input.inputString != null)
         {
-            inventory.Add(collision.gameObject);
-            if (!onHandEquipped)
+            bool isNumber = int.TryParse(Input.inputString, out int number);
+            if (isNumber && number > 0 && number < 5)
             {
-                EquipWeapon(collision.gameObject);
+                Debug.Log(number);
+                ChangeSelectedSlot(number - 1);
             }
-            //collision.gameObject.SetActive(false);
         }
     }
 
-    private void EquipWeapon(GameObject weapon)
+    void ChangeSelectedSlot(int newSlot)
     {
-        weapon.transform.parent = onHand.transform;
-        onHandEquipped = true;
+        if (selectedSlot >= 0)
+        {
+            inventorySlots[selectedSlot].Deselect();
+        }
+        inventorySlots[newSlot].Select();
+        selectedSlot = newSlot;
+    }
+
+    public bool AddItem(Item item)
+    {
+        // Check if inv already has same item type
+        for (int i = 0; i < inventorySlots.Length; i++)
+        {
+            InventorySlot slot = inventorySlots[i];
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            if (itemInSlot != null && 
+                itemInSlot.item == item && 
+                itemInSlot.count < maxStackItems && 
+                itemInSlot.item.stackable)
+            {
+                Debug.Log("Empty slot at " + i);
+                itemInSlot.count++;
+                itemInSlot.RefreshCount();
+                return true;
+            }
+        }
+
+        // Check for open inv slot
+        for (int i = 0; i < inventorySlots.Length; i++)
+        {
+            InventorySlot slot = inventorySlots[i];
+            InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+            if (itemInSlot == null)
+            {
+                Debug.Log("Empty slot at " + i);
+                SpawnNewItem(item, slot);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    void SpawnNewItem(Item item, InventorySlot slot)
+    {
+        GameObject newItemGO = Instantiate(inventoryItemPrefab, slot.transform);
+        InventoryItem inventoryItem = newItemGO.GetComponent<InventoryItem>();
+        inventoryItem.InitializeItem(item);
+    }
+
+    public Item GetSelectedItem()
+    {
+        if (selectedSlot < 0) 
+        {
+            Debug.Log("No slot selected");
+            return null;
+        } 
+        InventorySlot slot = inventorySlots[selectedSlot];
+		InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+		if (itemInSlot == null)
+		{
+            Debug.Log("No item in selected slot");
+		    return null;
+		} else {
+			return itemInSlot.item;
+        }
     }
 }

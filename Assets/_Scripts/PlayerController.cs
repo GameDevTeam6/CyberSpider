@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class PlayerController : MonoBehaviour
@@ -13,6 +14,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _moveVec = Vector3.zero;
     public float _jumpHeight = 10;
     private bool canJump = true;
+    [SerializeField] InventoryManager _inventoryManager;
 
     private void Update()
     {
@@ -55,16 +57,26 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void OnFire(InputAction.CallbackContext context)
+    public void UseItem(InputAction.CallbackContext context)
     {
-        Debug.Log("Fire!");
+        Item selectedItem = _inventoryManager.GetSelectedItem();
+
+        if (selectedItem != null)
+        {
+            Debug.Log("using item: " + selectedItem);
+        }
+        else
+        {
+            return;
+            //Debug.Log("no item selected");
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col)
     {
         if (col.gameObject.CompareTag("Platform"))
         {
-            Debug.Log("Collided");
+            //Debug.Log("Collided");
             canJump = true;
             _animator.ResetTrigger("isJump");
         }
