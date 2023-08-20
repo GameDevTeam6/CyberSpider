@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
     public float _jumpHeight = 10;
     private bool canJump = true;
     [SerializeField] InventoryManager _inventoryManager;
+    [SerializeField] InputManager editor;
+    private bool isSolvingPuzzle = false;
 
     private void Update()
     {
@@ -60,33 +62,36 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed)
         {
-            Debug.Log("Use item method running");
-            // Get selected item
-            InventoryItem selectedItem = _inventoryManager.GetSelectedItem();
-
-            // Check that item is not null
-            if (selectedItem != null)
-            {
-                if (selectedItem.item.consumable)
-                {
-                    Debug.Log("using consumable : " + selectedItem.item);
-                    selectedItem.count--;
-                    Debug.Log("Consumable count remaining: " + selectedItem.count);
-                    selectedItem.RefreshCount();
-                    if (selectedItem.count <= 0)
-                    {
-                        Debug.Log("Supply of item finished, Destroying item");
-                        Destroy(selectedItem.gameObject);
-                    }
-                }
-                else
-                {
-                    // Implement non-consumable code
-                }
-            }
-
+            Debug.Log("Attempt to use item");
+            CollectItem();
         }
     }
+
+    private void CollectItem()
+    {
+        InventoryItem selectedItem = _inventoryManager.GetSelectedItem();
+
+        if (selectedItem != null)
+        {
+            if (selectedItem.item.consumable)
+            {
+                Debug.Log("using consumable : " + selectedItem.item);
+                selectedItem.count--;
+                Debug.Log("Consumable count remaining: " + selectedItem.count);
+                selectedItem.RefreshCount();
+                if (selectedItem.count <= 0)
+                {
+                    Debug.Log("Supply of item finished, Destroying item");
+                    Destroy(selectedItem.gameObject);
+                }
+            }
+            else
+            {
+                // Implement non-consumable code
+            }
+        }
+    }
+
 
     void OnCollisionEnter2D(Collision2D col)
     {
