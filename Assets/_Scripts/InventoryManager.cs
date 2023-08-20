@@ -54,7 +54,7 @@ public class InventoryManager : MonoBehaviour
                 itemInSlot.count < maxStackItems && 
                 itemInSlot.item.stackable)
             {
-                Debug.Log("Empty slot at " + i);
+                Debug.Log("Creating stack at " + i);
                 itemInSlot.count++;
                 itemInSlot.RefreshCount();
                 return true;
@@ -83,7 +83,7 @@ public class InventoryManager : MonoBehaviour
         inventoryItem.InitializeItem(item);
     }
 
-    public Item GetSelectedItem()
+    public InventoryItem GetSelectedItem()
     {
         if (selectedSlot < 0) 
         {
@@ -97,7 +97,7 @@ public class InventoryManager : MonoBehaviour
             Debug.Log("No item in selected slot");
 		    return null;
 		} else {
-			return itemInSlot.item;
+			return itemInSlot;
         }
     }
 }

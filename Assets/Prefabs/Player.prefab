@@ -200,8 +200,8 @@ MonoBehaviour:
   - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 7318520793457827154}
-        m_TargetAssemblyTypeName: UserInput, Assembly-CSharp
-        m_MethodName: OnFire
+        m_TargetAssemblyTypeName: PlayerController, Assembly-CSharp
+        m_MethodName: UseItem
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -270,7 +270,7 @@ MonoBehaviour:
     m_ActionId: 6eca66e1-5661-4d45-ac21-f62d615b2d68
     m_ActionName: Player/Jump[/Keyboard/space]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
+  m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
