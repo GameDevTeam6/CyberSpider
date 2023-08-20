@@ -58,30 +58,34 @@ public class PlayerController : MonoBehaviour
 
     public void UseItem(InputAction.CallbackContext context)
     {
-        Debug.Log("Use item method running");
-        //// Get selected item
-        //InventoryItem selectedItem = _inventoryManager.GetSelectedItem();
+        if (context.performed)
+        {
+            Debug.Log("Use item method running");
+            // Get selected item
+            InventoryItem selectedItem = _inventoryManager.GetSelectedItem();
 
-        //// Check that item is not null
-        //if (selectedItem != null)
-        //{
-        //    if (selectedItem.item.consumable)
-        //    {
-        //        Debug.Log("using consumable : " + selectedItem.item);
-        //        selectedItem.count--;
-        //        Debug.Log("Consumable count remaining: " + selectedItem.count);
-        //        selectedItem.RefreshCount();
-        //        if (selectedItem.count <= 0)
-        //        {
-        //            Debug.Log("Supply of item finished, Destroying item");
-        //            Destroy(selectedItem.gameObject);
-        //        }
-        //    }
-        //    else
-        //    {
-        //        // Implement non-consumable code
-        //    }
-        //}
+            // Check that item is not null
+            if (selectedItem != null)
+            {
+                if (selectedItem.item.consumable)
+                {
+                    Debug.Log("using consumable : " + selectedItem.item);
+                    selectedItem.count--;
+                    Debug.Log("Consumable count remaining: " + selectedItem.count);
+                    selectedItem.RefreshCount();
+                    if (selectedItem.count <= 0)
+                    {
+                        Debug.Log("Supply of item finished, Destroying item");
+                        Destroy(selectedItem.gameObject);
+                    }
+                }
+                else
+                {
+                    // Implement non-consumable code
+                }
+            }
+
+        }
     }
 
     void OnCollisionEnter2D(Collision2D col)
