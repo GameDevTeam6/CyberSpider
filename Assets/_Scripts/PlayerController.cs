@@ -14,11 +14,16 @@ public class PlayerController : MonoBehaviour
     public float _jumpHeight = 10;
     private bool canJump = true;
     [SerializeField] InventoryManager _inventoryManager;
-    [SerializeField] InputManager editor;
+    [SerializeField] InputManager inputManager;
     private bool isSolvingPuzzle = false;
 
     private void Update()
     {
+
+        if (inputManager.isInteractingWithInputField)
+        {
+            return; // Exit the update loop if the player is interacting with the input field
+        }
         transform.Translate(_speed * Time.deltaTime * _moveVec);
     }
 
@@ -50,6 +55,10 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
+        if (inputManager.isInteractingWithInputField)
+        {
+            return; // Exit the update loop if the player is interacting with the input field
+        }
         if (context.performed && canJump)
         {
             _animator.SetTrigger("isJump");
