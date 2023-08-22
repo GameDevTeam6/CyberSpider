@@ -10,6 +10,8 @@ TagManager:
   - HealthPickup
   - SpeedPickup
   - Pickup
+  - Bug
+  - Enemy
   layers:
   - Default
   - TransparentFX

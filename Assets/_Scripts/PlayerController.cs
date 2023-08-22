@@ -8,12 +8,17 @@ using UnityEngine.UIElements;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rigidbody;
-    [SerializeField] float _speed = 3.0f;
     [SerializeField] Animator _animator;
+    public float _speed;
     private Vector3 _moveVec = Vector3.zero;
     public float _jumpHeight = 10;
     private bool canJump = true;
     [SerializeField] InventoryManager _inventoryManager;
+
+    private void Start()
+    {
+        _speed = gameObject.GetComponent<PlayerStats>().GetSpeed();
+    }
 
     private void Update()
     {
@@ -67,21 +72,26 @@ public class PlayerController : MonoBehaviour
             // Check that item is not null
             if (selectedItem != null)
             {
-                if (selectedItem.item.consumable)
+                if (selectedItem.item.type == ItemType.Powerup)
                 {
-                    Debug.Log("using consumable : " + selectedItem.item);
+                    // Powerup code
+
+                    //Debug.Log("using consumable : " + selectedItem.item);
+                    gameObject.GetComponent<PlayerStats>().ProcessBuff(selectedItem.item);
                     selectedItem.count--;
-                    Debug.Log("Consumable count remaining: " + selectedItem.count);
+                    //Debug.Log("Consumable count remaining: " + selectedItem.count);
                     selectedItem.RefreshCount();
                     if (selectedItem.count <= 0)
                     {
-                        Debug.Log("Supply of item finished, Destroying item");
+                        //Debug.Log("Supply of item finished, Destroying item");
                         Destroy(selectedItem.gameObject);
+                        _inventoryManager.UnequipItem();
                     }
                 }
-                else
+                else if (selectedItem.item.type == ItemType.Weapon)
                 {
-                    // Implement non-consumable code
+                    // Weapon code
+                    
                 }
             }
 

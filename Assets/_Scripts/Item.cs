@@ -10,10 +10,10 @@ public class Item : ScriptableObject
     public Sprite image;
     public ItemType type;
     public ActionType actionType;
-    public Vector2Int range = new Vector2Int(5, 4);
+    public float actionRange = 0;
+    public float actionValue = 0;
     public bool stackable = false;
     public bool consumable = false;
-
 }
 
 public enum ItemType
@@ -24,6 +24,7 @@ public enum ItemType
 
 public enum ActionType
 {
-    Buff,
-    Attack
+    Health,
+    Speed,
+    Damage
 }

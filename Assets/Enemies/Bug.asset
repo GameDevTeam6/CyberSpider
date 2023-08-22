@@ -9,13 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41c4f80e2de6dab4a9ec5ead1720f7ad, type: 3}
-  m_Name: HealthPowerup
+  m_Script: {fileID: 11500000, guid: c2e110a28069c13428eebac15446b64f, type: 3}
+  m_Name: Bug
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: 5f3732a251b352347852ca056dd44d0b, type: 3}
+  image: {fileID: 21300000, guid: d8171ffb61d7de74e8c9c943291929e0, type: 3}
   type: 0
-  actionType: 0
-  actionRange: 0
-  actionValue: 10
-  stackable: 1
-  consumable: 1
+  attackRange: 2
+  attackDamage: 10
