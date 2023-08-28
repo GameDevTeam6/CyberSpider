@@ -14,7 +14,7 @@ public class PlayerStats : MonoBehaviour
     private void Update()
     {
         healthText.text = "HP: " + playerHealth + "/100";
-        speedText.text = "Player speed: " + playerSpeed;
+        speedText.text = "Speed: " + playerSpeed;
 
     }
 

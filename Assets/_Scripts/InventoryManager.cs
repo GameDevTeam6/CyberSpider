@@ -9,13 +9,15 @@ using static UnityEditor.Progress;
 
 public class InventoryManager : MonoBehaviour
 {
-    private int maxStackItems = 4;
+    [SerializeField] private GameObject playerEquipSlot;
+    
     public InventorySlot[] inventorySlots;
     public GameObject inventoryItemPrefab;
     public GameObject equippedItemPrefab;
     private int selectedSlot = -1;
+    private int maxStackItems = 4;
 
-    [SerializeField] private GameObject playerEquipSlot;
+    public bool itemEquipped = false;
     
     private void Start()
     {

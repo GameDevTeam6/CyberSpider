@@ -9,6 +9,7 @@ public class Enemy : ScriptableObject
     public EnemyType type;
     public int attackRange = 0;
     public int attackDamage = 0;
+    public int health = 0;
 }
 
 public enum EnemyType

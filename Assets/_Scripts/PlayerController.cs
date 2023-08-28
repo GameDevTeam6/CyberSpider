@@ -9,11 +9,14 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rigidbody;
     [SerializeField] Animator _animator;
+    [SerializeField] InventoryManager _inventoryManager;
+    [SerializeField] EnemyManager _enemyManager;
+
     public float _speed;
     private Vector3 _moveVec = Vector3.zero;
     public float _jumpHeight = 10;
+
     private bool canJump = true;
-    [SerializeField] InventoryManager _inventoryManager;
 
     private void Start()
     {
@@ -91,7 +94,8 @@ public class PlayerController : MonoBehaviour
                 else if (selectedItem.item.type == ItemType.Weapon)
                 {
                     // Weapon code
-                    
+                    _animator.SetBool("weaponEquipped", true);
+
                 }
             }
 

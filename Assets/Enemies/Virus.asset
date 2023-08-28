@@ -16,3 +16,4 @@ MonoBehaviour:
   type: 1
   attackRange: 10
   attackDamage: 2
+  health: 10

@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8085751891402993320}
+  - component: {fileID: 1273248385820339865}
   m_Layer: 0
   m_Name: EquipSlot
   m_TagString: Untagged
@@ -31,6 +32,41 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7631076911748089107}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1273248385820339865
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8940800556400476299}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &9091056007638863431
 GameObject:
   m_ObjectHideFlags: 0
@@ -49,6 +85,7 @@ GameObject:
   - component: {fileID: 7311356733881180238}
   - component: {fileID: -5648902755901260684}
   - component: {fileID: 5207008068239920577}
+  - component: {fileID: 5953931698498699302}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -321,10 +358,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 8421954002185625497}
-  _speed: 5
   _animator: {fileID: 4794534078253259435}
-  _jumpHeight: 13
   _inventoryManager: {fileID: 0}
+  _enemyManager: {fileID: 0}
+  _speed: 5
+  _jumpHeight: 13
 --- !u!95 &4794534078253259435
 Animator:
   serializedVersion: 5
@@ -381,5 +419,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a0e6c3b84760cd54f918a1ee04e65353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthText: {fileID: 0}
+  speedText: {fileID: 0}
+--- !u!114 &5953931698498699302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9091056007638863431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c035a3a165eb09d47aca38a93e31a19a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
