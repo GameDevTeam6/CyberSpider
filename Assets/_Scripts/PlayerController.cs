@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -77,28 +78,49 @@ public class PlayerController : MonoBehaviour
             {
                 if (selectedItem.item.type == ItemType.Powerup)
                 {
-                    // Powerup code
-
-                    //Debug.Log("using consumable : " + selectedItem.item);
-                    gameObject.GetComponent<PlayerStats>().ProcessBuff(selectedItem.item);
-                    selectedItem.count--;
-                    //Debug.Log("Consumable count remaining: " + selectedItem.count);
-                    selectedItem.RefreshCount();
-                    if (selectedItem.count <= 0)
-                    {
-                        //Debug.Log("Supply of item finished, Destroying item");
-                        Destroy(selectedItem.gameObject);
-                        _inventoryManager.UnequipItem();
-                    }
+                    UsePowerup(selectedItem);
                 }
                 else if (selectedItem.item.type == ItemType.Weapon)
                 {
-                    // Weapon code
-                    _animator.SetBool("weaponEquipped", true);
-
+                    UseWeapon(selectedItem);
                 }
             }
 
+        }
+    }
+
+    private void UsePowerup(InventoryItem selectedItem)
+    {
+        // Powerup code
+
+        //Debug.Log("using consumable : " + selectedItem.item);
+        gameObject.GetComponent<PlayerStats>().ProcessBuff(selectedItem.item);
+        selectedItem.count--;
+        //Debug.Log("Consumable count remaining: " + selectedItem.count);
+        selectedItem.RefreshCount();
+        if (selectedItem.count <= 0)
+        {
+            //Debug.Log("Supply of item finished, Destroying item");
+            Destroy(selectedItem.gameObject);
+            _inventoryManager.UnequipItem();
+        }
+    }
+
+    private void UseWeapon(InventoryItem selectedItem)
+    {
+        // Weapon code
+        //_animator.SetBool("weaponEquipped", true);
+        //_animator.SetTrigger("isAttack");
+        for (int i = 0; i < _enemyManager.enemies.Count; i++)
+        {
+            if (_enemyManager.enemies[i] != null)
+            {
+                float distance = Vector3.Distance(transform.position, _enemyManager.enemies[i].transform.position);
+                if (distance < selectedItem.item.actionRange)
+                {
+                    _enemyManager.enemies[i].transform.GetChild(0).GetComponent<EnemyInfo>().TakeDamage(selectedItem.item.actionValue);
+                }
+            }
         }
     }
 

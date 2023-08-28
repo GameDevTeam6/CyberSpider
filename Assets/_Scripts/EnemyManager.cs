@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnemyManager : MonoBehaviour
 {
     [SerializeField] GameObject enemiesContainer;
-    [SerializeField] List<GameObject> enemies;
+    [SerializeField] public List<GameObject> enemies;
 
     // Start is called before the first frame update
     void Start()

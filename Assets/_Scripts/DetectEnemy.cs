@@ -9,7 +9,7 @@ public class DetectEnemy : MonoBehaviour
         if (col.gameObject.CompareTag("Enemy"))
         {
             Debug.Log("Collided with enemy");
-            int damage = col.gameObject.GetComponent<EnemyInfo>().enemy.attackDamage;
+            int damage = col.gameObject.transform.GetChild(0).GetComponent<EnemyInfo>().enemy.attackDamage;
             gameObject.GetComponent<PlayerStats>().ChangeHealth(-damage);
         }
     }
