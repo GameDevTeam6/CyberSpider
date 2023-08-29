@@ -19,10 +19,10 @@ public class EnemyPatrol : MonoBehaviour
         if (IsFacingRight())
         {
             //rb.velocity = new Vector2(moveSpeed, 0f);
-            transform.parent.transform.GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed, 0f);
+            transform.parent.GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed, 0f);
         } else
         {
-            transform.parent.transform.GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed, 0f);
+            transform.parent.GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed, 0f);
         }
     }
 

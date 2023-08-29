@@ -15,7 +15,7 @@ public class EnemyInfo : MonoBehaviour
     {
         maxHealth = enemy.health;
         currentHealth = maxHealth;
-        healthBar = GetComponentInChildren<FloatingHealthBar>();
+        //healthBar = GetComponentInChildren<FloatingHealthBar>();
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
     }
 
@@ -31,6 +31,6 @@ public class EnemyInfo : MonoBehaviour
 
     private void Die()
     {
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
 }
