@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Animator _animator;
     [SerializeField] InventoryManager _inventoryManager;
     [SerializeField] EnemyManager _enemyManager;
-    [SerializeField] InventoryManager _inventoryManager;
     [SerializeField] InputManager inputManager;
     private bool isSolvingPuzzle = false;
 
