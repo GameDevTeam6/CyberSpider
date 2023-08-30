@@ -12,9 +12,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Animator _animator;
     [SerializeField] InventoryManager _inventoryManager;
     [SerializeField] EnemyManager _enemyManager;
-    [SerializeField] InventoryManager _inventoryManager;
-    [SerializeField] InputManager inputManager;
-    private bool isSolvingPuzzle = false;
 
     public float _speed;
     private Vector3 _moveVec = Vector3.zero;
@@ -29,11 +26,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-
-        if (inputManager.isInteractingWithInputField)
-        {
-            return; // Exit the update loop if the player is interacting with the input field
-        }
         transform.Translate(_speed * Time.deltaTime * _moveVec);
     }
 
@@ -65,10 +57,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (inputManager.isInteractingWithInputField)
-        {
-            return; // Exit the update loop if the player is interacting with the input field
-        }
         if (context.performed && canJump)
         {
             _animator.SetTrigger("isJump");
