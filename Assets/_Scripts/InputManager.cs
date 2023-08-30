@@ -18,30 +18,54 @@ public class InputManager : MonoBehaviour
     public event Action OnPuzzleSolved;
     public bool isInteractingWithInputField = false;
 
+    //private string[] puzzles = {
+    //    "def add(a, b):\n    return ________",
+    //    "def reverse_string(s):\n    return ________",
+    //    "def get_middle_char(s):\n    return s[______]",
+    //    "def is_even(num):\n    return ________",
+    //    "def list_sum(lst):\n    return ________",
+    //    "def multiply(a, b):\n    return ________",
+    //    "def greet(name):\n    return 'Hello, ' + ________",
+    //    "def find_max(lst):\n    return ________",
+    //    "def list_length(lst):\n    return ________",
+    //    "def divide(a, b):\n    if b != 0:\n        return ________\n    else:\n        return 'Undefined'"
+    //};
+
+    //private string[] answers = {
+    //    "a + b",
+    //    "s[::-1]",
+    //    "len(s) // 2",
+    //    "num % 2 == 0",
+    //    "sum(lst)",
+    //    "a * b",
+    //    "name + '!'",
+    //    "max(lst)",
+    //    "len(lst)",
+    //    "a / b"
+    //};
+    
     private string[] puzzles = {
-        "def add(a, b):\n    return ________",
-        "def reverse_string(s):\n    return ________",
-        "def get_middle_char(s):\n    return s[______]",
-        "def is_even(num):\n    return ________",
-        "def list_sum(lst):\n    return ________",
-        "def multiply(a, b):\n    return ________",
-        "def greet(name):\n    return 'Hello, ' + ________",
-        "def find_max(lst):\n    return ________",
-        "def list_length(lst):\n    return ________",
-        "def divide(a, b):\n    if b != 0:\n        return ________\n    else:\n        return 'Undefined'"
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
     };
 
     private string[] answers = {
-        "a + b",
-        "s[::-1]",
-        "len(s) // 2",
-        "num % 2 == 0",
-        "sum(lst)",
-        "a * b",
-        "name + '!'",
-        "max(lst)",
-        "len(lst)",
-        "a / b"
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
     };
 
 
@@ -172,6 +196,4 @@ public class InputManager : MonoBehaviour
         // Set the position of the puzzlePanel's RectTransform to this position.
         puzzlePanelRectTransform.anchoredPosition = anchoredPosition;
     }
-
-
 }

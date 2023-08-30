@@ -9,16 +9,7 @@ public class ItemPickup : MonoBehaviour
     public InventoryManager inventoryManager;
     private Item item;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Show the puzzle to the player
@@ -27,7 +18,7 @@ public class ItemPickup : MonoBehaviour
         {
             editor.OpenInputField(() =>
             {
-                Item item = collision.gameObject.GetComponent<ItemInfo>().item;
+                item = collision.gameObject.GetComponent<ItemInfo>().item;
                 bool result = inventoryManager.AddItem(item);
                 if (result)
                 {

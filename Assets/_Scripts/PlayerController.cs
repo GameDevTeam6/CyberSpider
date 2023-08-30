@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
 
     public void UseItem(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && !inputManager.isInteractingWithInputField)
         {
             Debug.Log("Use item method running");
             // Get selected item
