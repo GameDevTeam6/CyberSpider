@@ -49,7 +49,6 @@ GameObject:
   - component: {fileID: 7311356733881180238}
   - component: {fileID: -5648902755901260684}
   - component: {fileID: 5207008068239920577}
-  - component: {fileID: 9081233061622289057}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -325,7 +324,6 @@ MonoBehaviour:
   _animator: {fileID: 4794534078253259435}
   _inventoryManager: {fileID: 0}
   _enemyManager: {fileID: 0}
-  inputManager: {fileID: 0}
   _speed: 5
   _jumpHeight: 13
 --- !u!95 &4794534078253259435
@@ -362,7 +360,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryManager: {fileID: 0}
-  editor: {fileID: 9081233061622289057}
 --- !u!114 &-5648902755901260684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -389,23 +386,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthText: {fileID: 0}
   speedText: {fileID: 0}
---- !u!114 &9081233061622289057
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9091056007638863431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d20dee42e3dd48ad807835159b45b18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  puzzleText: {fileID: 0}
-  editor: {fileID: 0}
-  submitButton: {fileID: 0}
-  puzzlePanel: {fileID: 0}
-  mainCanvas: {fileID: 0}
-  mainCamera: {fileID: 0}
-  offset: 2
-  isInteractingWithInputField: 0
