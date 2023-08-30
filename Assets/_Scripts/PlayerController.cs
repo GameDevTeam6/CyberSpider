@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -8,22 +9,23 @@ using UnityEngine.UIElements;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D _rigidbody;
-    [SerializeField] float _speed = 3.0f;
     [SerializeField] Animator _animator;
+    [SerializeField] InventoryManager _inventoryManager;
+    [SerializeField] EnemyManager _enemyManager;
+
+    public float _speed;
     private Vector3 _moveVec = Vector3.zero;
     public float _jumpHeight = 10;
+
     private bool canJump = true;
-    [SerializeField] InventoryManager _inventoryManager;
-    [SerializeField] InputManager inputManager;
-    private bool isSolvingPuzzle = false;
+
+    private void Start()
+    {
+        _speed = gameObject.GetComponent<PlayerStats>().GetSpeed();
+    }
 
     private void Update()
     {
-
-        if (inputManager.isInteractingWithInputField)
-        {
-            return; // Exit the update loop if the player is interacting with the input field
-        }
         transform.Translate(_speed * Time.deltaTime * _moveVec);
     }
 
@@ -55,10 +57,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (inputManager.isInteractingWithInputField)
-        {
-            return; // Exit the update loop if the player is interacting with the input field
-        }
         if (context.performed && canJump)
         {
             _animator.SetTrigger("isJump");
@@ -71,36 +69,60 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed)
         {
-            Debug.Log("Attempt to use item");
-            CollectItem();
-        }
-    }
+            Debug.Log("Use item method running");
+            // Get selected item
+            InventoryItem selectedItem = _inventoryManager.GetSelectedItem();
 
-    private void CollectItem()
-    {
-        InventoryItem selectedItem = _inventoryManager.GetSelectedItem();
-
-        if (selectedItem != null)
-        {
-            if (selectedItem.item.consumable)
+            // Check that item is not null
+            if (selectedItem != null)
             {
-                Debug.Log("using consumable : " + selectedItem.item);
-                selectedItem.count--;
-                Debug.Log("Consumable count remaining: " + selectedItem.count);
-                selectedItem.RefreshCount();
-                if (selectedItem.count <= 0)
+                if (selectedItem.item.type == ItemType.Powerup)
                 {
-                    Debug.Log("Supply of item finished, Destroying item");
-                    Destroy(selectedItem.gameObject);
+                    UsePowerup(selectedItem);
+                }
+                else if (selectedItem.item.type == ItemType.Weapon)
+                {
+                    UseWeapon(selectedItem);
                 }
             }
-            else
-            {
-                // Implement non-consumable code
-            }
+
         }
     }
 
+    private void UsePowerup(InventoryItem selectedItem)
+    {
+        // Powerup code
+
+        //Debug.Log("using consumable : " + selectedItem.item);
+        gameObject.GetComponent<PlayerStats>().ProcessBuff(selectedItem.item);
+        selectedItem.count--;
+        //Debug.Log("Consumable count remaining: " + selectedItem.count);
+        selectedItem.RefreshCount();
+        if (selectedItem.count <= 0)
+        {
+            //Debug.Log("Supply of item finished, Destroying item");
+            Destroy(selectedItem.gameObject);
+            _inventoryManager.UnequipItem();
+        }
+    }
+
+    private void UseWeapon(InventoryItem selectedItem)
+    {
+        // Weapon code
+        //_animator.SetBool("weaponEquipped", true);
+        //_animator.SetTrigger("isAttack");
+        for (int i = 0; i < _enemyManager.enemies.Count; i++)
+        {
+            if (_enemyManager.enemies[i] != null)
+            {
+                float distance = Vector3.Distance(transform.position, _enemyManager.enemies[i].transform.position);
+                if (distance < selectedItem.item.actionRange)
+                {
+                    _enemyManager.enemies[i].transform.GetChild(0).GetComponent<EnemyInfo>().TakeDamage(selectedItem.item.actionValue);
+                }
+            }
+        }
+    }
 
     void OnCollisionEnter2D(Collision2D col)
     {

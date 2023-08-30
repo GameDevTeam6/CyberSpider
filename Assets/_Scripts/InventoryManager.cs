@@ -1,13 +1,18 @@
+using System;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
-    private int maxStackItems = 4;
+    [SerializeField] private GameObject playerEquipSlot;
+    
     public InventorySlot[] inventorySlots;
     public GameObject inventoryItemPrefab;
-
+    public GameObject equippedItemPrefab;
     private int selectedSlot = -1;
+    private int maxStackItems = 4;
 
+    public bool itemEquipped = false;
+    
     private void Start()
     {
         //ChangeSelectedSlot(0);
@@ -34,6 +39,13 @@ public class InventoryManager : MonoBehaviour
         }
         inventorySlots[newSlot].Select();
         selectedSlot = newSlot;
+        try
+        {
+            EquipItem(GetSelectedItem().item);
+        } catch (Exception e)
+        {
+            Debug.Log("No item in slot: " + e.Message);
+        }
     }
 
     public bool AddItem(Item item)
@@ -92,6 +104,31 @@ public class InventoryManager : MonoBehaviour
 		    return null;
 		} else {
 			return itemInSlot;
+        }
+    }
+
+    // Method that creates a clone of the Item in the players equipped slot
+    public void EquipItem(Item item)
+    {
+        UnequipItem();
+
+        if (item != null)
+        {
+            GameObject equippedItemGO = Instantiate(equippedItemPrefab, playerEquipSlot.transform);
+            EquippedItem equippedItem = equippedItemGO.GetComponent<EquippedItem>();
+            equippedItem.InitializeItem(item);
+        } else
+        {
+            return;
+        }
+    }
+
+    // Method that destroys currently equipped item (if any)
+    public void UnequipItem()
+    {
+        if (playerEquipSlot.transform.childCount > 0)
+        {
+            Destroy(playerEquipSlot.transform.GetChild(0).gameObject);
         }
     }
 }

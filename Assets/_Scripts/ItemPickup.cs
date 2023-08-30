@@ -10,8 +10,6 @@ public class ItemPickup : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // Show the puzzle to the player
-
         if (collision.gameObject.CompareTag("Pickup"))
         {
             editor.OpenInputField(() =>
