@@ -1,22 +1,32 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
-public class ItemPickUp : MonoBehaviour
+public class ItemPickup : MonoBehaviour
 {
-    public InventoryManager inventoryManager;
     [SerializeField] InputManager editor;
-    //public Item[] itemsToPickup;
-
+    public InventoryManager inventoryManager;
     private Item item;
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         // Show the puzzle to the player
 
         if (collision.gameObject.CompareTag("Pickup"))
         {
-            editor.OpenInputField(() => {
+            editor.OpenInputField(() =>
+            {
                 Item item = collision.gameObject.GetComponent<ItemInfo>().item;
                 bool result = inventoryManager.AddItem(item);
                 if (result)
@@ -31,5 +41,4 @@ public class ItemPickUp : MonoBehaviour
             });
         }
     }
-
 }
