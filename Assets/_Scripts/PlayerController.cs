@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] InventoryManager _inventoryManager;
     [SerializeField] EnemyManager _enemyManager;
     [SerializeField] InputManager inputManager;
+    private bool isSolvingPuzzle = false;
 
     public float _speed;
     private Vector3 _moveVec = Vector3.zero;
@@ -76,7 +77,7 @@ public class PlayerController : MonoBehaviour
 
     public void UseItem(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && !inputManager.isInteractingWithInputField)
         {
             Debug.Log("Use item method running");
             // Get selected item
