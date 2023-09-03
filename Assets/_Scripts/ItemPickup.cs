@@ -37,15 +37,15 @@ public class ItemPickup : MonoBehaviour
                 Debug.Log("New Score:" + gameObject.GetComponent<PlayerStats>().GetScore());
             }
             // if pickup item is health-related (heart)
-            //else if (item.actionType == ActionType.Health)
-            //{
-                // hide from scene
-                //coll.gameObject.SetActive(false);
+            else if (item.actionType == ActionType.Health)
+            {
+                //hide from scene
+                coll.gameObject.SetActive(false);
                 // **************************************
                 // TO DO
                 // **************************************
-                //Debug.Log("Add heart to left hand side");
-            //}
+                Debug.Log("Add heart to left hand side");
+            }
             // if pickup item is action-related
             else
             {

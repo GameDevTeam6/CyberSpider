@@ -20,9 +20,10 @@ public class PlayerStats : MonoBehaviour
         scoreText.text = "" + playerScore;
     }
 
-    public void ChangeHealth(float health)
+    public float ChangeHealth(float health)
     {
         playerHealth += health;
+        return playerHealth;
     }
 
     public void ChangeSpeed(float newSpeed)
@@ -40,6 +41,11 @@ public class PlayerStats : MonoBehaviour
     public float GetSpeed()
     {
         return playerSpeed;
+    }
+
+    public float GetHealth()
+    {
+        return playerHealth;
     }
 
     public float GetScore()

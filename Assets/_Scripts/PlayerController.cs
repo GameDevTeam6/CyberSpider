@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
 
     public float _speed;
     public float _score;
+    public float _health;
 
     private Vector3 _moveVec = Vector3.zero;
     public float _jumpHeight = 10;
@@ -27,6 +28,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _speed = gameObject.GetComponent<PlayerStats>().GetSpeed();
+        _health = gameObject.GetComponent<PlayerStats>().GetHealth();
         _score = gameObject.GetComponent<PlayerStats>().GetScore();
 
     }
@@ -143,7 +145,6 @@ public class PlayerController : MonoBehaviour
     {
         if (col.gameObject.CompareTag("Platform"))
         {
-            //Debug.Log("Collided");
             canJump = true;
             _animator.ResetTrigger("isJump");
         }
@@ -152,6 +153,12 @@ public class PlayerController : MonoBehaviour
             float val = col.gameObject.GetComponent<ItemInfo>().item.actionValue;
             _score = gameObject.GetComponent<PlayerStats>().ChangeScore(val);
             Debug.Log("New Score: " + _score);
+        }
+        if (col.gameObject.GetComponent<ItemInfo>().item.actionType == ActionType.Health)
+        {
+            float val = col.gameObject.GetComponent<ItemInfo>().item.actionValue;
+            _health = gameObject.GetComponent<PlayerStats>().ChangeHealth(val);
+            Debug.Log("New Health: " + _health);
         }
     }
 }
