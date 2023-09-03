@@ -9,12 +9,12 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] TMP_Text speedText;
     [SerializeField] TMP_Text scoreText;
     private float playerHealth = 100;
-    private int playerLives = 3;
     private float playerSpeed = 3.0f;
     private float playerScore = 0;
 
     private void Update()
     {
+        // track current game stats
         healthText.text = playerHealth + "/100";
         speedText.text = "Speed: " + playerSpeed;
         scoreText.text = "" + playerScore;
