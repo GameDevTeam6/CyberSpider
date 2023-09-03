@@ -14,9 +14,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] EnemyManager _enemyManager;
     [SerializeField] InputManager inputManager;
 
+
     public float _speed;
     public float _score;
     public float _health;
+    public float _time;
 
     private Vector3 _moveVec = Vector3.zero;
     public float _jumpHeight = 10;
@@ -26,11 +28,11 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        // initiallize values of game play stats
+        // fatch initial player stats values
         _speed = gameObject.GetComponent<PlayerStats>().GetSpeed();
         _health = gameObject.GetComponent<PlayerStats>().GetHealth();
         _score = gameObject.GetComponent<PlayerStats>().GetScore();
-
+        _time = gameObject.GetComponent<PlayerStats>().GetTime();
     }
 
     private void Update()
@@ -143,13 +145,14 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        // if player collides with platforms
+        ///////////////////// PLATFORM //////////////////////
         if (col.gameObject.CompareTag("Platform"))
         {
             canJump = true;
             _animator.ResetTrigger("isJump");
         }
-        // if player collides with bitcoin token
+
+        ////////////////// BITCOIN TOKEN ///////////////////
         if (col.gameObject.GetComponent<ItemInfo>().item.actionType == ActionType.Score)
         {
             // fetch reward value to be added to the score
@@ -157,13 +160,26 @@ public class PlayerController : MonoBehaviour
             // update score
             _score = gameObject.GetComponent<PlayerStats>().ChangeScore(val);
         }
-        // if player collides with health token
+
+        ////////////////// HEALTH TOKEN ///////////////////
         if (col.gameObject.GetComponent<ItemInfo>().item.actionType == ActionType.Health)
         {
-            // fetch health boost value to be added
+            // fetch current health
+            float currentHealth = gameObject.GetComponent<PlayerStats>().GetHealth();
+            // fetch health value to be added
             float val = col.gameObject.GetComponent<ItemInfo>().item.actionValue;
-            // update health
-            _health = gameObject.GetComponent<PlayerStats>().ChangeHealth(val);
+
+            if (currentHealth < (100 - val))
+            {
+                // add boost value to current health
+                _health = gameObject.GetComponent<PlayerStats>().ChangeHealth(val);
+            }
+            else
+            {
+                // restrict max health to 100
+                float diff = 100 - currentHealth;
+                _health = gameObject.GetComponent<PlayerStats>().ChangeHealth(diff);
+            }
         }
     }
 }
