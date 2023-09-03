@@ -72,6 +72,7 @@ public class InventoryManager : MonoBehaviour
         {
             InventorySlot slot = inventorySlots[i];
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+
             if (itemInSlot == null)
             {
                 Debug.Log("Empty slot at " + i);

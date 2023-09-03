@@ -13,9 +13,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] InventoryManager _inventoryManager;
     [SerializeField] EnemyManager _enemyManager;
     [SerializeField] InputManager inputManager;
+
     private bool isSolvingPuzzle = false;
 
     public float _speed;
+    public float _score;
+
     private Vector3 _moveVec = Vector3.zero;
     public float _jumpHeight = 10;
 
@@ -24,6 +27,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _speed = gameObject.GetComponent<PlayerStats>().GetSpeed();
+        _score = gameObject.GetComponent<PlayerStats>().GetScore();
+
     }
 
     private void Update()
@@ -141,6 +146,12 @@ public class PlayerController : MonoBehaviour
             //Debug.Log("Collided");
             canJump = true;
             _animator.ResetTrigger("isJump");
+        }
+        if (col.gameObject.GetComponent<ItemInfo>().item.actionType == ActionType.Score)
+        {
+            float val = col.gameObject.GetComponent<ItemInfo>().item.actionValue;
+            _score = gameObject.GetComponent<PlayerStats>().ChangeScore(val);
+            Debug.Log("New Score: " + _score);
         }
     }
 }

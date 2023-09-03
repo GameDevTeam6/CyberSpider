@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 41c4f80e2de6dab4a9ec5ead1720f7ad, type: 3}
-  m_Name: cqcKey
+  m_Name: BitcoinScore
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: 6c71052e57cb00a47895af3de06481a4, type: 3}
-  type: 1
-  actionType: 1
-  actionRange: 3
-  actionValue: 5
-  stackable: 1
-  consumable: 0
+  image: {fileID: 21300000, guid: 9a149f65185e4264cb36b78461eec42c, type: 3}
+  type: 2
+  actionType: 3
+  actionRange: 0
+  actionValue: 1
+  stackable: 0
+  consumable: 1
