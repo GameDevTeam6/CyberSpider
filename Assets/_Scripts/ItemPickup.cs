@@ -33,9 +33,6 @@ public class ItemPickup : MonoBehaviour
             {
                 // delete token from scene
                 Destroy(coll.gameObject);
-
-                //Debug.Log("Picked up a bitcoin!");
-                //Debug.Log("New Score:" + gameObject.GetComponent<PlayerStats>().GetScore());
             }
             // if the pickup item is a health token
             else if (item.actionType == ActionType.Health)

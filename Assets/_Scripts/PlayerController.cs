@@ -145,17 +145,20 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
-        ///////////////////// PLATFORM //////////////////////
+        // collision with platforms
         if (col.gameObject.CompareTag("Platform"))
         {
             canJump = true;
             _animator.ResetTrigger("isJump");
         }
 
+        // collision with pickup items
         if (col.gameObject.CompareTag("Pickup"))
         {
-            ////////////////// BITCOIN TOKEN ///////////////////
+            // fetch type of item
             ActionType itemType = col.gameObject.GetComponent<ItemInfo>().item.actionType;
+
+            ////////////////// BITCOIN TOKEN ///////////////////
 
             if (itemType == ActionType.Score)
             {

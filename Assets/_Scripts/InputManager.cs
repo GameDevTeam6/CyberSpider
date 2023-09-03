@@ -110,7 +110,6 @@ public class InputManager : MonoBehaviour
 
     public void ShowNextPuzzle()
     {
-        Debug.Log("InventoryManager::Start -> Show Next Puzzle Called");
         if (currentPuzzleIndex < puzzles.Length)
         {
             puzzleText.text = puzzles[currentPuzzleIndex];
@@ -126,7 +125,6 @@ public class InputManager : MonoBehaviour
 
     public void OpenInputField(Action onSuccess)
     {
-        Debug.Log("InventoryManager::Start -> Open Inventory Field called");
         if (currentPuzzleIndex < puzzles.Length) // Check if there's another puzzle
         {
             Debug.Log("Showing puzzle panel");
