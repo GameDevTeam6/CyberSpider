@@ -25,36 +25,33 @@ public class ItemPickup : MonoBehaviour
         // if player collides with pickup items
         if (coll.gameObject.CompareTag("Pickup"))
         {
+            // fetch iten
             item = coll.gameObject.GetComponent<ItemInfo>().item;
 
-            // if pikcup item is score-related (bitcoin)
+            // if the pickup item is a bitcoin token
             if (item.actionType == ActionType.Score)
             {
-                // remove from scene
+                // delete token from scene
                 Destroy(coll.gameObject);
 
-                Debug.Log("Picked up a bitcoin!");
-                Debug.Log("New Score:" + gameObject.GetComponent<PlayerStats>().GetScore());
+                //Debug.Log("Picked up a bitcoin!");
+                //Debug.Log("New Score:" + gameObject.GetComponent<PlayerStats>().GetScore());
             }
-            // if pickup item is health-related (heart)
+            // if the pickup item is a health token
             else if (item.actionType == ActionType.Health)
             {
-                //hide from scene
-                coll.gameObject.SetActive(false);
-                // **************************************
-                // TO DO
-                // **************************************
-                Debug.Log("Add heart to left hand side");
+                // delete token from scene
+                Destroy(coll.gameObject);
             }
-            // if pickup item is action-related
+            // if any other item picked up
             else
             {
                 bool result = inventoryManager.AddItem(item);
-                // add to inventory (if there are available slots)
+                // if there are available inventory slots
                 if (result)
                 {
                     Debug.Log("Item added to inventory");
-                    // remove from scene
+                    // hide from scene
                     coll.gameObject.SetActive(false);                   
                 }
             }
