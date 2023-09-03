@@ -71,9 +71,6 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
-
-        Debug.Log("InventoryManager::Start -> Input Manager Initialized...");
-
         // Ensure mainCamera is assigned
         if (mainCamera == null)
         {
@@ -99,7 +96,6 @@ public class InputManager : MonoBehaviour
         // Make sure the puzzle UI is hidden on start
         if (puzzlePanel != null)
         {
-            Debug.Log("InventoryManager::Start -> Puzzle Is Null");
             puzzlePanel.SetActive(false);
             isInteractingWithInputField = false;
         }

@@ -152,33 +152,38 @@ public class PlayerController : MonoBehaviour
             _animator.ResetTrigger("isJump");
         }
 
-        ////////////////// BITCOIN TOKEN ///////////////////
-        if (col.gameObject.GetComponent<ItemInfo>().item.actionType == ActionType.Score)
+        if (col.gameObject.CompareTag("Pickup"))
         {
-            // fetch reward value to be added to the score
-            float val = col.gameObject.GetComponent<ItemInfo>().item.actionValue;
-            // update score
-            _score = gameObject.GetComponent<PlayerStats>().ChangeScore(val);
-        }
+            ////////////////// BITCOIN TOKEN ///////////////////
+            ActionType itemType = col.gameObject.GetComponent<ItemInfo>().item.actionType;
 
-        ////////////////// HEALTH TOKEN ///////////////////
-        if (col.gameObject.GetComponent<ItemInfo>().item.actionType == ActionType.Health)
-        {
-            // fetch current health
-            float currentHealth = gameObject.GetComponent<PlayerStats>().GetHealth();
-            // fetch health value to be added
-            float val = col.gameObject.GetComponent<ItemInfo>().item.actionValue;
-
-            if (currentHealth < (100 - val))
+            if (itemType == ActionType.Score)
             {
-                // add boost value to current health
-                _health = gameObject.GetComponent<PlayerStats>().ChangeHealth(val);
+                // fetch reward value to be added to the score
+                float val = col.gameObject.GetComponent<ItemInfo>().item.actionValue;
+                // update score
+                _score = gameObject.GetComponent<PlayerStats>().ChangeScore(val);
             }
-            else
+
+            ////////////////// HEALTH TOKEN ///////////////////
+            if (itemType == ActionType.Health)
             {
-                // restrict max health to 100
-                float diff = 100 - currentHealth;
-                _health = gameObject.GetComponent<PlayerStats>().ChangeHealth(diff);
+                // fetch current health
+                float currentHealth = gameObject.GetComponent<PlayerStats>().GetHealth();
+                // fetch health value to be added
+                float val = col.gameObject.GetComponent<ItemInfo>().item.actionValue;
+
+                if (currentHealth < (100 - val))
+                {
+                    // add boost value to current health
+                    _health = gameObject.GetComponent<PlayerStats>().ChangeHealth(val);
+                }
+                else
+                {
+                    // restrict max health to 100
+                    float diff = 100 - currentHealth;
+                    _health = gameObject.GetComponent<PlayerStats>().ChangeHealth(diff);
+                }
             }
         }
     }
