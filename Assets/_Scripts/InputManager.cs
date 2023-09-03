@@ -71,7 +71,6 @@ public class InputManager : MonoBehaviour
 
     private void Start()
     {
-
         Debug.Log("InventoryManager::Start -> Input Manager Initialized...");
 
         // Ensure mainCamera is assigned
@@ -100,6 +99,7 @@ public class InputManager : MonoBehaviour
         if (puzzlePanel != null)
         {
             Debug.Log("InventoryManager::Start -> Puzzle Is Null");
+            
             puzzlePanel.SetActive(false);
             isInteractingWithInputField = false;
         }
