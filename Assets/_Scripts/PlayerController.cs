@@ -14,8 +14,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] EnemyManager _enemyManager;
     [SerializeField] InputManager inputManager;
 
-    private bool isSolvingPuzzle = false;
-
     public float _speed;
     public float _score;
     public float _health;
@@ -24,9 +22,11 @@ public class PlayerController : MonoBehaviour
     public float _jumpHeight = 10;
 
     private bool canJump = true;
+    private bool isSolvingPuzzle = false;
 
     private void Start()
     {
+        // initiallize values of game play stats
         _speed = gameObject.GetComponent<PlayerStats>().GetSpeed();
         _health = gameObject.GetComponent<PlayerStats>().GetHealth();
         _score = gameObject.GetComponent<PlayerStats>().GetScore();
@@ -143,22 +143,27 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D col)
     {
+        // if player collides with platforms
         if (col.gameObject.CompareTag("Platform"))
         {
             canJump = true;
             _animator.ResetTrigger("isJump");
         }
+        // if player collides with bitcoin token
         if (col.gameObject.GetComponent<ItemInfo>().item.actionType == ActionType.Score)
         {
+            // fetch reward value to be added to the score
             float val = col.gameObject.GetComponent<ItemInfo>().item.actionValue;
+            // update score
             _score = gameObject.GetComponent<PlayerStats>().ChangeScore(val);
-            Debug.Log("New Score: " + _score);
         }
+        // if player collides with health token
         if (col.gameObject.GetComponent<ItemInfo>().item.actionType == ActionType.Health)
         {
+            // fetch health boost value to be added
             float val = col.gameObject.GetComponent<ItemInfo>().item.actionValue;
+            // update health
             _health = gameObject.GetComponent<PlayerStats>().ChangeHealth(val);
-            Debug.Log("New Health: " + _health);
         }
     }
 }
