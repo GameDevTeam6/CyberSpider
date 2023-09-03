@@ -7,13 +7,33 @@ public class ItemPickup : MonoBehaviour
 {
     [SerializeField] InputManager editor;
     public InventoryManager inventoryManager;
+
     private Item item;
-    
-    private void OnCollisionEnter2D(Collision2D collision)
+
+    // Start is called before the first frame update
+    void Start()
     {
-        if (collision.gameObject.CompareTag("Pickup"))
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    private void OnCollisionEnter2D(Collision2D coll)
+    {
+        if (coll.gameObject.CompareTag("Pickup"))
         {
-            editor.OpenInputField(() =>
+            item = coll.gameObject.GetComponent<ItemInfo>().item;
+            bool result = inventoryManager.AddItem(item);
+            if (result)
+            {
+                coll.gameObject.SetActive(false);
+                Debug.Log("Item added to inventory");
+            }
+            else
             {
                 Item item = collision.gameObject.GetComponent<ItemInfo>().item;
                 bool result = inventoryManager.AddItem(item);

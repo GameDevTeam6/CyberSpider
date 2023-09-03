@@ -18,35 +18,61 @@ public class InputManager : MonoBehaviour
     public event Action OnPuzzleSolved;
     public bool isInteractingWithInputField = false;
 
+    //private string[] puzzles = {
+    //    "def add(a, b):\n    return ________",
+    //    "def reverse_string(s):\n    return ________",
+    //    "def get_middle_char(s):\n    return s[______]",
+    //    "def is_even(num):\n    return ________",
+    //    "def list_sum(lst):\n    return ________",
+    //    "def multiply(a, b):\n    return ________",
+    //    "def greet(name):\n    return 'Hello, ' + ________",
+    //    "def find_max(lst):\n    return ________",
+    //    "def list_length(lst):\n    return ________",
+    //    "def divide(a, b):\n    if b != 0:\n        return ________\n    else:\n        return 'Undefined'"
+    //};
+
+    //private string[] answers = {
+    //    "a + b",
+    //    "s[::-1]",
+    //    "len(s) // 2",
+    //    "num % 2 == 0",
+    //    "sum(lst)",
+    //    "a * b",
+    //    "name + '!'",
+    //    "max(lst)",
+    //    "len(lst)",
+    //    "a / b"
+    //};
+
     private string[] puzzles = {
-        "def add(a, b):\n    return ________",
-        "def reverse_string(s):\n    return ________",
-        "def get_middle_char(s):\n    return s[______]",
-        "def is_even(num):\n    return ________",
-        "def list_sum(lst):\n    return ________",
-        "def multiply(a, b):\n    return ________",
-        "def greet(name):\n    return 'Hello, ' + ________",
-        "def find_max(lst):\n    return ________",
-        "def list_length(lst):\n    return ________",
-        "def divide(a, b):\n    if b != 0:\n        return ________\n    else:\n        return 'Undefined'"
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
     };
 
     private string[] answers = {
-        "a + b",
-        "s[::-1]",
-        "len(s) // 2",
-        "num % 2 == 0",
-        "sum(lst)",
-        "a * b",
-        "name + '!'",
-        "max(lst)",
-        "len(lst)",
-        "a / b"
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
     };
 
 
     private void Start()
     {
+        Debug.Log("InventoryManager::Start -> Input Manager Initialized...");
+
         // Ensure mainCamera is assigned
         if (mainCamera == null)
         {
@@ -72,6 +98,8 @@ public class InputManager : MonoBehaviour
         // Make sure the puzzle UI is hidden on start
         if (puzzlePanel != null)
         {
+            Debug.Log("InventoryManager::Start -> Puzzle Is Null");
+            
             puzzlePanel.SetActive(false);
             isInteractingWithInputField = false;
         }
@@ -86,6 +114,7 @@ public class InputManager : MonoBehaviour
 
     public void ShowNextPuzzle()
     {
+        Debug.Log("InventoryManager::Start -> Show Next Puzzle Called");
         if (currentPuzzleIndex < puzzles.Length)
         {
             puzzleText.text = puzzles[currentPuzzleIndex];
@@ -101,6 +130,7 @@ public class InputManager : MonoBehaviour
 
     public void OpenInputField(Action onSuccess)
     {
+        Debug.Log("InventoryManager::Start -> Open Inventory Field called");
         if (currentPuzzleIndex < puzzles.Length) // Check if there's another puzzle
         {
             Debug.Log("Showing puzzle panel");
