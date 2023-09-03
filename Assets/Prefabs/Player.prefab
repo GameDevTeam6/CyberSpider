@@ -291,11 +291,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 8421954002185625497}
-  _animator: {fileID: 4794534078253259435}
-  _inventoryManager: {fileID: 0}
-  _enemyManager: {fileID: 0}
   _speed: 5
+  _animator: {fileID: 4794534078253259435}
   _jumpHeight: 13
+  _inventoryManager: {fileID: 0}
+  inputManager: {fileID: 0}
 --- !u!95 &4794534078253259435
 Animator:
   serializedVersion: 3
@@ -353,3 +353,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ba44fcb272633f48bc6b61c4043ea9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+

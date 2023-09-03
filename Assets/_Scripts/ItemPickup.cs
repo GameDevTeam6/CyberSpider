@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
+    [SerializeField] InputManager editor;
     public InventoryManager inventoryManager;
 
     private Item item;
@@ -33,8 +35,18 @@ public class ItemPickup : MonoBehaviour
             }
             else
             {
-                Debug.Log("Inventory full!");
-            }
+                Item item = collision.gameObject.GetComponent<ItemInfo>().item;
+                bool result = inventoryManager.AddItem(item);
+                if (result)
+                {
+                    collision.gameObject.SetActive(false);
+                    Debug.Log("Item added to inventory");
+                }
+                else
+                {
+                    Debug.Log("Inventory full!");
+                }
+            });
         }
     }
 }
