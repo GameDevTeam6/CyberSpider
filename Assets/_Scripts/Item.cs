@@ -19,12 +19,14 @@ public class Item : ScriptableObject
 public enum ItemType
 {
     Powerup,
-    Weapon
+    Weapon,
+    Bitcoin
 }
 
 public enum ActionType
 {
     Health,
     Speed,
-    Damage
+    Damage,
+    Score
 }

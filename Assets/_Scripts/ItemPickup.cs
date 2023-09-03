@@ -24,29 +24,39 @@ public class ItemPickup : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D coll)
     {
+        // if player collides with pickup items
         if (coll.gameObject.CompareTag("Pickup"))
         {
+            // fetch iten
             item = coll.gameObject.GetComponent<ItemInfo>().item;
-            bool result = inventoryManager.AddItem(item);
-            if (result)
+
+            // if the pickup item is a bitcoin token
+            if (item.actionType == ActionType.Score)
             {
-                coll.gameObject.SetActive(false);
-                Debug.Log("Item added to inventory");
+                // delete token from scene
+                Destroy(coll.gameObject);
+
+                //Debug.Log("Picked up a bitcoin!");
+                //Debug.Log("New Score:" + gameObject.GetComponent<PlayerStats>().GetScore());
             }
+            // if the pickup item is a health token
+            else if (item.actionType == ActionType.Health)
+            {
+                // delete token from scene
+                Destroy(coll.gameObject);
+            }
+            // if any other item picked up
             else
             {
-                Item item = collision.gameObject.GetComponent<ItemInfo>().item;
                 bool result = inventoryManager.AddItem(item);
+                // if there are available inventory slots
                 if (result)
                 {
-                    collision.gameObject.SetActive(false);
                     Debug.Log("Item added to inventory");
+                    // hide from scene
+                    coll.gameObject.SetActive(false);                   
                 }
-                else
-                {
-                    Debug.Log("Inventory full!");
-                }
-            });
+            }
         }
     }
 }

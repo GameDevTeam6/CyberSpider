@@ -7,20 +7,23 @@ public class PlayerStats : MonoBehaviour
 {
     [SerializeField] TMP_Text healthText;
     [SerializeField] TMP_Text speedText;
+    [SerializeField] TMP_Text scoreText;
     private float playerHealth = 100;
-    private int playerLives = 3;
     private float playerSpeed = 3.0f;
+    private float playerScore = 0;
 
     private void Update()
     {
-        healthText.text = "HP: " + playerHealth + "/100";
+        // track current game stats
+        healthText.text = playerHealth + "/100";
         speedText.text = "Speed: " + playerSpeed;
-
+        scoreText.text = "" + playerScore;
     }
 
-    public void ChangeHealth(float health)
+    public float ChangeHealth(float health)
     {
         playerHealth += health;
+        return playerHealth;
     }
 
     public void ChangeSpeed(float newSpeed)
@@ -29,9 +32,25 @@ public class PlayerStats : MonoBehaviour
         gameObject.GetComponent<PlayerController>()._speed = newSpeed;
     }
 
+    public float ChangeScore(float newScore)
+    {
+        playerScore += newScore;
+        return playerScore;
+    }
+
     public float GetSpeed()
     {
         return playerSpeed;
+    }
+
+    public float GetHealth()
+    {
+        return playerHealth;
+    }
+
+    public float GetScore()
+    {
+        return playerScore;
     }
 
     public void ProcessBuff(Item item)
@@ -42,6 +61,9 @@ public class PlayerStats : MonoBehaviour
         } else if (item.actionType == ActionType.Speed)
         {
             ChangeSpeed(item.actionValue);
+        } else if (item.actionType == ActionType.Score)
+        {
+            ChangeScore(item.actionValue);
         }
     }
 }
