@@ -37,10 +37,6 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (inputManager.isInteractingWithInputField)
-        {
-            return; // Exit the update loop if the player is interacting with the input field
-        }
         transform.Translate(_speed * Time.deltaTime * _moveVec);
     }
 
@@ -72,10 +68,6 @@ public class PlayerController : MonoBehaviour
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (inputManager.isInteractingWithInputField)
-        {
-            return; // Exit the update loop if the player is interacting with the input field
-        }
         if (context.performed && canJump)
         {
             _animator.SetTrigger("isJump");
@@ -86,7 +78,7 @@ public class PlayerController : MonoBehaviour
 
     public void UseItem(InputAction.CallbackContext context)
     {
-        if (context.performed && !inputManager.isInteractingWithInputField)
+        if (context.performed)
         {
             Debug.Log("Use item method running");
             // Get selected item

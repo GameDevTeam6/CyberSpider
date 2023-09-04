@@ -5,9 +5,15 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Gameplay.unity
-    guid: 0dc3340de7a44af41a2339c4319b905f
+    guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/Scenes/ScoreboardMenu.unity
+    guid: 272da90f1bf72c4448d85adfb84a86af
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 06ff84dd45cfc1749aa878a720bde86b,
       type: 2}
