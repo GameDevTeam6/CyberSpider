@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
@@ -44,6 +44,7 @@ public class InputManager : MonoBehaviour
     //    "a / b"
     //};
     
+
     private string[] puzzles = {
         "1",
         "1",
