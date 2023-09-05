@@ -10,10 +10,6 @@ public class ItemPickup : MonoBehaviour
 
     // Start is called before the first frame update
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        // Show the puzzle to the player
-
     private void OnCollisionEnter2D(Collision2D coll)
     {
         // if player collides with pickup items
@@ -37,7 +33,7 @@ public class ItemPickup : MonoBehaviour
             // if any other item picked up
             else
             {
-                item = collision.gameObject.GetComponent<ItemInfo>().item;
+                item = coll.gameObject.GetComponent<ItemInfo>().item;
                 bool result = inventoryManager.AddItem(item);
                 // if there are available inventory slots
                 if (result)
