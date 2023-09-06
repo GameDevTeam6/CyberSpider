@@ -11,7 +11,7 @@ public class GameOverScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -25,10 +25,6 @@ public class GameOverScript : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Delete))
         {
             Debug.Log("Toggling Puzzle...");
-            editor.OpenInputField(() =>
-            {
-
-            });
         }
     }
 }

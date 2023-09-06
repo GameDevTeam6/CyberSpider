@@ -2,167 +2,249 @@
 using UnityEngine.UI;
 using TMPro;
 using System;
+using System.Collections.Generic;
 
 public class InputManager : MonoBehaviour
 {
-    public TMP_Text puzzleText; // Display the puzzle
-    public TMP_InputField editor; // Player fills in the blank here
+    [Serializable]
+    public struct QuestionData
+    {
+        public string question;
+        public List<string> answers;
+        public int correctAnswerIndex;
+    }
+
+    public TMP_Text questionText; // For the main question.
+    public List<Toggle> answerToggles; // List of Toggles for the answers.
+    public TMP_Text feedbackText;
     public Button submitButton;
-    public GameObject puzzlePanel; // GameObject containing all puzzle elements
-    private bool puzzleSolved = false;
-    [SerializeField] Canvas mainCanvas; // Assign your main canvas in the inspector
-    [SerializeField] Camera mainCamera; // Assign your main camera in the inspector
-    [SerializeField] float offset = 2.0f; // Offset to determine how far above the player the panel should appear
-    private int currentPuzzleIndex = 0;
-    private bool wasLastPuzzleSolved = false; // To track if the last puzzle was solved correctly
-    public event Action OnPuzzleSolved;
-    public bool isInteractingWithInputField = false;
+    public GameObject puzzlePanel;
+    private int currentQuestionIndex = 0;
 
-    //private string[] puzzles = {
-    //    "def add(a, b):\n    return ________",
-    //    "def reverse_string(s):\n    return ________",
-    //    "def get_middle_char(s):\n    return s[______]",
-    //    "def is_even(num):\n    return ________",
-    //    "def list_sum(lst):\n    return ________",
-    //    "def multiply(a, b):\n    return ________",
-    //    "def greet(name):\n    return 'Hello, ' + ________",
-    //    "def find_max(lst):\n    return ________",
-    //    "def list_length(lst):\n    return ________",
-    //    "def divide(a, b):\n    if b != 0:\n        return ________\n    else:\n        return 'Undefined'"
-    //};
 
-    //private string[] answers = {
-    //    "a + b",
-    //    "s[::-1]",
-    //    "len(s) // 2",
-    //    "num % 2 == 0",
-    //    "sum(lst)",
-    //    "a * b",
-    //    "name + '!'",
-    //    "max(lst)",
-    //    "len(lst)",
-    //    "a / b"
-    //};
-    
+    public List<QuestionData> questionDataList;
 
-    private string[] puzzles = {
-        "1",
-        "1",
-        "1",
-        "1",
-        "1",
-        "1",
-        "1",
-        "1",
-        "1",
-    };
-
-    private string[] answers = {
-        "1",
-        "1",
-        "1",
-        "1",
-        "1",
-        "1",
-        "1",
-        "1",
-        "1",
-    };
-
+    [SerializeField] Canvas mainCanvas;
+    [SerializeField] Camera mainCamera;
+    [SerializeField] float offset = 2.0f;
 
     private void Start()
     {
-        // Ensure mainCamera is assigned
-        if (mainCamera == null)
-        {
-            mainCamera = Camera.main; // This will get the camera with the tag "MainCamera"
-            if (mainCamera == null)
-            {
-                Debug.LogError("Main camera not found. Please assign it manually in the inspector.");
-                return; // Exit out of the Start method if the main camera isn't found.
-            }
-        }
-
-        // Ensure mainCanvas is assigned
-        if (mainCanvas == null)
-        {
-            mainCanvas = FindObjectOfType<Canvas>();
-            if (mainCanvas == null)
-            {
-                Debug.LogError("Main canvas not found. Please assign it manually in the inspector.");
-                return; // Exit out of the Start method if the main canvas isn't found.
-            }
-        }
-
-        // Make sure the puzzle UI is hidden on start
         if (puzzlePanel != null)
         {
             puzzlePanel.SetActive(false);
-            isInteractingWithInputField = false;
         }
         else
         {
             Debug.LogError("Puzzle Panel not assigned. Please assign it in the inspector.");
         }
-        TextMeshProUGUI buttonText = submitButton.GetComponentInChildren<TextMeshProUGUI>();
-        buttonText.text = "Submit";
 
-    }
-
-    public void ShowNextPuzzle()
-    {
-        if (currentPuzzleIndex < puzzles.Length)
+        foreach (var toggle in answerToggles)
         {
-            puzzleText.text = puzzles[currentPuzzleIndex];
-            editor.text = ""; // Clear previous input
-        }
-        else
-        {
-            Debug.Log("All puzzles solved!");
-            puzzlePanel.SetActive(false); // Hide the puzzle UI when all puzzles are done
-            isInteractingWithInputField = false;
+            toggle.onValueChanged.AddListener(delegate { EnsureSingleToggleCheck(toggle); });
         }
     }
 
-    public void OpenInputField(Action onSuccess)
+    private void EnsureSingleToggleCheck(Toggle changedToggle)
     {
-        if (currentPuzzleIndex < puzzles.Length) // Check if there's another puzzle
+        if (changedToggle.isOn)
         {
-            Debug.Log("Showing puzzle panel");
-            PositionPuzzlePanelAbovePlayer();
-            puzzlePanel.SetActive(true); // Display the puzzle UI
-            ShowNextPuzzle(); // Show the next puzzle
-            isInteractingWithInputField = true;
+            foreach (var toggle in answerToggles)
+            {
+                if (toggle != changedToggle) toggle.isOn = false;
+            }
+        }
+    }
+
+    public void PopulateWithRandomQuestions(int numberOfQuestions)
+    {
+        questionDataList = new List<QuestionData>
+        {
+            new QuestionData
+            {
+                question = "Which of these is not a valid Python data type?",
+                answers = new List<string>{ "dict", "array", "list", "tuple" },
+                correctAnswerIndex = 1
+            },
+            new QuestionData
+            {
+                question = "How do you start a comment in Python?",
+                answers = new List<string>{ "#", "//", "/*", "--" },
+                correctAnswerIndex = 0
+            },
+            new QuestionData
+            {
+                question = "Which of the following is not a Python keyword?",
+                answers = new List<string>{ "if", "for", "then", "else" },
+                correctAnswerIndex = 2
+            },
+            new QuestionData
+            {
+                question = "What will be the output of print(bool(0))?",
+                answers = new List<string>{ "0", "False", "True", "None" },
+                correctAnswerIndex = 1
+            },
+            new QuestionData
+            {
+                question = "Which function is used to read user input in Python 3?",
+                answers = new List<string>{ "raw_input()", "input()", "get_input()", "read_input()" },
+                correctAnswerIndex = 1
+            },
+            new QuestionData
+            {
+                question = "What will 'hello'.isalpha() return?",
+                answers = new List<string>{ "True", "False", "None", "Error" },
+                correctAnswerIndex = 0
+            },
+            new QuestionData
+            {
+                question = "Which collection is ordered and mutable in Python?",
+                answers = new List<string>{ "List", "Tuple", "Set", "Dictionary" },
+                correctAnswerIndex = 0
+            },
+            new QuestionData
+            {
+                question = "What will be the type of x after x = 3 + 4j?",
+                answers = new List<string>{ "float", "int", "complex", "str" },
+                correctAnswerIndex = 2
+            },
+            new QuestionData
+            {
+                question = "Which of these is used to define a function in Python?",
+                answers = new List<string>{ "func", "start", "def", "function" },
+                correctAnswerIndex = 2
+            },
+            new QuestionData
+            {
+                question = "Which method is used to get the number of items in a list?",
+                answers = new List<string>{ "length()", "len()", "count()", "size()" },
+                correctAnswerIndex = 1
+            },
+            new QuestionData
+            {
+                question = "What is the result of 'Python'[1]?",
+                answers = new List<string>{ "P", "y", "t", "h" },
+                correctAnswerIndex = 1
+            },
+            new QuestionData
+            {
+                question = "Which operator is used for exponentiation in Python?",
+                answers = new List<string>{ "*", "+", "^", "**" },
+                correctAnswerIndex = 3
+            },
+            new QuestionData
+            {
+                question = "Which of the following is correct about Python?",
+                answers = new List<string>{ "It supports functional and structured programming.", "It can run on any platform.", "Both of the above.", "None of the above." },
+                correctAnswerIndex = 2
+            },
+            new QuestionData
+            {
+                question = "Which function returns the largest item from a list?",
+                answers = new List<string>{ "largest()", "bigger()", "max()", "large()" },
+                correctAnswerIndex = 2
+            },
+            new QuestionData
+            {
+                question = "Which module in Python supports regular expressions?",
+                answers = new List<string>{ "regex", "re", "regexpressions", "regular" },
+                correctAnswerIndex = 1
+            },
+            new QuestionData
+            {
+                question = "Which of these methods will remove the last item from a list?",
+                answers = new List<string>{ "remove()", "delete()", "discard()", "pop()" },
+                correctAnswerIndex = 3
+            },
+            new QuestionData
+            {
+                question = "What is the correct way to create a set in Python?",
+                answers = new List<string>{ "set[]", "[]", "{}", "set{}" },
+                correctAnswerIndex = 2
+            },
+            new QuestionData
+            {
+                question = "Which of the following will give a syntax error?",
+                answers = new List<string>{ "print('hello')", "print(hello)", "print(\"hello\")", "print(hello)" },
+                correctAnswerIndex = 1
+            },
+            new QuestionData
+            {
+                question = "What is the correct file extension for Python files?",
+                answers = new List<string>{ ".py", ".python", ".pt", ".pn" },
+                correctAnswerIndex = 0
+            },
+            new QuestionData
+            {
+                question = "Which method is used to convert a list into a string?",
+                answers = new List<string>{ ".to_str()", ".join()", ".convert()", ".stringify()" },
+                correctAnswerIndex = 1
+            }
+        };
+
+
+    }
+
+    public void ShowNextQuestion()
+    {
+        if (currentQuestionIndex < questionDataList.Count)
+        {
+            questionText.text = questionDataList[currentQuestionIndex].question;
+
+            for (int i = 0; i < questionDataList[currentQuestionIndex].answers.Count; i++)
+            {
+                TMP_Text toggleLabel = answerToggles[i].transform.Find("Label").GetComponent<TMP_Text>();
+                if (toggleLabel != null)
+                {
+                    toggleLabel.text = questionDataList[currentQuestionIndex].answers[i];
+                }
+            }
+            feedbackText.text = ""; // Clear feedback text
+
+
+            foreach (Toggle toggle in answerToggles)
+            {
+                toggle.isOn = false;
+            }
         }
         else
         {
-            puzzlePanel.SetActive(false); // Hide the puzzle UI if no more puzzles
-            isInteractingWithInputField = false;
+            Debug.Log("All questions answered!");
+            puzzlePanel.SetActive(false); // Hide the puzzle UI when all questions are done
         }
+    }
+
+
+    public void OpenQuestionPanel(Action onSuccess)
+    {
+        PopulateWithRandomQuestions(5);
+        puzzlePanel.SetActive(true);
+        ShowNextQuestion();
+        PositionPuzzlePanelAbovePlayer();
+        submitButton.onClick.RemoveAllListeners();
 
         submitButton.onClick.AddListener(() => {
-            if (editor.text == answers[currentPuzzleIndex])
+            int selectedAnswerIndex = answerToggles.FindIndex(toggle => toggle.isOn);
+
+            if (selectedAnswerIndex != -1)
             {
-                Debug.Log("Correct!");
-                puzzlePanel.SetActive(false);
-                isInteractingWithInputField = false;
-                onSuccess?.Invoke();
-                currentPuzzleIndex++;
+                if (selectedAnswerIndex == questionDataList[currentQuestionIndex].correctAnswerIndex)
+                {
+                    feedbackText.text = "Correct!";
+                    puzzlePanel.SetActive(false);
+                    currentQuestionIndex++;
+                    onSuccess?.Invoke();
+                }
+                else
+                {
+                    feedbackText.text = "Incorrect, try again.";
+                }
             }
             else
             {
-                Debug.Log("Incorrect, try again.");
+                feedbackText.text = "Please select an answer.";
             }
         });
-    }
-
-
-    Vector3 WorldToCanvasPosition(Canvas canvas, Camera camera, Vector3 worldPosition)
-    {
-        Vector3 screenPosition = camera.WorldToScreenPoint(worldPosition);
-        RectTransform canvasRectTransform = canvas.GetComponent<RectTransform>();
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, screenPosition, camera, out Vector2 localPoint);
-        return localPoint;  // Note this is now a Vector2, which is often what's used for RectTransform positions
     }
 
     public void PositionPuzzlePanelAbovePlayer()
@@ -170,31 +252,15 @@ public class InputManager : MonoBehaviour
         GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player == null)
         {
+            Debug.LogError("Player not found.");
             return;
         }
 
-        // Get the world position right above the player.
-        Vector3 worldPositionAbovePlayer = player.transform.position + new Vector3(0, offset, 0);
+        Vector3 worldPositionInFrontOfPlayer = player.transform.position + new Vector3(offset, 0, 0);
 
-        // Get the screen position right above the player.
-        Vector3 screenPosition = mainCamera.WorldToScreenPoint(worldPositionAbovePlayer);
+        Vector3 screenPosition = mainCamera.WorldToScreenPoint(worldPositionInFrontOfPlayer);
 
-        // Convert screen position to a position usable for RectTransform anchoredPosition.
-        Vector2 anchoredPosition = new Vector2(screenPosition.x / mainCanvas.scaleFactor - (mainCanvas.pixelRect.width / 2),
-                                               screenPosition.y / mainCanvas.scaleFactor - (mainCanvas.pixelRect.height / 2));
+        puzzlePanel.transform.position = screenPosition;
 
-        // Get the RectTransform of the puzzlePanel and adjust its properties.
-        RectTransform puzzlePanelRectTransform = puzzlePanel.GetComponent<RectTransform>();
-        if (puzzlePanelRectTransform == null)
-        {
-            Debug.LogError("RectTransform not found on puzzlePanel.");
-            return;
-        }
-
-        // Adjust the pivot point if necessary (e.g., to position the bottom of the panel at the calculated position).
-        puzzlePanelRectTransform.pivot = new Vector2(0.5f, 0);
-
-        // Set the position of the puzzlePanel's RectTransform to this position.
-        puzzlePanelRectTransform.anchoredPosition = anchoredPosition;
     }
 }
