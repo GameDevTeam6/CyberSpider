@@ -20,15 +20,12 @@ public class ItemPickup : MonoBehaviour
     {
 
     }
->>>>>>> puzzle-solver
 
     private void OnCollisionEnter2D(Collision2D coll)
     {
         // if player collides with pickup items
         if (coll.gameObject.CompareTag("Pickup"))
         {
-
-
           editor.OpenQuestionPanel(() => {
             Item item = coll.gameObject.GetComponent<ItemInfo>().item;
             if (item.actionType == ActionType.Score)
