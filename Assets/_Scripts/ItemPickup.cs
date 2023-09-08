@@ -26,7 +26,9 @@ public class ItemPickup : MonoBehaviour
         // if player collides with pickup items
         if (coll.gameObject.CompareTag("Pickup"))
         {
-          editor.OpenQuestionPanel(() => {
+          //editor.OpenQuestionPanel(() => {
+          //});
+
             Item item = coll.gameObject.GetComponent<ItemInfo>().item;
             if (item.actionType == ActionType.Score)
             {
@@ -52,7 +54,6 @@ public class ItemPickup : MonoBehaviour
                 }
             }
 
-          });
         }
     }
 }
