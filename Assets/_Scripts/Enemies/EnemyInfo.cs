@@ -3,16 +3,25 @@ using UnityEngine;
 public class EnemyInfo : MonoBehaviour
 {
     [SerializeField] FloatingHealthBar healthBar;
+    public GameObject player;
     public Enemy enemy;
 
     private float maxHealth;
     private float currentHealth;
+    public int attackRange;
+    public int attackDamage;
 
-    private void Start()
+    void Awake()
     {
         maxHealth = enemy.health;
         currentHealth = maxHealth;
-        //healthBar = GetComponentInChildren<FloatingHealthBar>();
+
+        attackRange = enemy.attackRange;
+        attackDamage = enemy.attackDamage;
+    }
+
+    private void Start()
+    {
         healthBar.UpdateHealthBar(currentHealth, maxHealth);
     }
 

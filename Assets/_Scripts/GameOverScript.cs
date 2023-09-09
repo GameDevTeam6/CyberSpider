@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class GameOverScript : MonoBehaviour
 {
-    [SerializeField] InputManager editor;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -22,9 +20,11 @@ public class GameOverScript : MonoBehaviour
             SceneManager.LoadScene("ScoreboardMenu", LoadSceneMode.Single);
         }
 
-        if (Input.GetKeyDown(KeyCode.Delete))
-        {
-            Debug.Log("Toggling Puzzle...");
-        }
+    }
+
+    public void PlayerDied()
+    {
+        // Implement death screen
+        Debug.Log("Player died");
     }
 }

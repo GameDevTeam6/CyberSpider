@@ -145,6 +145,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void PlayerDie()
+    {
+        _animator.SetTrigger("isJump");
+    }
+
     private void OnCollisionEnter2D(Collision2D col)
     {
         // collision with platforms

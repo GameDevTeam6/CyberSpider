@@ -12,10 +12,13 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] TMP_Text scoreText;
     [SerializeField] TMP_Text timerText;
 
+    [SerializeField] GameOverScript gameOverScript;
+    private PlayerController playerController;
+
     // initial player stats values
     private float playerHealth = 100;
     private float playerSpeed = 3.0f;
-    private float standardSpeed = 3.0f;
+    private readonly float standardSpeed = 3.0f;
     private float playerScore = 0;
 
     // set initial number of seconds until game lost
@@ -24,6 +27,11 @@ public class PlayerStats : MonoBehaviour
 
     private float speedTimer = 0;
     private bool isSpeedTimerRunning = false;
+
+    private void Start()
+    {
+        playerController = GetComponent<PlayerController>();
+    }
 
     private void Update()
     {
@@ -72,6 +80,33 @@ public class PlayerStats : MonoBehaviour
             RevertSpeed();
             isSpeedTimerRunning = false;
         }
+
+        /////////////// Game Over ////////////////
+        ///
+        if (playerHealth < 1)
+        {
+            PlayerDie();
+        }
+    }
+
+    public void ProcessBuff(Item item)
+    {
+        if (item.actionType == ActionType.Health)
+        {
+            ChangeHealth(item.actionValue);
+        } else if (item.actionType == ActionType.Speed)
+        {
+            ChangeSpeed(item.actionValue);
+        } else if (item.actionType == ActionType.Score)
+        {
+            ChangeScore(item.actionValue);
+        }
+    }
+
+    private void PlayerDie()
+    {
+        playerController.PlayerDie();
+        gameOverScript.PlayerDied();
     }
 
     public float ChangeHealth(float health)
@@ -120,17 +155,4 @@ public class PlayerStats : MonoBehaviour
         return playerTime;
     }
 
-    public void ProcessBuff(Item item)
-    {
-        if (item.actionType == ActionType.Health)
-        {
-            ChangeHealth(item.actionValue);
-        } else if (item.actionType == ActionType.Speed)
-        {
-            ChangeSpeed(item.actionValue);
-        } else if (item.actionType == ActionType.Score)
-        {
-            ChangeScore(item.actionValue);
-        }
-    }
 }

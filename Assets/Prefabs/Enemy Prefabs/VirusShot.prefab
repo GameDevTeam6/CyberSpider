@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4843954683765180734
+--- !u!1 &7578175546697542102
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,39 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6662739377261933661}
-  - component: {fileID: 8399952150801781217}
-  - component: {fileID: 4476032033010084092}
-  - component: {fileID: 6325569783236611691}
+  - component: {fileID: 7578175546697542103}
+  - component: {fileID: 4177199156538282058}
+  - component: {fileID: 7726873205097685952}
+  - component: {fileID: 9194230466244853257}
+  - component: {fileID: 1345807909536638778}
   m_Layer: 0
-  m_Name: healthPickup
-  m_TagString: Pickup
+  m_Name: VirusShot
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6662739377261933661
+--- !u!4 &7578175546697542103
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4843954683765180734}
+  m_GameObject: {fileID: 7578175546697542102}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6994441, y: 0.6994441, z: 0.6994441}
+  m_LocalPosition: {x: -35.26983, y: 17.555277, z: -1.7890625}
+  m_LocalScale: {x: 0.595, y: 0.10335937, z: 0.7}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &8399952150801781217
+--- !u!212 &4177199156538282058
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4843954683765180734}
+  m_GameObject: {fileID: 7578175546697542102}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -72,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5f3732a251b352347852ca056dd44d0b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 6f8d733cba18d504b8807a1289626dbe, type: 3}
+  m_Color: {r: 0.2647196, g: 0.6320754, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -83,13 +84,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &4476032033010084092
+--- !u!58 &7726873205097685952
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4843954683765180734}
+  m_GameObject: {fileID: 7578175546697542102}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -99,16 +100,38 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &6325569783236611691
+--- !u!114 &9194230466244853257
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4843954683765180734}
+  m_GameObject: {fileID: 7578175546697542102}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ce7b4284985d984ba194fdff7a8cf45, type: 3}
+  m_Script: {fileID: 11500000, guid: 5b211f2b6b483ae44870ff44ce07ba80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 1e6b68232ec754c4a900d59f6be0b272, type: 2}
+  speed: 20
+  rb: {fileID: 1345807909536638778}
+--- !u!50 &1345807909536638778
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7578175546697542102}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 4

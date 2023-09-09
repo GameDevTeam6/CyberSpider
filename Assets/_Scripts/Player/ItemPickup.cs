@@ -9,7 +9,7 @@ public class ItemPickup : MonoBehaviour
     private Item item;
     //[SerializeField] InputManager editor;
 
-    private void OnCollisionEnter2D(Collision2D coll)
+    private void OnTriggerEnter2D(Collider2D coll)
     {
         // if player collides with pickup items
         if (coll.gameObject.CompareTag("Pickup"))
