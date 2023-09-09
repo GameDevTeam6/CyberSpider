@@ -12,6 +12,7 @@ TagManager:
   - Pickup
   - Bug
   - Enemy
+  - ProgressPuzzle
   layers:
   - Default
   - TransparentFX

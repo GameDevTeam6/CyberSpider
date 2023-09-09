@@ -12,7 +12,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Animator _animator;
     [SerializeField] InventoryManager _inventoryManager;
     [SerializeField] EnemyManager _enemyManager;
-    [SerializeField] InputManager inputManager;
 
     public float _speed;
     public float _score;
@@ -146,7 +145,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter2D(Collision2D col)
+    private void OnCollisionEnter2D(Collision2D col)
     {
         // collision with platforms
         if (col.gameObject.CompareTag("Platform"))

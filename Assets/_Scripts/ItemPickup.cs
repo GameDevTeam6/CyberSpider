@@ -7,19 +7,7 @@ public class ItemPickup : MonoBehaviour
     public InventoryManager inventoryManager;
 
     private Item item;
-    [SerializeField] InputManager editor;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
+    //[SerializeField] InputManager editor;
 
     private void OnCollisionEnter2D(Collision2D coll)
     {

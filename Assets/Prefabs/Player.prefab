@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 5207008068239920577}
   - component: {fileID: 3218171388229226776}
   - component: {fileID: 6114815199866421766}
+  - component: {fileID: 8070108932342473882}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -295,7 +296,6 @@ MonoBehaviour:
   _animator: {fileID: 4794534078253259435}
   _inventoryManager: {fileID: 0}
   _enemyManager: {fileID: 0}
-  inputManager: {fileID: 0}
   _speed: 5
   _score: 0
   _health: 0
@@ -387,3 +387,16 @@ MonoBehaviour:
   mainCanvas: {fileID: 0}
   mainCamera: {fileID: 0}
   offset: 2
+--- !u!114 &8070108932342473882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9091056007638863431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e53dd3fcfbec92d48a8dd2f30bb1a980, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputManager: {fileID: 6114815199866421766}
