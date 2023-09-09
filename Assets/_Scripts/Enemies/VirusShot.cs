@@ -6,7 +6,7 @@ using UnityEngine;
 public class VirusShot : MonoBehaviour
 {
     [SerializeField] Transform playerPos;
-    public float speed = 20f;
+    public float speed = 7f;
     public Rigidbody2D rb;
 
     private Vector3 shotDirection;
@@ -16,7 +16,8 @@ public class VirusShot : MonoBehaviour
     {
         playerPos = GameObject.Find("Player").transform;
         shotDirection = (transform.position - playerPos.position).normalized;
-        rb.velocity = shotDirection * speed * Time.deltaTime;
+        transform.rotation = Quaternion.Angle(playerPos.rotation, a: transform.rotation);
+        rb.velocity = -shotDirection * speed;
     }
 
     // Update is called once per frame
