@@ -10,6 +10,8 @@ public class PlatformMove : MonoBehaviour
     private Vector3 initialPos;
     private Rigidbody2D rb;
 
+    public Vector3 movement;
+
     private enum direction
     {
         left,
@@ -62,11 +64,13 @@ public class PlatformMove : MonoBehaviour
     {
         if (dir == direction.left)
         {
-            transform.Translate(new Vector3(1 * moveSpeed, 0f, 0f));
+            movement = new Vector3(1 * moveSpeed, 0f, 0f);
         }
         else
         {
-            transform.Translate(new Vector3(1 * -moveSpeed, 0f, 0f));
+            movement = new Vector3(1 * -moveSpeed, 0f, 0f);
         }
+
+        transform.Translate(movement);
     }
 }

@@ -14,17 +14,18 @@ public class PlayerController : MonoBehaviour
     [SerializeField] EnemyManager _enemyManager;
     [SerializeField] InputManager inputManager;
 
-
     public float _speed;
     public float _score;
     public float _health;
     public float _time;
+    public float _jumpHeight = 10;
 
     private Vector3 _moveVec = Vector3.zero;
-    public float _jumpHeight = 10;
 
     private bool canJump = true;
     private bool isSolvingPuzzle = false;
+
+    private GameObject currentPlatform;
 
     private void Start()
     {
@@ -37,6 +38,16 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+
+    }
+
+    private void FixedUpdate()
+    {
+        if (currentPlatform != null)
+        {
+            transform.Translate(currentPlatform.GetComponent<PlatformMove>().movement);
+        }
+
         transform.Translate(_speed * Time.deltaTime * _moveVec);
     }
 
@@ -140,6 +151,13 @@ public class PlayerController : MonoBehaviour
         // collision with platforms
         if (col.gameObject.CompareTag("Platform"))
         {
+            if (col.gameObject.GetComponent<PlatformMove>() != null)
+            {
+                currentPlatform = col.gameObject;
+            } else
+            {
+                currentPlatform = null;
+            }
             canJump = true;
             _animator.ResetTrigger("isJump");
         }
