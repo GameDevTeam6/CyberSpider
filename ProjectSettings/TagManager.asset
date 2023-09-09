@@ -5,13 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - Platform
-  - Weapon
-  - CQCKey
-  - HealthPickup
-  - SpeedPickup
-  - Pickup
-  - Bug
-  - Enemy
   layers:
   - Default
   - TransparentFX
