@@ -1941,14 +1941,14 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 2
+  m_CollisionDetection: 1
+  m_Constraints: 6
 --- !u!114 &941004211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1961,8 +1961,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 577f8182a24b1624a9b2f27b32ba751d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDistance: 5
-  moveSpeed: 2
+  moveDistance: 2
+  moveSpeed: 0.05
 --- !u!4 &944093837 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8867891620895285189, guid: 5b2158dc7b4a45049bf4036f3712fcda,
@@ -5168,6 +5168,51 @@ PrefabInstance:
       propertyPath: healthText
       value: 
       objectReference: {fileID: 2106767667}
+    - target: {fileID: 6114815199866421766, guid: cb9e45b8abc07384bb3917936bcd4f27,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1303687826}
+    - target: {fileID: 6114815199866421766, guid: cb9e45b8abc07384bb3917936bcd4f27,
+        type: 3}
+      propertyPath: puzzlePanel
+      value: 
+      objectReference: {fileID: 1517040702}
+    - target: {fileID: 6114815199866421766, guid: cb9e45b8abc07384bb3917936bcd4f27,
+        type: 3}
+      propertyPath: feedbackText
+      value: 
+      objectReference: {fileID: 398604751}
+    - target: {fileID: 6114815199866421766, guid: cb9e45b8abc07384bb3917936bcd4f27,
+        type: 3}
+      propertyPath: questionText
+      value: 
+      objectReference: {fileID: 1289091345}
+    - target: {fileID: 6114815199866421766, guid: cb9e45b8abc07384bb3917936bcd4f27,
+        type: 3}
+      propertyPath: submitButton
+      value: 
+      objectReference: {fileID: 1212811445}
+    - target: {fileID: 6114815199866421766, guid: cb9e45b8abc07384bb3917936bcd4f27,
+        type: 3}
+      propertyPath: answerToggles.Array.data[0]
+      value: 
+      objectReference: {fileID: 2014636873}
+    - target: {fileID: 6114815199866421766, guid: cb9e45b8abc07384bb3917936bcd4f27,
+        type: 3}
+      propertyPath: answerToggles.Array.data[1]
+      value: 
+      objectReference: {fileID: 378995138}
+    - target: {fileID: 6114815199866421766, guid: cb9e45b8abc07384bb3917936bcd4f27,
+        type: 3}
+      propertyPath: answerToggles.Array.data[2]
+      value: 
+      objectReference: {fileID: 1341215620}
+    - target: {fileID: 6114815199866421766, guid: cb9e45b8abc07384bb3917936bcd4f27,
+        type: 3}
+      propertyPath: answerToggles.Array.data[3]
+      value: 
+      objectReference: {fileID: 1243834690}
     - target: {fileID: 7267893848651458087, guid: cb9e45b8abc07384bb3917936bcd4f27,
         type: 3}
       propertyPath: animator
@@ -5248,6 +5293,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8421954002185625497, guid: cb9e45b8abc07384bb3917936bcd4f27,
+        type: 3}
+      propertyPath: m_LinearDrag
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8421954002185625497, guid: cb9e45b8abc07384bb3917936bcd4f27,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9091056007638863431, guid: cb9e45b8abc07384bb3917936bcd4f27,
         type: 3}
       propertyPath: m_Name
@@ -5286,11 +5341,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a340f7f2be39a3741bbce2a2546d686d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1894192004
+--- !u!114 &1894192004 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6114815199866421766, guid: cb9e45b8abc07384bb3917936bcd4f27,
+    type: 3}
+  m_PrefabInstance: {fileID: 1894191999}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1894192000}
   m_Enabled: 1
@@ -5298,19 +5353,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40fc412007adf654c8883895bd257166, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questionText: {fileID: 1289091345}
-  answerToggles:
-  - {fileID: 2014636873}
-  - {fileID: 378995138}
-  - {fileID: 1341215620}
-  - {fileID: 1243834690}
-  feedbackText: {fileID: 398604751}
-  submitButton: {fileID: 1212811445}
-  puzzlePanel: {fileID: 1517040702}
-  questionDataList: []
-  mainCanvas: {fileID: 0}
-  mainCamera: {fileID: 1303687826}
-  offset: 2
 --- !u!1 &1905402260
 GameObject:
   m_ObjectHideFlags: 0

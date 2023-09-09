@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: -5648902755901260684}
   - component: {fileID: 5207008068239920577}
   - component: {fileID: 3218171388229226776}
+  - component: {fileID: 6114815199866421766}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -294,7 +295,11 @@ MonoBehaviour:
   _animator: {fileID: 4794534078253259435}
   _inventoryManager: {fileID: 0}
   _enemyManager: {fileID: 0}
+  inputManager: {fileID: 0}
   _speed: 5
+  _score: 0
+  _health: 0
+  _time: 0
   _jumpHeight: 13
 --- !u!95 &4794534078253259435
 Animator:
@@ -341,6 +346,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthText: {fileID: 0}
   speedText: {fileID: 0}
+  scoreText: {fileID: 0}
+  timerText: {fileID: 0}
 --- !u!114 &3218171388229226776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,3 +360,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ba44fcb272633f48bc6b61c4043ea9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryManager: {fileID: 0}
+  editor: {fileID: 0}
+--- !u!114 &6114815199866421766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9091056007638863431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40fc412007adf654c8883895bd257166, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  questionText: {fileID: 0}
+  answerToggles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  feedbackText: {fileID: 0}
+  submitButton: {fileID: 0}
+  puzzlePanel: {fileID: 0}
+  questionDataList: []
+  mainCanvas: {fileID: 0}
+  mainCamera: {fileID: 0}
+  offset: 2

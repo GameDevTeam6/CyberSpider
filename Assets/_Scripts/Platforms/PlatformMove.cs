@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,14 @@ public class PlatformMove : MonoBehaviour
     private Vector3 initialPos;
     private Rigidbody2D rb;
 
+    private enum direction
+    {
+        left,
+        right
+    };
+
+    direction dir = direction.left;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,22 +25,48 @@ public class PlatformMove : MonoBehaviour
         initialPos = transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        if (transform.position.x < initialPos.x + moveDistance)
+        CheckDir();
+        MovePlat();
+    }
+
+    private void CheckDir()
+    {
+        if (dir == direction.left)
         {
-            //rb.AddForce(new Vector3(moveSpeed, 0f, 0f));
-            transform.Translate(new Vector3(moveSpeed, 0f, 0f));
-        } else if (transform.position.x < initialPos.x - moveDistance)
+            if (transform.position.x < initialPos.x + moveDistance)
+            {
+                dir = direction.left;
+            }
+            else if (transform.position.x > initialPos.x + moveDistance)
+            {
+                dir = direction.right;
+            }
+        }
+
+        if (dir == direction.right)
         {
-            transform.Translate(new Vector3(-moveSpeed, 0f, 0f));
-            //rb.AddForce(new Vector3(-moveSpeed, 0f, 0f));
+            if (transform.position.x > initialPos.x - moveDistance)
+            {
+                dir = direction.right;
+            }
+            else if (transform.position.x < initialPos.x - moveDistance)
+            {
+                dir = direction.left;
+            }
         }
     }
 
-    private void MoveLeft()
+    private void MovePlat()
     {
-
+        if (dir == direction.left)
+        {
+            transform.Translate(new Vector3(1 * moveSpeed, 0f, 0f));
+        }
+        else
+        {
+            transform.Translate(new Vector3(1 * -moveSpeed, 0f, 0f));
+        }
     }
 }
