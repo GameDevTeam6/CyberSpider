@@ -107,6 +107,7 @@ public class PlayerStats : MonoBehaviour
     {
         playerController.PlayerDie();
         gameOverScript.PlayerDied();
+        Time.timeScale = 0;
     }
 
     public float ChangeHealth(float health)

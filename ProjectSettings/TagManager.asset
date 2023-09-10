@@ -22,9 +22,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Enemy
+  - PlayerAndPlats
+  - Pickups
   - 
   - 
   - 

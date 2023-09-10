@@ -147,7 +147,7 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerDie()
     {
-        _animator.SetTrigger("isJump");
+        _animator.SetTrigger("isDead");
     }
 
     private void OnCollisionEnter2D(Collision2D col)

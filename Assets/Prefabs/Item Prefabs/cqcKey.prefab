@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8649977419383046049}
   - component: {fileID: 7672354447638925922}
   - component: {fileID: -5662013987865475477}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: cqcKey
   m_TagString: Pickup
   m_Icon: {fileID: 0}

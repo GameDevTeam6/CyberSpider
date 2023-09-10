@@ -5,31 +5,34 @@ using UnityEngine;
 public class EnemyPatrol : MonoBehaviour
 {
     private float moveSpeed = 1f;
-    //private Rigidbody2D rb;
 
-    // Start is called before the first frame update
-    void Start()
+    private Rigidbody2D rb;
+
+    private void Start()
     {
-        //rb = GetComponent<Rigidbody2D>();
+        rb = transform.parent.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (IsFacingRight())
-        {
-            //rb.velocity = new Vector2(moveSpeed, 0f);
-            transform.parent.GetComponent<Rigidbody2D>().velocity = new Vector2(moveSpeed, 0f);
-        } else
-        {
-            transform.parent.GetComponent<Rigidbody2D>().velocity = new Vector2(-moveSpeed, 0f);
-        }
+        //if (IsFacingRight())
+        //{
+        //    rb.velocity = new Vector2(moveSpeed, 0f);
+        //} else
+        //{
+        //    rb.velocity = new Vector2(-moveSpeed, 0f);
+        //}
+
+        // Decide on direction
+        Vector2 moveDirection = IsFacingRight() ? Vector2.right : Vector2.left;
+        // Move in that direction
+        rb.velocity = moveDirection * moveSpeed;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
-        //transform.localScale = new Vector2(-(Mathf.Sign(rb.velocity.x)), transform.localScale.y);
     }
 
     private bool IsFacingRight()

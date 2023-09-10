@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8276980953267525746}
   - component: {fileID: 5579057588063913531}
   - component: {fileID: 4514661399566344645}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PuzzlePlatform
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -124,7 +124,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lockedColor: {r: 0.41509432, g: 0, b: 0.11122791, a: 0.6117647}
   unlockedColor: {r: 0.030437866, g: 0.7169812, b: 0.030437866, a: 1}
-  progressPuzzle: {fileID: 0}
   solved: 0
 --- !u!50 &4514661399566344645
 Rigidbody2D:

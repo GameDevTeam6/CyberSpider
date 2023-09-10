@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7209372775113060249}
   - component: {fileID: 1796740537353526610}
-  - component: {fileID: 5525278138514479407}
-  m_Layer: 0
+  - component: {fileID: 3336024878611712968}
+  m_Layer: 8
   m_Name: AttackField
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,13 +42,13 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
---- !u!114 &5525278138514479407
+--- !u!114 &3336024878611712968
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -60,9 +60,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c06164f08084eb04195a53ecf6e6f718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyInfo: {fileID: 2441334401634826645}
   virusShot: {fileID: 0}
+  enemyInfo: {fileID: 2441334401634826645}
   firePoint: {fileID: 0}
+  player: {fileID: 0}
 --- !u!1 &6648184992568788692
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,7 +74,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6943261232514432711}
   - component: {fileID: 211788341263134660}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BugEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -116,7 +117,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 2
 --- !u!1 &7237692315840126997
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,9 +130,9 @@ GameObject:
   - component: {fileID: 2441334401634826645}
   - component: {fileID: 4450418013986647025}
   - component: {fileID: 1298026854890207624}
-  - component: {fileID: 4557531333686365548}
   - component: {fileID: 2110848982701289183}
-  m_Layer: 0
+  - component: {fileID: 5754162847934221575}
+  m_Layer: 8
   m_Name: EnemyBody
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -232,22 +233,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &4557531333686365548
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7237692315840126997}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.016133785}
-  serializedVersion: 2
-  m_Radius: 2.3547943
 --- !u!61 &2110848982701289183
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -274,6 +259,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.4224534, y: 3.799023}
   m_EdgeRadius: 0
+--- !u!58 &5754162847934221575
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7237692315840126997}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2
 --- !u!1001 &4271313274229681791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -391,6 +392,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: HealthBarCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2442455455501720157, guid: 9084f56cd7cf8db439a936fe52c79cb9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3158662753822871612, guid: 9084f56cd7cf8db439a936fe52c79cb9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3485106309023669516, guid: 9084f56cd7cf8db439a936fe52c79cb9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3580955758183901557, guid: 9084f56cd7cf8db439a936fe52c79cb9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4337530094260588435, guid: 9084f56cd7cf8db439a936fe52c79cb9,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -400,6 +421,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9059242608101296057, guid: 9084f56cd7cf8db439a936fe52c79cb9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9084f56cd7cf8db439a936fe52c79cb9, type: 3}
