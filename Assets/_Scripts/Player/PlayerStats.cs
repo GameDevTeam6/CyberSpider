@@ -69,7 +69,8 @@ public class PlayerStats : MonoBehaviour
         float speedMins = Mathf.FloorToInt(speedTimer / 60);
         float speedSecs = Mathf.FloorToInt(speedTimer % 60);
         // set timer text
-        speedText.text = "Speed: " + playerSpeed + "\n" + string.Format("{0:00}:{1:00}", speedMins, speedSecs);
+        speedText.text = string.Format("{0:00}:{1:00}", speedMins, speedSecs);
+        //speedText.text = "Speed: " + playerSpeed + "\n" + string.Format("{0:00}:{1:00}", speedMins, speedSecs);
 
         // if there is time remaining
         if (speedTimer > 1 && isSpeedTimerRunning == true)
