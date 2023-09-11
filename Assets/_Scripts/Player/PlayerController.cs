@@ -24,10 +24,19 @@ public class PlayerController : MonoBehaviour
 
     private GameObject currentPlatform;
 
+    public AudioClip runningSound;
+    public AudioClip jumpingSound;
+    private AudioSource audioSource;
+
     private void Start()
     {
         // fatch initial player stats values
         _speed = gameObject.GetComponent<PlayerStats>().GetSpeed();
+
+        // Initialize the audio source
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = runningSound;
+        audioSource.loop = true; // So the sound keeps playing while the player is moving
     }
 
     private void Update()
@@ -52,6 +61,24 @@ public class PlayerController : MonoBehaviour
         _animator.SetBool("isRunning", true);
         Vector3 inputVec = context.ReadValue<Vector2>();
         _moveVec = new Vector3(inputVec.x, inputVec.y, 0);
+
+        // Play the running sound
+        if (!audioSource.isPlaying)
+        {
+            audioSource.Play();
+            Debug.Log("Running Audio Playing");
+        }
+
+        if (context.canceled)
+        {
+            _animator.SetBool("isRunning", false);
+
+            // Stop the running sound
+            if (audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
+        }
 
         if (context.canceled)
         {
@@ -78,6 +105,9 @@ public class PlayerController : MonoBehaviour
             _animator.SetTrigger("isJump");
             _rigidbody.AddForce(Vector2.up * _jumpHeight, ForceMode2D.Impulse);
             canJump = false;
+
+            // Play the jumping sound
+            audioSource.PlayOneShot(jumpingSound);
         }
     }
 
