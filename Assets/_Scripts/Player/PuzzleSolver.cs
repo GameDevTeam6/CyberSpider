@@ -1,14 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+
 
 public class PuzzleSolver : MonoBehaviour
 {
     [SerializeField] InputManager inputManager;
+
+    public AudioClip puzzleAlertSound; // This is the PuzzleAlert sound effect
+    private AudioSource audioSource; // AudioSource to play the sound effect
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Initialize the audio source
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -22,6 +30,13 @@ public class PuzzleSolver : MonoBehaviour
         if (trig.gameObject.CompareTag("ProgressPuzzle"))
         {
             Debug.Log("Enter puzzle.");
+
+            // Play the PuzzleAlert sound effect
+            if (puzzleAlertSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(puzzleAlertSound);
+            }
+
             inputManager.OpenQuestionPanel(() => {
                 //trig.gameObject.GetComponent<ProgressPuzzleInfo>().platform.transform.GetComponent<ProgressPlatform>().solved = true;
                 trig.gameObject.GetComponent<ProgressPuzzleInfo>().UnlockPlatform();

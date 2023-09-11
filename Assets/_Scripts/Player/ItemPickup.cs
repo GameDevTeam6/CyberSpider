@@ -1,10 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class ItemPickup : MonoBehaviour
 {
     public InventoryManager inventoryManager;
+
+    public AudioClip bitcoinPickupSound;
+    public AudioClip healthPickupSound; 
+    private AudioSource audioSource;    
 
     private Item item;
     //[SerializeField] InputManager editor;
@@ -21,6 +26,9 @@ public class ItemPickup : MonoBehaviour
         _health = gameObject.GetComponent<PlayerStats>().GetHealth();
         _score = gameObject.GetComponent<PlayerStats>().GetScore();
         _time = gameObject.GetComponent<PlayerStats>().GetTime();
+
+        // Initialize the audio source
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -41,6 +49,9 @@ public class ItemPickup : MonoBehaviour
                 // update score
                 _score = gameObject.GetComponent<PlayerStats>().ChangeScore(val);
                 Destroy(col.gameObject);
+
+                // Play the bitcoin pickup sound
+                audioSource.PlayOneShot(bitcoinPickupSound);
             }
 
             ////////////////// HEALTH TOKEN ///////////////////
@@ -55,6 +66,9 @@ public class ItemPickup : MonoBehaviour
                 {
                     // add boost value to current health
                     _health = gameObject.GetComponent<PlayerStats>().ChangeHealth(val);
+
+                    // Play the health pickup sound
+                    audioSource.PlayOneShot(healthPickupSound);
                 }
                 else
                 {

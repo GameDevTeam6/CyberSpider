@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Audio;
 using TMPro;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,9 @@ public class InputManager : MonoBehaviour
     [SerializeField] Camera mainCamera;
     [SerializeField] float offset = 2.0f;
 
+    public AudioClip puzzleUnsolvedSound; // This is the PuzzleUnsolved sound effect
+    private AudioSource audioSource; // AudioSource to play the sound effect
+
     private void Start()
     {
         if (puzzlePanel != null)
@@ -43,6 +47,9 @@ public class InputManager : MonoBehaviour
         {
             toggle.onValueChanged.AddListener(delegate { EnsureSingleToggleCheck(toggle); });
         }
+
+        // Initialize the audio source
+        audioSource = gameObject.AddComponent<AudioSource>();
     }
 
     private void EnsureSingleToggleCheck(Toggle changedToggle)
@@ -238,6 +245,12 @@ public class InputManager : MonoBehaviour
                 else
                 {
                     feedbackText.text = "Incorrect, try again.";
+
+                    // Play the PuzzleUnsolved sound effect
+                    if (puzzleUnsolvedSound != null && audioSource != null)
+                    {
+                        audioSource.PlayOneShot(puzzleUnsolvedSound);
+                    }
                 }
             }
             else

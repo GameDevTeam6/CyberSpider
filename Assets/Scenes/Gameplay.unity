@@ -438,7 +438,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 6512603914883988221, guid: 9abc2abd978350f4dbf2849c8b0cad48,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: d73830978041ccb43aae97a3989a32eb, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 41ec1c754d6404d4d878f2c9c5d05f82, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -5009,6 +5009,16 @@ PrefabInstance:
       propertyPath: inventoryManager
       value: 
       objectReference: {fileID: 7111897}
+    - target: {fileID: 3218171388229226776, guid: cb9e45b8abc07384bb3917936bcd4f27,
+        type: 3}
+      propertyPath: healthPickupSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 35b698c78109a794899b793affb0f180, type: 3}
+    - target: {fileID: 3218171388229226776, guid: cb9e45b8abc07384bb3917936bcd4f27,
+        type: 3}
+      propertyPath: bitcoinPickupSound
+      value: 
+      objectReference: {fileID: 8300000, guid: df1c02da0dd362e4181c22d1e59db7f4, type: 3}
     - target: {fileID: 3832434825581642432, guid: cb9e45b8abc07384bb3917936bcd4f27,
         type: 3}
       propertyPath: m_ActionEvents.Array.data[14].m_ActionId
@@ -5136,6 +5146,11 @@ PrefabInstance:
       objectReference: {fileID: 1212811445}
     - target: {fileID: 6114815199866421766, guid: cb9e45b8abc07384bb3917936bcd4f27,
         type: 3}
+      propertyPath: puzzleUnsolvedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: f018c95d1e79d254ea9adb534d28506c, type: 3}
+    - target: {fileID: 6114815199866421766, guid: cb9e45b8abc07384bb3917936bcd4f27,
+        type: 3}
       propertyPath: answerToggles.Array.data[0]
       value: 
       objectReference: {fileID: 2014636873}
@@ -5169,6 +5184,16 @@ PrefabInstance:
       propertyPath: inputManager
       value: 
       objectReference: {fileID: 1894192004}
+    - target: {fileID: 7318520793457827154, guid: cb9e45b8abc07384bb3917936bcd4f27,
+        type: 3}
+      propertyPath: jumpingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 6740e7c8dd2e1d040ac8cb2449e88415, type: 3}
+    - target: {fileID: 7318520793457827154, guid: cb9e45b8abc07384bb3917936bcd4f27,
+        type: 3}
+      propertyPath: runningSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 173f8ccff6e7ea549938638f98446d75, type: 3}
     - target: {fileID: 7318520793457827154, guid: cb9e45b8abc07384bb3917936bcd4f27,
         type: 3}
       propertyPath: _enemyManager
@@ -5234,6 +5259,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8070108932342473882, guid: cb9e45b8abc07384bb3917936bcd4f27,
+        type: 3}
+      propertyPath: puzzleAlertSound
+      value: 
+      objectReference: {fileID: 8300000, guid: e59c8e83d5b05d743af69683a07fcba4, type: 3}
     - target: {fileID: 8421954002185625497, guid: cb9e45b8abc07384bb3917936bcd4f27,
         type: 3}
       propertyPath: m_LinearDrag
@@ -8543,6 +8573,11 @@ PrefabInstance:
       propertyPath: progressPuzzle
       value: 
       objectReference: {fileID: 990449185}
+    - target: {fileID: 5579057588063913531, guid: 943ea04f405acde43ae9e21d9f4cdec4,
+        type: 3}
+      propertyPath: puzzleSolvedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5f76388773465944681bb8d978c97fad, type: 3}
     - target: {fileID: 8276980953267525747, guid: 943ea04f405acde43ae9e21d9f4cdec4,
         type: 3}
       propertyPath: m_RootOrder
