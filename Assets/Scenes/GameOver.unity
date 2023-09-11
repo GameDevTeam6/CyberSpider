@@ -688,6 +688,7 @@ GameObject:
   - component: {fileID: 209000771}
   - component: {fileID: 209000770}
   - component: {fileID: 209000773}
+  - component: {fileID: 209000774}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -770,6 +771,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d269105a866e2c941af41663c9499c3f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &209000774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 209000769}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bdf2c4f7c8e8e943a528054d4b3d223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &400339392
@@ -880,7 +893,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 177, y: 5.5}
+  m_AnchoredPosition: {x: 313, y: 5.5}
   m_SizeDelta: {x: 100, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &454288006
@@ -902,7 +915,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 50,000
+  m_text: 10
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 16614c4cbfdd01c4c9501aff69c4d861, type: 2}
   m_sharedMaterial: {fileID: 6379561278786130481, guid: 16614c4cbfdd01c4c9501aff69c4d861,
@@ -1962,7 +1975,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 209000773}
+      objectReference: {fileID: 209000774}
     - target: {fileID: 1421343688941155851, guid: e550541b034f1524aa829ed06ec83d0f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
@@ -1971,7 +1984,7 @@ PrefabInstance:
     - target: {fileID: 1421343688941155851, guid: e550541b034f1524aa829ed06ec83d0f,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: BackToMainMenu
+      value: ToScoreboard
       objectReference: {fileID: 0}
     - target: {fileID: 1421343688941155851, guid: e550541b034f1524aa829ed06ec83d0f,
         type: 3}
