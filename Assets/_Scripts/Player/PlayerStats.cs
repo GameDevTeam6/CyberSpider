@@ -28,9 +28,12 @@ public class PlayerStats : MonoBehaviour
     private float speedTimer = 0;
     private bool isSpeedTimerRunning = false;
 
+    public static float finalScore;
+
     private void Start()
     {
         playerController = GetComponent<PlayerController>();
+        finalScore = 0;
     }
 
     private void Update()
@@ -108,6 +111,7 @@ public class PlayerStats : MonoBehaviour
         playerController.PlayerDie();
         gameOverScript.PlayerDied();
         Time.timeScale = 0;
+        finalScore = playerScore;
     }
 
     public float ChangeHealth(float health)
@@ -133,6 +137,7 @@ public class PlayerStats : MonoBehaviour
     public float ChangeScore(float newScore)
     {
         playerScore += newScore;
+        PlayerStats.finalScore += newScore;
         return playerScore;
     }
 
