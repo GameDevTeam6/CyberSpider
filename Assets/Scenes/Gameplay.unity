@@ -537,6 +537,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mute_btn: {fileID: 51374421598465469}
+  mute_img: {fileID: 21300000, guid: 7d9e41f5b58f6b543ad0084ae3e4bbf6, type: 3}
+  unmute_img: {fileID: 21300000, guid: 510acc4effcbb354582ec1d655f813c3, type: 3}
 --- !u!224 &225274416 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1971726773572291024, guid: cab68137e6c3eb5479159c97535106e3,
