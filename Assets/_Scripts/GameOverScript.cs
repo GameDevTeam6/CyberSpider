@@ -15,9 +15,11 @@ public class GameOverScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Quick Death for testing purposes
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
+            // Implement death screen
+            PlayerDied();
         }
 
     }
@@ -25,6 +27,6 @@ public class GameOverScript : MonoBehaviour
     public void PlayerDied()
     {
         // Implement death screen
-        Debug.Log("Player died");
+        SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
     }
 }
