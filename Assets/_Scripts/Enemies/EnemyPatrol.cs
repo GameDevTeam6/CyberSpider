@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyPatrol : MonoBehaviour
 {
-    private float moveSpeed = 1f;
+    public float moveSpeed = 1f;
 
     private Rigidbody2D rb;
 

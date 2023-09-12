@@ -41,6 +41,14 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+        {
+            GetComponentInParent<EnemyPatrol>().moveSpeed *= 2;
+        }
+    }
+
     void OnTriggerStay2D(Collider2D col)
     {
         if (col.gameObject.CompareTag("Player"))
@@ -58,6 +66,13 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
+    void OnTriggerExit2D(Collider2D col)
+    {
+        if (col.gameObject.CompareTag("Player"))
+        {
+            GetComponentInParent<EnemyPatrol>().moveSpeed /= 2;
+        }
+    }
 
     private void Shoot()
     {

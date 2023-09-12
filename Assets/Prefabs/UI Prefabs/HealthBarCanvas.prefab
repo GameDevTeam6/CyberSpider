@@ -311,6 +311,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthSlider: {fileID: 5226917278717895407}
+  fillSection: {fileID: 7797379932831902054}
+  fullCol: {r: 0, g: 1, b: 0, a: 1}
+  lowCol: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &9059242608101296057
 GameObject:
   m_ObjectHideFlags: 0
