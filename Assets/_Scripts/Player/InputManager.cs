@@ -224,6 +224,7 @@ public class InputManager : MonoBehaviour
 
     public void OpenQuestionPanel(Action onSuccess)
     {
+        GetComponent<PlayerController>().isSolvingPuzzle = true;
         PopulateWithRandomQuestions(5);
         puzzlePanel.SetActive(true);
         ShowNextQuestion();
@@ -237,6 +238,7 @@ public class InputManager : MonoBehaviour
             {
                 if (selectedAnswerIndex == questionDataList[currentQuestionIndex].correctAnswerIndex)
                 {
+                    GetComponent<PlayerController>().isSolvingPuzzle = false;
                     feedbackText.text = "Correct!";
                     puzzlePanel.SetActive(false);
                     currentQuestionIndex++;

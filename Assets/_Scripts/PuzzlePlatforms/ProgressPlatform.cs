@@ -40,7 +40,6 @@ public class ProgressPlatform : MonoBehaviour
     private void UnlockPlatform()
     {
         GetComponent<SpriteRenderer>().color = unlockedColor;
-
         // Play the PuzzleSolved sound effect
         if (puzzleSolvedSound != null && audioSource != null)
         {

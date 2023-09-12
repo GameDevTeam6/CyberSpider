@@ -37,6 +37,7 @@ public class EnemyInfo : MonoBehaviour
 
     private void Die()
     {
+        player.GetComponent<PlayerStats>().EnemyDefeated();
         Destroy(transform.parent.gameObject);
     }
 }

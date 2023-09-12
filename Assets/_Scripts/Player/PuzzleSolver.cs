@@ -42,6 +42,9 @@ public class PuzzleSolver : MonoBehaviour
                 trig.gameObject.GetComponent<ProgressPuzzleInfo>().UnlockPlatform();
                 trig.gameObject.GetComponent<CircleCollider2D>().enabled = false;
                 trig.gameObject.GetComponent<SpriteRenderer>().color = new Vector4(255, 255, 255, 150);
+
+                // Call method to increase player points
+                gameObject.GetComponent<PlayerStats>().PuzzleSolved();
             });
         }
     }

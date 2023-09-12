@@ -36,6 +36,10 @@ public class PlayerStats : MonoBehaviour
     private Color healCol = Color.green;
     private Color damageCol = Color.red;
 
+    // Points values
+    private int pointsForDefeathed = 2;
+    private int pointsForSolved = 3;
+
     private void Start()
     {
         playerController = GetComponent<PlayerController>();
@@ -172,6 +176,16 @@ public class PlayerStats : MonoBehaviour
         playerScore += newScore;
         PlayerStats.finalScore += newScore;
         return playerScore;
+    }
+
+    public void EnemyDefeated()
+    {
+        ChangeScore(pointsForDefeathed);
+    }
+
+    public void PuzzleSolved()
+    {
+        ChangeScore(pointsForSolved);
     }
 
     public float GetSpeed()

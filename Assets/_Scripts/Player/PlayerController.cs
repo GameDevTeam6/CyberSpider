@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 _moveVec = Vector3.zero;
 
     private bool canJump = true;
-    private bool isSolvingPuzzle = false;
+    public bool isSolvingPuzzle = false;
     private bool isAlive = true;
 
     private GameObject currentPlatform;
@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
 
     public void UseItem(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && !isSolvingPuzzle)
         {
             Debug.Log("Use item method running");
             // Get selected item
