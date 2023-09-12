@@ -1,10 +1,10 @@
-# Cyber Spider
+# Cyber Spider Video Game
 Save the world with Python! A Unity team game project for CM3030 Games Development UoL
 
 ## Story
 There has been an attack! You're drawn into your computer, and wake up inside your IDE in a race to save the world!
 <br>
-Welcome to <b>Cyber Spyder</b>! a game of advantures that revolves around coding and cyber security.
+Welcome to <b>Cyber Spider</b>! a game of advantures that revolves around coding and cyber security.
 <br>
 Your goal is to advance through the game by fighting vicious bugs and viruses, solving Python code puzzles and collecting as much Bitcoin as you can!
 
