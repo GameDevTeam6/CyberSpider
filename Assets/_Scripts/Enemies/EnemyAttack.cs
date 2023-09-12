@@ -19,6 +19,8 @@ public class EnemyAttack : MonoBehaviour
     private Transform playerTrans;
     private RaycastHit2D raycast;
 
+    private EnemyPatrol enemyPatrol;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -27,6 +29,8 @@ public class EnemyAttack : MonoBehaviour
 
         attackField = GetComponent<CircleCollider2D>();
         attackField.radius = attackRange*2;
+
+        enemyPatrol = GetComponentInParent<EnemyPatrol>();
     }
 
     void FixedUpdate()
@@ -54,6 +58,7 @@ public class EnemyAttack : MonoBehaviour
         }
     }
 
+
     private void Shoot()
     {
         if (enemyInfo.enemy.type == EnemyType.Virus)
@@ -65,7 +70,7 @@ public class EnemyAttack : MonoBehaviour
             virusS.damage = attackDamage;
         } else if (enemyInfo.enemy.type == EnemyType.Bug)
         {
-            Debug.Log("Bug attack");
+            player.GetComponent<PlayerStats>().ChangeHealth(-attackDamage);
         }
     }
 

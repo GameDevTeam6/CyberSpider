@@ -8,7 +8,7 @@ public class InventoryManager : MonoBehaviour
     public InventorySlot[] inventorySlots;
     public GameObject inventoryItemPrefab;
     public GameObject equippedItemPrefab;
-    private int selectedSlot = -1;
+    public int selectedSlot = -1;
     private int maxStackItems = 4;
 
     public bool itemEquipped = false;
@@ -25,27 +25,42 @@ public class InventoryManager : MonoBehaviour
             bool isNumber = int.TryParse(Input.inputString, out int number);
             if (isNumber && number > 0 && number < 5)
             {
-                Debug.Log(number);
-                ChangeSelectedSlot(number - 1);
+                // Check that new slot is not empty
+                if (CheckSlot(number))
+                {
+                    ChangeSelectedSlot(number - 1);
+                } else
+                {
+                    return;
+                }
             }
+        }
+    }
+
+    public bool CheckSlot(int slot)
+    {
+        if (inventorySlots[slot - 1].gameObject.transform.childCount == 0)
+        {
+            return false;
+        } else
+        {
+            return true;
         }
     }
 
     void ChangeSelectedSlot(int newSlot)
     {
+        // Check if there is currently a selected slot, if so then deselect
         if (selectedSlot >= 0)
         {
             inventorySlots[selectedSlot].Deselect();
         }
+
+        // Set new selected slot
         inventorySlots[newSlot].Select();
         selectedSlot = newSlot;
-        try
-        {
-            EquipItem(GetSelectedItem().item);
-        } catch (Exception e)
-        {
-            Debug.Log("No item in slot: " + e.Message);
-        }
+
+        EquipItem(GetSelectedItem().item);
     }
 
     public bool AddItem(Item item)
@@ -77,6 +92,10 @@ public class InventoryManager : MonoBehaviour
             {
                 Debug.Log("Empty slot at " + i);
                 SpawnNewItem(item, slot);
+                if (itemEquipped)
+                {
+
+                }
                 return true;
             }
         }
@@ -92,36 +111,19 @@ public class InventoryManager : MonoBehaviour
 
     public InventoryItem GetSelectedItem()
     {
-        if (selectedSlot < 0) 
-        {
-            Debug.Log("No slot selected");
-            return null;
-        } 
         InventorySlot slot = inventorySlots[selectedSlot];
 		InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
-		if (itemInSlot == null)
-		{
-            Debug.Log("No item in selected slot");
-		    return null;
-		} else {
-			return itemInSlot;
-        }
+        return itemInSlot;
     }
 
     // Method that creates a clone of the Item in the players equipped slot
     public void EquipItem(Item item)
     {
         UnequipItem();
-
-        if (item != null)
-        {
-            GameObject equippedItemGO = Instantiate(equippedItemPrefab, playerEquipSlot.transform);
-            EquippedItem equippedItem = equippedItemGO.GetComponent<EquippedItem>();
-            equippedItem.InitializeItem(item);
-        } else
-        {
-            return;
-        }
+        GameObject equippedItemGO = Instantiate(equippedItemPrefab, playerEquipSlot.transform);
+        EquippedItem equippedItem = equippedItemGO.GetComponent<EquippedItem>();
+        equippedItem.InitializeItem(item);
+        itemEquipped = true;
     }
 
     // Method that destroys currently equipped item (if any)
@@ -130,6 +132,13 @@ public class InventoryManager : MonoBehaviour
         if (playerEquipSlot.transform.childCount > 0)
         {
             Destroy(playerEquipSlot.transform.GetChild(0).gameObject);
+            itemEquipped = false;
         }
+    }
+
+    public void DeselectCurrent()
+    {
+        inventorySlots[selectedSlot].Deselect();
+        selectedSlot = 0;
     }
 }

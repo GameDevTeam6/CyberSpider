@@ -8,6 +8,8 @@ public class EnemyPatrol : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    private bool playerInRange = false;
+
     private void Start()
     {
         rb = transform.parent.GetComponent<Rigidbody2D>();
@@ -16,14 +18,6 @@ public class EnemyPatrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (IsFacingRight())
-        //{
-        //    rb.velocity = new Vector2(moveSpeed, 0f);
-        //} else
-        //{
-        //    rb.velocity = new Vector2(-moveSpeed, 0f);
-        //}
-
         // Decide on direction
         Vector2 moveDirection = IsFacingRight() ? Vector2.right : Vector2.left;
         // Move in that direction
@@ -32,12 +26,26 @@ public class EnemyPatrol : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            transform.localScale = new Vector2(-transform.localScale.x, transform.localScale.y);
+        }
+
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("player unranged");
+            playerInRange = false;
+        }
     }
 
     private bool IsFacingRight()
     {
         // Epsilon represents a tiny floating point (almost zero)s
         return transform.localScale.x > Mathf.Epsilon;
+    }
+
+    public void PlayerInRange(bool val)
+    {
+        playerInRange = val;
     }
 }

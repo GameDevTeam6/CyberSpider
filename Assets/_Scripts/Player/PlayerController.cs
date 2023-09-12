@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     private bool canJump = true;
     private bool isSolvingPuzzle = false;
+    private bool isAlive = true;
 
     private GameObject currentPlatform;
 
@@ -39,11 +40,6 @@ public class PlayerController : MonoBehaviour
         audioSource.loop = true; // So the sound keeps playing while the player is moving
     }
 
-    private void Update()
-    {
-
-    }
-
     private void FixedUpdate()
     {
         if (currentPlatform != null)
@@ -51,7 +47,10 @@ public class PlayerController : MonoBehaviour
             transform.Translate(currentPlatform.GetComponent<PlatformMove>().movement);
         }
 
-        transform.Translate(_speed * Time.deltaTime * _moveVec);
+        if (isAlive)
+        {
+            transform.Translate(_speed * Time.deltaTime * _moveVec);
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -78,11 +77,6 @@ public class PlayerController : MonoBehaviour
             {
                 audioSource.Stop();
             }
-        }
-
-        if (context.canceled)
-        {
-            _animator.SetBool("isRunning", false);
         }
     }
     // Function checks running direction of player and flips the sprite on the x axis if necessary
@@ -117,11 +111,9 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("Use item method running");
             // Get selected item
-            InventoryItem selectedItem = _inventoryManager.GetSelectedItem();
-
-            // Check that item is not null
-            if (selectedItem != null)
+            if (_inventoryManager.itemEquipped)
             {
+                InventoryItem selectedItem = _inventoryManager.GetSelectedItem();
                 if (selectedItem.item.type == ItemType.Powerup)
                 {
                     UsePowerup(selectedItem);
@@ -130,8 +122,11 @@ public class PlayerController : MonoBehaviour
                 {
                     UseWeapon(selectedItem);
                 }
+            } else
+            {
+                Debug.Log("no item to use");
+                return;
             }
-
         }
     }
 
@@ -146,9 +141,9 @@ public class PlayerController : MonoBehaviour
         selectedItem.RefreshCount();
         if (selectedItem.count <= 0)
         {
-            //Debug.Log("Supply of item finished, Destroying item");
             Destroy(selectedItem.gameObject);
             _inventoryManager.UnequipItem();
+            _inventoryManager.DeselectCurrent();
         }
     }
 
@@ -172,6 +167,7 @@ public class PlayerController : MonoBehaviour
 
     public void PlayerDie()
     {
+        isAlive = false;
         _animator.SetTrigger("isDead");
     }
 

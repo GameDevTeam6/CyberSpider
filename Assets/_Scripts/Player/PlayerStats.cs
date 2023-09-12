@@ -13,6 +13,7 @@ public class PlayerStats : MonoBehaviour
     [SerializeField] TMP_Text timerText;
 
     [SerializeField] GameOverScript gameOverScript;
+    [SerializeField] private SpriteRenderer playerSprite;
     private PlayerController playerController;
 
     // initial player stats values
@@ -29,6 +30,11 @@ public class PlayerStats : MonoBehaviour
     private bool isSpeedTimerRunning = false;
 
     public static float finalScore;
+
+    private bool isAlive = true;
+    private Color standardCol = Color.white;
+    private Color healCol = Color.green;
+    private Color damageCol = Color.red;
 
     private void Start()
     {
@@ -87,9 +93,10 @@ public class PlayerStats : MonoBehaviour
 
         /////////////// Game Over ////////////////
         ///
-        if (playerHealth < 1)
+        if (isAlive && playerHealth < 1)
         {
             PlayerDie();
+            isAlive = false;
         }
     }
 
@@ -111,14 +118,39 @@ public class PlayerStats : MonoBehaviour
     {
         playerController.PlayerDie();
         gameOverScript.PlayerDied();
-        Time.timeScale = 0;
         finalScore = playerScore;
     }
 
     public float ChangeHealth(float health)
     {
+        if (health < 0)
+        {
+            StartCoroutine(PulseColor(damageCol, standardCol));
+        } else if (health > 0)
+        {
+            StartCoroutine(PulseColor(healCol, standardCol));
+        }
+
         playerHealth += health;
         return playerHealth;
+    }
+
+    private IEnumerator PulseColor(Color targetCol, Color originalCol)
+    {
+        playerSprite.color = originalCol;
+
+        // Control the duration and pulsing effect here
+        float duration = 0.5f;
+        float startTime = Time.time;
+
+        while (Time.time < startTime + duration)
+        {
+            float t = (Time.time - startTime) / duration;
+            playerSprite.color = Color.Lerp(targetCol, originalCol, t);
+            yield return null;
+        }
+
+        playerSprite.color = originalCol;
     }
 
     public void ChangeSpeed(float newSpeed)

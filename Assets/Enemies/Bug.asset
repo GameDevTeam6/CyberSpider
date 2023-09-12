@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   image: {fileID: 21300000, guid: d8171ffb61d7de74e8c9c943291929e0, type: 3}
   type: 0
-  attackRange: 3
+  attackRange: 1
   attackDamage: 10
   health: 30

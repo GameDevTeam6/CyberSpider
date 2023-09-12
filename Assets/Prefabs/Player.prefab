@@ -75,7 +75,6 @@ GameObject:
   - component: {fileID: 3832434825581642432}
   - component: {fileID: 7318520793457827154}
   - component: {fileID: 4794534078253259435}
-  - component: {fileID: -5648902755901260684}
   - component: {fileID: 5207008068239920577}
   - component: {fileID: 3218171388229226776}
   - component: {fileID: 6114815199866421766}
@@ -328,10 +327,9 @@ MonoBehaviour:
   _inventoryManager: {fileID: 0}
   _enemyManager: {fileID: 0}
   _speed: 5
-  _score: 0
-  _health: 0
-  _time: 0
   _jumpHeight: 13
+  runningSound: {fileID: 0}
+  jumpingSound: {fileID: 0}
 --- !u!95 &4794534078253259435
 Animator:
   serializedVersion: 3
@@ -351,18 +349,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &-5648902755901260684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9091056007638863431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8dbc9623c5854c4fab320d1c5ddfab6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &5207008068239920577
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,6 +366,7 @@ MonoBehaviour:
   scoreText: {fileID: 0}
   timerText: {fileID: 0}
   gameOverScript: {fileID: 0}
+  playerSprite: {fileID: 1381674727589169420}
 --- !u!114 &3218171388229226776
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,6 +380,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventoryManager: {fileID: 0}
+  bitcoinPickupSound: {fileID: 0}
+  healthPickupSound: {fileID: 0}
+  _score: 0
+  _health: 0
+  _time: 0
 --- !u!114 &6114815199866421766
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -418,6 +410,7 @@ MonoBehaviour:
   mainCanvas: {fileID: 0}
   mainCamera: {fileID: 0}
   offset: 2
+  puzzleUnsolvedSound: {fileID: 0}
 --- !u!114 &8070108932342473882
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -431,3 +424,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputManager: {fileID: 6114815199866421766}
+  puzzleAlertSound: {fileID: 0}
