@@ -191,4 +191,13 @@ public class PlayerController : MonoBehaviour
             _animator.ResetTrigger("isJump");
         }
     }
+    
+    private void OnCollisionExit2D(Collision2D col)
+    {
+        // collision with platforms
+        if (col.gameObject.CompareTag("Platform"))
+        {
+            currentPlatform = null;
+        }
+    }
 }

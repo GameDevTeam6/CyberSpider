@@ -10,7 +10,7 @@ public class PlatformMove : MonoBehaviour
     private Vector3 initialPos;
     private Rigidbody2D rb;
 
-    public Vector3 movement;
+    [HideInInspector] public Vector3 movement;
 
     private enum direction
     {
