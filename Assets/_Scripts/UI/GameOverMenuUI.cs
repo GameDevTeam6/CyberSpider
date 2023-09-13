@@ -40,7 +40,7 @@ public class GameOverMenuUI : MonoBehaviour {
             // Save When Submit
             ScoreboardManager.Instance.SaveScoreBoard();
 
-            SceneManager.LoadScene(TagManager.SCENE_MAINMENU_NAME);
+            SceneManager.LoadScene(TagManager.SCENE_SCOREBOARD_NAME);
         });
 
         // When Mainmenu Button Clicks

@@ -22,7 +22,6 @@ public class GameOverTrigger : MonoBehaviour {
         // Store the Player Score
         ScoreboardManager.Instance.SetCurrentScore((int)playerStats.GetScore());
         // Load GameOver Scene
-        Debug.Log(ScoreboardManager.Instance.GetCurrentScore());
         SceneManager.LoadScene(TagManager.SCENE_GAMEOVER_NAME);
     }
 }
