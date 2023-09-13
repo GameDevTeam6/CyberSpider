@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5380590670607900041}
   - component: {fileID: 5380590670607900040}
   m_Layer: 0
-  m_Name: Square (7)
+  m_Name: MovingPlatform
   m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,6 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveDistance: 2
   moveSpeed: 0.05
+  moveDirection: 0
   movement: {x: 0, y: 0, z: 0}
 --- !u!50 &5380590670607900040
 Rigidbody2D:

@@ -1,10 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Xml.Linq;
+using System.Numerics;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.UIElements;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class PlayerController : MonoBehaviour
 {
@@ -157,12 +155,46 @@ public class PlayerController : MonoBehaviour
             if (_enemyManager.enemies[i] != null)
             {
                 float distance = Vector3.Distance(transform.position, _enemyManager.enemies[i].transform.position);
+
                 if (distance < selectedItem.item.actionRange)
                 {
                     _enemyManager.enemies[i].transform.GetChild(0).GetComponent<EnemyInfo>().TakeDamage(selectedItem.item.actionValue);
                 }
+
+                //if (distance < selectedItem.item.actionRange && IsEnemyVisible(i))
+                //{
+                //    _enemyManager.enemies[i].transform.GetChild(0).GetComponent<EnemyInfo>().TakeDamage(selectedItem.item.actionValue);
+                //}
             }
         }
+    }
+
+    // Must still fix this
+    private bool IsEnemyVisible(int enemyIndex)
+    {
+        // Get player Hitspot
+        Transform enemyTrans = _enemyManager.enemies[enemyIndex].transform;
+        Vector3 shotDirection = -(transform.position - enemyTrans.position).normalized;
+
+        int enemyLayerMask = LayerMask.GetMask("Enemy");
+        //int pickupLayerMask = LayerMask.GetMask("Pickups");
+
+        //int combinedLayerMask = enemyLayerMask | pickupLayerMask;
+
+        RaycastHit2D raycast = Physics2D.Raycast(transform.position, shotDirection, Mathf.Infinity, enemyLayerMask);
+        Debug.DrawRay(transform.position, shotDirection * Mathf.Infinity, Color.green);
+
+        if (raycast.collider.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Enemy Sighted");
+            return true;
+        }
+        else
+        {
+            Debug.Log("Enemy not visible");
+        }
+
+        return false;
     }
 
     public void PlayerDie()

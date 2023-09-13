@@ -5,11 +5,8 @@ using UnityEngine;
 
 public class PlatformMove : MonoBehaviour
 {
-    [SerializeField] float moveDistance;
-    [SerializeField] float moveSpeed;
-    private Vector3 initialPos;
-    private Rigidbody2D rb;
-
+    [SerializeField] private float moveDistance;
+    [SerializeField] private float moveSpeed;
     [HideInInspector] public Vector3 movement;
 
     private enum direction
@@ -17,8 +14,10 @@ public class PlatformMove : MonoBehaviour
         left,
         right
     };
+    [SerializeField] private direction initialDirection;
 
-    direction dir = direction.left;
+    private Vector3 initialPos;
+    private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
@@ -35,40 +34,40 @@ public class PlatformMove : MonoBehaviour
 
     private void CheckDir()
     {
-        if (dir == direction.left)
-        {
-            if (transform.position.x < initialPos.x + moveDistance)
-            {
-                dir = direction.left;
-            }
-            else if (transform.position.x > initialPos.x + moveDistance)
-            {
-                dir = direction.right;
-            }
-        }
-
-        if (dir == direction.right)
+        if (initialDirection == direction.left)
         {
             if (transform.position.x > initialPos.x - moveDistance)
             {
-                dir = direction.right;
+                initialDirection = direction.left;
             }
             else if (transform.position.x < initialPos.x - moveDistance)
             {
-                dir = direction.left;
+                initialDirection = direction.right;
+            }
+        }
+
+        if (initialDirection == direction.right)
+        {
+            if (transform.position.x < initialPos.x + moveDistance)
+            {
+                initialDirection = direction.right;
+            }
+            else if (transform.position.x > initialPos.x + moveDistance)
+            {
+                initialDirection = direction.left;
             }
         }
     }
 
     private void MovePlat()
     {
-        if (dir == direction.left)
+        if (initialDirection == direction.left)
         {
-            movement = new Vector3(1 * moveSpeed, 0f, 0f);
+            movement = new Vector3(1 * -moveSpeed, 0f, 0f);
         }
         else
         {
-            movement = new Vector3(1 * -moveSpeed, 0f, 0f);
+            movement = new Vector3(1 * moveSpeed, 0f, 0f);
         }
 
         transform.Translate(movement);
