@@ -9,6 +9,7 @@ public class ProgressPlatform : MonoBehaviour
     [SerializeField] Color unlockedColor;
 
     public bool solved = false;
+    public bool checkPlatState = true;
 
     private Rigidbody2D rb;
 
@@ -29,10 +30,11 @@ public class ProgressPlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (solved)
+        if (solved && checkPlatState)
         {
             UnlockPlatform();
             rb.simulated = true;
+            checkPlatState = false;
         }
         
     }
@@ -43,6 +45,7 @@ public class ProgressPlatform : MonoBehaviour
         // Play the PuzzleSolved sound effect
         if (puzzleSolvedSound != null && audioSource != null)
         {
+            Debug.Log("Playing audio");
             audioSource.PlayOneShot(puzzleSolvedSound);
         }
     }
