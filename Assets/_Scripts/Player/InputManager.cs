@@ -274,6 +274,7 @@ public class InputManager : MonoBehaviour
         Vector3 worldPositionInFrontOfPlayer = player.transform.position + new Vector3(offset, 0, 0);
 
         Vector3 screenPosition = mainCamera.WorldToScreenPoint(worldPositionInFrontOfPlayer);
+        screenPosition.y -= 300;  // Adjust this value as needed
 
         puzzlePanel.transform.position = screenPosition;
 
