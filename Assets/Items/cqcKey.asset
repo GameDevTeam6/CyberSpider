@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41c4f80e2de6dab4a9ec5ead1720f7ad, type: 3}
   m_Name: cqcKey
   m_EditorClassIdentifier: 
-  image: {fileID: 4301844918096825189, guid: 626be61ea46848f48841509c5271e64f, type: 3}
+  image: {fileID: 21300000, guid: 6c71052e57cb00a47895af3de06481a4, type: 3}
   type: 1
   actionType: 1
   actionRange: 3
