@@ -8,8 +8,9 @@ public class ItemPickup : MonoBehaviour
     public InventoryManager inventoryManager;
 
     public AudioClip bitcoinPickupSound;
-    public AudioClip healthPickupSound; 
-    private AudioSource audioSource;    
+    public AudioClip healthPickupSound;
+    private AudioSource audioSource;
+    [SerializeField] InputManager editor;
 
     private Item item;
     //[SerializeField] InputManager editor;
@@ -37,63 +38,63 @@ public class ItemPickup : MonoBehaviour
         // collision with pickup items
         if (col.gameObject.CompareTag("Pickup"))
         {
-            // fetch type of item
-            ActionType itemType = col.gameObject.GetComponent<ItemInfo>().item.actionType;
+            editor.OpenQuestionPanel(() => {
+                // fetch type of item
+                ActionType itemType = col.gameObject.GetComponent<ItemInfo>().item.actionType;
 
-            ////////////////// BITCOIN TOKEN ///////////////////
+                ////////////////// BITCOIN TOKEN ///////////////////
 
-            if (itemType == ActionType.Score)
-            {
-                // fetch reward value to be added to the score
-                float val = col.gameObject.GetComponent<ItemInfo>().item.actionValue;
-                // update score
-                _score = gameObject.GetComponent<PlayerStats>().ChangeScore(val);
-                Destroy(col.gameObject);
-
-                // Play the bitcoin pickup sound
-                audioSource.PlayOneShot(bitcoinPickupSound);
-            }
-
-            ////////////////// HEALTH TOKEN ///////////////////
-            else if (itemType == ActionType.Health)
-            {
-                // fetch current health
-                float currentHealth = gameObject.GetComponent<PlayerStats>().GetHealth();
-                // fetch health value to be added
-                float val = col.gameObject.GetComponent<ItemInfo>().item.actionValue;
-
-                if (currentHealth < (100 - val))
+                if (itemType == ActionType.Score)
                 {
-                    // add boost value to current health
-                    _health = gameObject.GetComponent<PlayerStats>().ChangeHealth(val);
+                    // fetch reward value to be added to the score
+                    float val = col.gameObject.GetComponent<ItemInfo>().item.actionValue;
+                    // update score
+                    _score = gameObject.GetComponent<PlayerStats>().ChangeScore(val);
+                    Destroy(col.gameObject);
 
-                    // Play the health pickup sound
-                    audioSource.PlayOneShot(healthPickupSound);
+                    // Play the bitcoin pickup sound
+                    audioSource.PlayOneShot(bitcoinPickupSound);
                 }
+
+                ////////////////// HEALTH TOKEN ///////////////////
+                else if (itemType == ActionType.Health)
+                {
+                    // fetch current health
+                    float currentHealth = gameObject.GetComponent<PlayerStats>().GetHealth();
+                    // fetch health value to be added
+                    float val = col.gameObject.GetComponent<ItemInfo>().item.actionValue;
+
+                    if (currentHealth < (100 - val))
+                    {
+                        // add boost value to current health
+                        _health = gameObject.GetComponent<PlayerStats>().ChangeHealth(val);
+
+                        // Play the health pickup sound
+                        audioSource.PlayOneShot(healthPickupSound);
+                    }
+                    else
+                    {
+                        // restrict max health to 100
+                        float diff = 100 - currentHealth;
+                        _health = gameObject.GetComponent<PlayerStats>().ChangeHealth(diff);
+                    }
+
+                    Destroy(col.gameObject);
+                }
+
                 else
                 {
-                    // restrict max health to 100
-                    float diff = 100 - currentHealth;
-                    _health = gameObject.GetComponent<PlayerStats>().ChangeHealth(diff);
+                    Item item = col.gameObject.GetComponent<ItemInfo>().item;
+                    bool result = inventoryManager.AddItem(item);
+                    // if there are available inventory slots
+                    if (result)
+                    {
+                        Debug.Log("Item added to inventory");
+                        // hide from scene
+                        col.gameObject.SetActive(false);
+                    }
                 }
-
-                Destroy(col.gameObject);
-            }
-
-            else
-            {
-                Item item = col.gameObject.GetComponent<ItemInfo>().item;
-                bool result = inventoryManager.AddItem(item);
-                // if there are available inventory slots
-                if (result)
-                {
-                    Debug.Log("Item added to inventory");
-                    // hide from scene
-                    col.gameObject.SetActive(false);
-                }
-            }
+            });
         }
     }
 }
-
-
