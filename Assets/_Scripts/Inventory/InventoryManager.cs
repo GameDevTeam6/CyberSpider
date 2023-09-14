@@ -150,6 +150,6 @@ public class InventoryManager : MonoBehaviour
     public void DeselectCurrent()
     {
         inventorySlots[selectedSlot].Deselect();
-        selectedSlot = 0;
+        selectedSlot = -1;
     }
 }

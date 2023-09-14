@@ -16,6 +16,6 @@ MonoBehaviour:
   type: 1
   actionType: 1
   actionRange: 3
-  actionValue: 5
+  actionValue: 10
   stackable: 1
   consumable: 0
