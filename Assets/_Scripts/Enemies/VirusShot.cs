@@ -30,7 +30,7 @@ public class VirusShot : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Hit player");
+            //Debug.Log("Hit player");
             player.GetComponent<PlayerStats>().ChangeHealth(-damage);
 
             // Play the VirusHit sound effect

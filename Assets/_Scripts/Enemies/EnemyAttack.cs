@@ -92,19 +92,26 @@ public class EnemyAttack : MonoBehaviour
     private void Aim()
     {
         // Get player Hitspot
-        playerTrans = player.transform.GetChild(1).GetComponent<Transform>();
-        shotDirection = -(transform.position - playerTrans.position).normalized;
-        Debug.DrawRay(transform.position, shotDirection * attackRange, Color.red);
+        playerTrans = player.transform.Find("HitSpot").GetComponent<Transform>();
+
+        shotDirection = (playerTrans.position - transform.position).normalized;
+        //Debug.DrawRay(transform.position, shotDirection * attackRange, Color.red);
     }
 
     private bool isPlayerVisible()
     {
+        // Get mask for enemy
         int enemyLayerMask = LayerMask.GetMask("Enemy");
+
+        // Get mask for enemy hit spot
+        int enemyHitspotLayerMask = LayerMask.GetMask("EnemyHitSpot");
+
+        // Get mask for pickups
         int pickupLayerMask = LayerMask.GetMask("Pickups");
 
-        int combinedLayerMask = enemyLayerMask | pickupLayerMask;
+        int combinedLayerMask = enemyLayerMask | pickupLayerMask | enemyHitspotLayerMask;
         raycast = Physics2D.Raycast(transform.position, shotDirection, Mathf.Infinity, ~combinedLayerMask);
-        Debug.DrawRay(transform.position, shotDirection * Mathf.Infinity, Color.green);
+        //Debug.DrawRay(transform.position, shotDirection * attackRange, Color.green);
 
         if (raycast.collider != null)
         {

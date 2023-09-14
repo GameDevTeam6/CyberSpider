@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] InventoryManager _inventoryManager;
     [SerializeField] EnemyManager _enemyManager;
 
+    private Transform hitSpot;
+
     public float _speed;
 
     public float _jumpHeight = 10;
@@ -27,6 +29,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip jumpingSound;
     private AudioSource audioSource;
 
+    private RaycastHit2D attackRay;
+
     private void Start()
     {
         // fatch initial player stats values
@@ -36,6 +40,9 @@ public class PlayerController : MonoBehaviour
         audioSource = gameObject.AddComponent<AudioSource>();
         audioSource.clip = runningSound;
         audioSource.loop = true; // So the sound keeps playing while the player is moving
+
+        // Get the player hitspot
+        hitSpot = transform.GetChild(1).GetComponent<Transform>();
     }
 
     private void FixedUpdate()
@@ -63,7 +70,7 @@ public class PlayerController : MonoBehaviour
         if (!audioSource.isPlaying)
         {
             audioSource.Play();
-            Debug.Log("Running Audio Playing");
+            //Debug.Log("Running Audio Playing");
         }
 
         if (context.canceled)
@@ -154,46 +161,53 @@ public class PlayerController : MonoBehaviour
         {
             if (_enemyManager.enemies[i] != null)
             {
-                float distance = Vector3.Distance(transform.position, _enemyManager.enemies[i].transform.position);
+                float distance = Vector3.Distance(hitSpot.position, _enemyManager.enemies[i].transform.position);
 
-                if (distance < selectedItem.item.actionRange)
+                // Check if enemy is in clear sight
+                if (distance < selectedItem.item.actionRange && IsEnemyVisible(i, selectedItem.item.actionRange))
                 {
-                    _enemyManager.enemies[i].transform.GetChild(0).GetComponent<EnemyInfo>().TakeDamage(selectedItem.item.actionValue);
+                    _enemyManager.enemies[i].transform.Find("EnemyBody").GetComponent<EnemyInfo>().TakeDamage(selectedItem.item.actionValue);
                 }
-
-                //if (distance < selectedItem.item.actionRange && IsEnemyVisible(i))
-                //{
-                //    _enemyManager.enemies[i].transform.GetChild(0).GetComponent<EnemyInfo>().TakeDamage(selectedItem.item.actionValue);
-                //}
             }
         }
     }
 
     // Must still fix this
-    private bool IsEnemyVisible(int enemyIndex)
+    private bool IsEnemyVisible(int enemyIndex, float range)
     {
         // Get player Hitspot
         Transform enemyTrans = _enemyManager.enemies[enemyIndex].transform;
-        Vector3 shotDirection = -(transform.position - enemyTrans.position).normalized;
 
+        // Get direction of enemy as unit vector
+        Vector3 enemyDir = (enemyTrans.position - hitSpot.position).normalized;
+
+        // Get mask for player
+        int playerMask = LayerMask.GetMask("Player");
+
+        // Get mask for pickups
+        int pickupLayerMask = LayerMask.GetMask("Pickups");
+
+        // Get mask for enemy to avoid hitting undesired colliders
         int enemyLayerMask = LayerMask.GetMask("Enemy");
-        //int pickupLayerMask = LayerMask.GetMask("Pickups");
 
-        //int combinedLayerMask = enemyLayerMask | pickupLayerMask;
+        // Combine the two masks
+        int combinedLayerMask = playerMask | pickupLayerMask | enemyLayerMask;
 
-        RaycastHit2D raycast = Physics2D.Raycast(transform.position, shotDirection, Mathf.Infinity, enemyLayerMask);
-        Debug.DrawRay(transform.position, shotDirection * Mathf.Infinity, Color.green);
+        // Cast the ray from player,
+        // in direction of enemy,
+        // distance of weapon range,
+        // negating the combined mask to ignore player and pickups
 
-        if (raycast.collider.gameObject.CompareTag("Enemy"))
+        attackRay = Physics2D.Raycast(hitSpot.position, enemyDir, Mathf.Infinity, ~combinedLayerMask);
+        //Debug.DrawRay(hitSpot.position, enemyDir * range, Color.green);
+
+        if (attackRay.collider != null)
         {
-            Debug.Log("Enemy Sighted");
-            return true;
+            if (attackRay.collider.gameObject.CompareTag("EnemyHitSpot"))
+            {
+                return true;
+            }
         }
-        else
-        {
-            Debug.Log("Enemy not visible");
-        }
-
         return false;
     }
 

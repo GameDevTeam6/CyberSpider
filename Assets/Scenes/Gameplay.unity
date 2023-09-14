@@ -638,7 +638,7 @@ GameObject:
   - component: {fileID: 231340385}
   - component: {fileID: 231340387}
   - component: {fileID: 231340386}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Square (2)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -871,7 +871,7 @@ GameObject:
   - component: {fileID: 248752759}
   - component: {fileID: 248752761}
   - component: {fileID: 248752760}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Square (14)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -979,7 +979,7 @@ GameObject:
   - component: {fileID: 249338491}
   - component: {fileID: 249338493}
   - component: {fileID: 249338492}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Square (7)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -1243,7 +1243,7 @@ GameObject:
   - component: {fileID: 320283834}
   - component: {fileID: 320283836}
   - component: {fileID: 320283835}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Square (11)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -2082,7 +2082,7 @@ GameObject:
   - component: {fileID: 508746922}
   - component: {fileID: 508746924}
   - component: {fileID: 508746923}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Square (8)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -2339,8 +2339,8 @@ Transform:
   - {fileID: 344926234}
   - {fileID: 633346103}
   - {fileID: 516578051}
-  - {fileID: 244698943}
   - {fileID: 1222009732}
+  - {fileID: 244698943}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2355,7 +2355,7 @@ GameObject:
   - component: {fileID: 564030795}
   - component: {fileID: 564030797}
   - component: {fileID: 564030796}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Square (9)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -2463,7 +2463,7 @@ GameObject:
   - component: {fileID: 571298373}
   - component: {fileID: 571298375}
   - component: {fileID: 571298374}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Square
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -2696,7 +2696,7 @@ GameObject:
   - component: {fileID: 656174607}
   - component: {fileID: 656174609}
   - component: {fileID: 656174608}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Square (12)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -2953,7 +2953,7 @@ GameObject:
   - component: {fileID: 689949685}
   - component: {fileID: 689949687}
   - component: {fileID: 689949686}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Square (16)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -3777,7 +3777,7 @@ GameObject:
   - component: {fileID: 972763588}
   - component: {fileID: 972763590}
   - component: {fileID: 972763589}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Square (5)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -4017,7 +4017,7 @@ GameObject:
   - component: {fileID: 990497183}
   - component: {fileID: 990497185}
   - component: {fileID: 990497184}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Square (10)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -4142,6 +4142,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MovingPlatform3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380590670607900052, guid: 5bfd0959d7db3814cb06e7e135b7973d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5380590670607900053, guid: 5bfd0959d7db3814cb06e7e135b7973d,
         type: 3}
@@ -5742,7 +5747,7 @@ GameObject:
   - component: {fileID: 1388510583}
   - component: {fileID: 1388510585}
   - component: {fileID: 1388510584}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Square (15)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -6283,7 +6288,7 @@ GameObject:
   - component: {fileID: 1475700933}
   - component: {fileID: 1475700935}
   - component: {fileID: 1475700934}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Square (13)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -6457,6 +6462,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PuzzlePlatform (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 8276980953267525748, guid: 943ea04f405acde43ae9e21d9f4cdec4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 943ea04f405acde43ae9e21d9f4cdec4, type: 3}
 --- !u!4 &1482124801 stripped
@@ -6486,6 +6496,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MovingPlatform5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380590670607900052, guid: 5bfd0959d7db3814cb06e7e135b7973d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5380590670607900053, guid: 5bfd0959d7db3814cb06e7e135b7973d,
         type: 3}
@@ -6697,7 +6712,7 @@ GameObject:
   - component: {fileID: 1521627416}
   - component: {fileID: 1521627418}
   - component: {fileID: 1521627417}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Square (6)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -6810,6 +6825,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MovingPlatform2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380590670607900052, guid: 5bfd0959d7db3814cb06e7e135b7973d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5380590670607900053, guid: 5bfd0959d7db3814cb06e7e135b7973d,
         type: 3}
@@ -6981,6 +7001,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MovingPlatform7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380590670607900052, guid: 5bfd0959d7db3814cb06e7e135b7973d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5380590670607900053, guid: 5bfd0959d7db3814cb06e7e135b7973d,
         type: 3}
@@ -7406,6 +7431,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingPlatform6
       objectReference: {fileID: 0}
+    - target: {fileID: 5380590670607900052, guid: 5bfd0959d7db3814cb06e7e135b7973d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 5380590670607900053, guid: 5bfd0959d7db3814cb06e7e135b7973d,
         type: 3}
       propertyPath: m_RootOrder
@@ -7490,6 +7520,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MovingPlatform4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380590670607900052, guid: 5bfd0959d7db3814cb06e7e135b7973d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5380590670607900053, guid: 5bfd0959d7db3814cb06e7e135b7973d,
         type: 3}
@@ -7819,7 +7854,7 @@ GameObject:
   - component: {fileID: 1832384461}
   - component: {fileID: 1832384463}
   - component: {fileID: 1832384462}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Square (1)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -7927,7 +7962,7 @@ GameObject:
   - component: {fileID: 1834788898}
   - component: {fileID: 1834788900}
   - component: {fileID: 1834788899}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Square (3)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -8618,7 +8653,7 @@ GameObject:
   - component: {fileID: 1905402261}
   - component: {fileID: 1905402263}
   - component: {fileID: 1905402262}
-  m_Layer: 9
+  m_Layer: 12
   m_Name: Square (4)
   m_TagString: Platform
   m_Icon: {fileID: 0}
@@ -9293,6 +9328,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MovingPlatform8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5380590670607900052, guid: 5bfd0959d7db3814cb06e7e135b7973d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 5380590670607900053, guid: 5bfd0959d7db3814cb06e7e135b7973d,
         type: 3}
@@ -11401,6 +11441,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MovingPlatform1
       objectReference: {fileID: 0}
+    - target: {fileID: 5380590670607900052, guid: 5bfd0959d7db3814cb06e7e135b7973d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 5380590670607900053, guid: 5bfd0959d7db3814cb06e7e135b7973d,
         type: 3}
       propertyPath: m_RootOrder
@@ -12236,6 +12281,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PuzzlePlatform
+      objectReference: {fileID: 0}
+    - target: {fileID: 8276980953267525748, guid: 943ea04f405acde43ae9e21d9f4cdec4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 943ea04f405acde43ae9e21d9f4cdec4, type: 3}

@@ -14,7 +14,6 @@ public class FloatingHealthBar : MonoBehaviour
     {
         healthSlider.value = currentVal/maxVal;
         fillSection.color = Color.Lerp(lowCol, fullCol, healthSlider.value);
-        Debug.Log(healthSlider.value);
     }
 
     // Update is called once per frame

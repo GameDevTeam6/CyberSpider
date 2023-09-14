@@ -13,6 +13,7 @@ TagManager:
   - Bug
   - Enemy
   - ProgressPuzzle
+  - EnemyHitSpot
   layers:
   - Default
   - TransparentFX
@@ -25,9 +26,9 @@ TagManager:
   - Enemy
   - PlayerAndPlats
   - Pickups
-  - 
-  - 
-  - 
+  - Player
+  - Platform
+  - EnemyHitSpot
   - 
   - 
   - 

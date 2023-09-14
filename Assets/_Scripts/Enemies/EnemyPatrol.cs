@@ -33,7 +33,7 @@ public class EnemyPatrol : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("player unranged");
+            //Debug.Log("player unranged");
             playerInRange = false;
         }
     }
