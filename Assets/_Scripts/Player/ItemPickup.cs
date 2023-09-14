@@ -8,8 +8,9 @@ public class ItemPickup : MonoBehaviour
     public InventoryManager inventoryManager;
 
     public AudioClip bitcoinPickupSound;
-    public AudioClip healthPickupSound; 
-    private AudioSource audioSource;    
+    public AudioClip healthPickupSound;
+    private AudioSource audioSource;
+    [SerializeField] InputManager editor;
 
     private Item item;
     //[SerializeField] InputManager editor;
@@ -95,5 +96,3 @@ public class ItemPickup : MonoBehaviour
         }
     }
 }
-
-
