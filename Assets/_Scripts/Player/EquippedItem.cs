@@ -17,7 +17,8 @@ public class EquippedItem : MonoBehaviour
         item = newItem;
         spriteR.sprite = newItem.image;
         transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
-        transform.Translate(new Vector3(0f, 0.06f, -1f));
+        //transform.Translate(new Vector3(0f, 0.06f, -1f));
+        //transform.position = Vector2.zero;
     }
 
 }

@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: run_side
+  m_Name: run_side_unequipped
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,25 +20,35 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 3003789169655790119, guid: acb8cab598694f619dd44693cb68fb4e, type: 3}
+      value: {fileID: 3003789169655790119, guid: acb8cab598694f619dd44693cb68fb4e,
+        type: 3}
     - time: 0.05
-      value: {fileID: -6092536456907055262, guid: acb8cab598694f619dd44693cb68fb4e, type: 3}
+      value: {fileID: -6092536456907055262, guid: acb8cab598694f619dd44693cb68fb4e,
+        type: 3}
     - time: 0.1
-      value: {fileID: -1445699202850245649, guid: acb8cab598694f619dd44693cb68fb4e, type: 3}
+      value: {fileID: -1445699202850245649, guid: acb8cab598694f619dd44693cb68fb4e,
+        type: 3}
     - time: 0.15
-      value: {fileID: 907984458040544535, guid: acb8cab598694f619dd44693cb68fb4e, type: 3}
+      value: {fileID: 907984458040544535, guid: acb8cab598694f619dd44693cb68fb4e,
+        type: 3}
     - time: 0.2
-      value: {fileID: -4766322925986528201, guid: acb8cab598694f619dd44693cb68fb4e, type: 3}
+      value: {fileID: -4766322925986528201, guid: acb8cab598694f619dd44693cb68fb4e,
+        type: 3}
     - time: 0.25
-      value: {fileID: -6854862752865071187, guid: acb8cab598694f619dd44693cb68fb4e, type: 3}
+      value: {fileID: -6854862752865071187, guid: acb8cab598694f619dd44693cb68fb4e,
+        type: 3}
     - time: 0.3
-      value: {fileID: 3879836991898358431, guid: acb8cab598694f619dd44693cb68fb4e, type: 3}
+      value: {fileID: 3879836991898358431, guid: acb8cab598694f619dd44693cb68fb4e,
+        type: 3}
     - time: 0.35
-      value: {fileID: 9202457461379119610, guid: acb8cab598694f619dd44693cb68fb4e, type: 3}
+      value: {fileID: 9202457461379119610, guid: acb8cab598694f619dd44693cb68fb4e,
+        type: 3}
     - time: 0.4
-      value: {fileID: -1754890470619349162, guid: acb8cab598694f619dd44693cb68fb4e, type: 3}
+      value: {fileID: -1754890470619349162, guid: acb8cab598694f619dd44693cb68fb4e,
+        type: 3}
     - time: 0.45
-      value: {fileID: 648780840753495446, guid: acb8cab598694f619dd44693cb68fb4e, type: 3}
+      value: {fileID: 648780840753495446, guid: acb8cab598694f619dd44693cb68fb4e,
+        type: 3}
     attribute: m_Sprite
     path: 
     classID: 212

@@ -31,6 +31,8 @@ public class PlayerController : MonoBehaviour
 
     private RaycastHit2D attackRay;
 
+    //private float attackTimer = 0f;
+
     private void Start()
     {
         // fatch initial player stats values
@@ -43,6 +45,8 @@ public class PlayerController : MonoBehaviour
 
         // Get the player hitspot
         hitSpot = transform.GetChild(1).GetComponent<Transform>();
+
+        _animator.SetBool("weaponEquipped", false);
     }
 
     private void FixedUpdate()
@@ -56,6 +60,11 @@ public class PlayerController : MonoBehaviour
         {
             transform.Translate(_speed * Time.deltaTime * _moveVec);
         }
+
+        //if (attackTimer > 0f)
+        //{
+        //    attackTimer -= Time.deltaTime;
+        //}
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -87,13 +96,16 @@ public class PlayerController : MonoBehaviour
     // Function checks running direction of player and flips the sprite on the x axis if necessary
     public void CheckDirection(InputAction.CallbackContext context)
     {
-        if (context.ReadValue<Vector2>().x == 1)
+
+        if (context.ReadValue<Vector2>().x == 1 && gameObject.transform.localScale.x == 1)
         {
-            gameObject.GetComponent<SpriteRenderer>().flipX = true;
+            gameObject.transform.localScale *= new Vector2(-1f,1f);
+            //gameObject.GetComponent<SpriteRenderer>().flipX = true;
         }
-        else if (context.ReadValue<Vector2>().x == -1)
+        else if (context.ReadValue<Vector2>().x == -1 && gameObject.transform.localScale.x == -1)
         {
-            gameObject.GetComponent<SpriteRenderer>().flipX = false;
+            gameObject.transform.localScale *= new Vector2(-1f,1f);
+            //gameObject.GetComponent<SpriteRenderer>().flipX = false;
         }
     }
 
@@ -108,6 +120,17 @@ public class PlayerController : MonoBehaviour
             // Play the jumping sound
             audioSource.PlayOneShot(jumpingSound);
         }
+    }
+
+    public void ItemEquipped()
+    {
+        transform.Find("EquipSlot").GetComponentInChildren<Transform>().position = Vector2.zero;
+        _animator.SetTrigger("weaponEquipped");
+    }
+
+    public void ItemUnequipped()
+    {
+        _animator.SetTrigger("weaponUnequipped");
     }
 
     public void UseItem(InputAction.CallbackContext context)
@@ -155,8 +178,7 @@ public class PlayerController : MonoBehaviour
     private void UseWeapon(InventoryItem selectedItem)
     {
         // Weapon code
-        //_animator.SetBool("weaponEquipped", true);
-        //_animator.SetTrigger("isAttack");
+        _animator.SetTrigger("isAttack");
         for (int i = 0; i < _enemyManager.enemies.Count; i++)
         {
             if (_enemyManager.enemies[i] != null)
@@ -170,6 +192,26 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
+
+        //if (attackTimer < 1f)
+        //{
+        //    // Weapon code
+        //    _animator.SetTrigger("isAttack");
+        //    for (int i = 0; i < _enemyManager.enemies.Count; i++)
+        //    {
+        //        if (_enemyManager.enemies[i] != null)
+        //        {
+        //            float distance = Vector3.Distance(hitSpot.position, _enemyManager.enemies[i].transform.position);
+
+        //            // Check if enemy is in clear sight
+        //            if (distance < selectedItem.item.actionRange && IsEnemyVisible(i, selectedItem.item.actionRange))
+        //            {
+        //                _enemyManager.enemies[i].transform.Find("EnemyBody").GetComponent<EnemyInfo>().TakeDamage(selectedItem.item.actionValue);
+        //            }
+        //        }
+        //    }
+        //    attackTimer = 1.5f;
+        //}
     }
 
     // Must still fix this

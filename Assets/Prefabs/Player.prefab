@@ -53,13 +53,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8940800556400476299}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.008, y: 0.459, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.9335742, w: 0.35838425}
+  m_LocalPosition: {x: 0.552, y: 0.489, z: 0}
+  m_LocalScale: {x: 0.48936, y: 0.48936, z: 0.48936}
   m_Children: []
   m_Father: {fileID: 7631076911748089107}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -137.998}
 --- !u!1 &9091056007638863431
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,6 +383,7 @@ MonoBehaviour:
   inventoryManager: {fileID: 0}
   bitcoinPickupSound: {fileID: 0}
   healthPickupSound: {fileID: 0}
+  editor: {fileID: 0}
   _score: 0
   _health: 0
   _time: 0
