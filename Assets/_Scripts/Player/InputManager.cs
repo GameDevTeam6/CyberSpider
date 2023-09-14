@@ -31,6 +31,7 @@ public class InputManager : MonoBehaviour
 
     public AudioClip puzzleUnsolvedSound; // This is the PuzzleUnsolved sound effect
     private AudioSource audioSource; // AudioSource to play the sound effect
+    private GameObject player;
 
     private void Start()
     {
@@ -50,6 +51,7 @@ public class InputManager : MonoBehaviour
 
         // Initialize the audio source
         audioSource = gameObject.AddComponent<AudioSource>();
+        player = GetComponentInParent<Transform>().gameObject;
     }
 
     private void EnsureSingleToggleCheck(Toggle changedToggle)
@@ -264,7 +266,7 @@ public class InputManager : MonoBehaviour
 
     public void PositionPuzzlePanelAbovePlayer()
     {
-        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        //GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player == null)
         {
             Debug.LogError("Player not found.");
@@ -274,8 +276,8 @@ public class InputManager : MonoBehaviour
         Vector3 worldPositionInFrontOfPlayer = player.transform.position + new Vector3(offset, 0, 0);
 
         Vector3 screenPosition = mainCamera.WorldToScreenPoint(worldPositionInFrontOfPlayer);
-        screenPosition.y -= 250;  // Adjust this value as needed
-        screenPosition.x -= 550;
+        screenPosition.y -= 50;  // Adjust this value as needed (offset from player on y)
+        screenPosition.x -= 50;  // Adjust this value as needed (offset from player on X)
 
         puzzlePanel.transform.position = screenPosition;
 

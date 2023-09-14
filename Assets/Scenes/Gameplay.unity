@@ -6718,7 +6718,7 @@ PrefabInstance:
     - target: {fileID: 5380590670607900053, guid: 5bfd0959d7db3814cb06e7e135b7973d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 22.79
+      value: 23.03
       objectReference: {fileID: 0}
     - target: {fileID: 5380590670607900053, guid: 5bfd0959d7db3814cb06e7e135b7973d,
         type: 3}
@@ -8116,7 +8116,7 @@ PrefabInstance:
     - target: {fileID: 456041647594646643, guid: c05e2176c655a5442be62198f7fe9986,
         type: 3}
       propertyPath: m_Name
-      value: cqcKey
+      value: Sword
       objectReference: {fileID: 0}
     - target: {fileID: 6785629604417737569, guid: c05e2176c655a5442be62198f7fe9986,
         type: 3}
