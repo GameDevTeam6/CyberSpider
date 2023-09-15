@@ -177,22 +177,6 @@ public class PlayerController : MonoBehaviour
 
     private void UseWeapon(InventoryItem selectedItem)
     {
-        //// Weapon code
-        //_animator.SetTrigger("isAttack");
-        //for (int i = 0; i < _enemyManager.enemies.Count; i++)
-        //{
-        //    if (_enemyManager.enemies[i] != null)
-        //    {
-        //        float distance = Vector3.Distance(hitSpot.position, _enemyManager.enemies[i].transform.position);
-
-        //        // Check if enemy is in clear sight
-        //        if (distance < selectedItem.item.actionRange && IsEnemyVisible(i, selectedItem.item.actionRange))
-        //        {
-        //            _enemyManager.enemies[i].transform.Find("EnemyBody").GetComponent<EnemyInfo>().TakeDamage(selectedItem.item.actionValue);
-        //        }
-        //    }
-        //}
-
         if (attackTimer < 1f)
         {
             // Weapon code
