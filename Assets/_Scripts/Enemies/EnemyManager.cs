@@ -10,10 +10,10 @@ public class EnemyManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < enemiesContainer.transform.childCount; i++)
-        {
-            enemies.Add(enemiesContainer.transform.GetChild(i).gameObject);
-        }
+        //for (int i = 0; i < enemiesContainer.transform.childCount; i++)
+        //{
+        //    enemies.Add(enemiesContainer.transform.GetChild(i).gameObject);
+        //}
     }
 
     // Update is called once per frame

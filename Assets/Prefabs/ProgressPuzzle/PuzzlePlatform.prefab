@@ -125,6 +125,8 @@ MonoBehaviour:
   lockedColor: {r: 0.41509432, g: 0, b: 0.11122791, a: 0.6117647}
   unlockedColor: {r: 0.030437866, g: 0.7169812, b: 0.030437866, a: 1}
   solved: 0
+  checkPlatState: 1
+  puzzleSolvedSound: {fileID: 8300000, guid: 5f76388773465944681bb8d978c97fad, type: 3}
 --- !u!50 &4514661399566344645
 Rigidbody2D:
   serializedVersion: 4
