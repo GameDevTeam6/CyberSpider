@@ -146,7 +146,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   openCol: {r: 0.5849056, g: 0.5420852, b: 0, a: 0.6117647}
   closedCol: {r: 0.5849056, g: 1, b: 0, a: 0.6117647}
-  puzzleSolvedSound: {fileID: 0}
+  puzzleSolvedSound: {fileID: 8300000, guid: 5f76388773465944681bb8d978c97fad, type: 3}
 --- !u!82 &5384929630123493567
 AudioSource:
   m_ObjectHideFlags: 0

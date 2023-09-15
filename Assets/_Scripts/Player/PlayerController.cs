@@ -190,6 +190,7 @@ public class PlayerController : MonoBehaviour
                     // Check if enemy is in clear sight
                     if (distance < selectedItem.item.actionRange && IsEnemyVisible(i, selectedItem.item.actionRange))
                     {
+                        Debug.Log("Attacking");
                         _enemyManager.enemies[i].transform.Find("EnemyBody").GetComponent<EnemyInfo>().TakeDamage(selectedItem.item.actionValue);
                     }
                 }

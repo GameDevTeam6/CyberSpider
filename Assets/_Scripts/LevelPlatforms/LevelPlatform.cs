@@ -13,11 +13,17 @@ public class LevelPlatform : MonoBehaviour
     public AudioClip puzzleSolvedSound; // This is the PuzzleSolved sound effect
     private AudioSource audioSource; // AudioSource to play the sound effect
 
+    public bool locked = false;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         boxCol = GetComponent<BoxCollider2D>();
         audioSource = gameObject.AddComponent<AudioSource>();
+        if (locked == true)
+        {
+            LockPlatform();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D col)
