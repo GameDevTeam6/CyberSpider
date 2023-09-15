@@ -4,6 +4,7 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     [SerializeField] private GameObject playerEquipSlot;
+    [SerializeField] private PlayerController playerController;
     
     public InventorySlot[] inventorySlots;
     public GameObject inventoryItemPrefab;
@@ -39,6 +40,13 @@ public class InventoryManager : MonoBehaviour
 
     public bool CheckSlot(int slot)
     {
+        // Check that new slot is different from current slot
+        if (slot - 1 == selectedSlot)
+        {
+            return false;
+        }
+        
+        // Check that there is something in slot
         if (inventorySlots[slot - 1].gameObject.transform.childCount == 0)
         {
             return false;
@@ -75,7 +83,7 @@ public class InventoryManager : MonoBehaviour
                 itemInSlot.count < maxStackItems && 
                 itemInSlot.item.stackable)
             {
-                Debug.Log("Creating stack at " + i);
+                //Debug.Log("Creating stack at " + i);
                 itemInSlot.count++;
                 itemInSlot.RefreshCount();
                 return true;
@@ -90,12 +98,12 @@ public class InventoryManager : MonoBehaviour
 
             if (itemInSlot == null)
             {
-                Debug.Log("Empty slot at " + i);
+                //Debug.Log("Empty slot at " + i);
                 SpawnNewItem(item, slot);
-                if (itemEquipped)
-                {
-
-                }
+                //if (!itemEquipped)
+                //{
+                //    EquipItem(item);
+                //}
                 return true;
             }
         }
@@ -123,7 +131,9 @@ public class InventoryManager : MonoBehaviour
         GameObject equippedItemGO = Instantiate(equippedItemPrefab, playerEquipSlot.transform);
         EquippedItem equippedItem = equippedItemGO.GetComponent<EquippedItem>();
         equippedItem.InitializeItem(item);
+        //equippedItemGO.transform.position = Vector2.zero;
         itemEquipped = true;
+        playerController.ItemEquipped();
     }
 
     // Method that destroys currently equipped item (if any)
@@ -133,12 +143,13 @@ public class InventoryManager : MonoBehaviour
         {
             Destroy(playerEquipSlot.transform.GetChild(0).gameObject);
             itemEquipped = false;
+            playerController.ItemUnequipped();
         }
     }
 
     public void DeselectCurrent()
     {
         inventorySlots[selectedSlot].Deselect();
-        selectedSlot = 0;
+        selectedSlot = -1;
     }
 }

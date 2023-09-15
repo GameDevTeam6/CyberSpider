@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41c4f80e2de6dab4a9ec5ead1720f7ad, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  image: {fileID: 21300000, guid: 247e1975d29c46147b03d6417bc2de95, type: 3}
+  image: {fileID: 21300000, guid: 36589e12e60ee1a4bbb743b41422fb2b, type: 3}
   type: 1
   actionType: 1
-  actionRange: 3
-  actionValue: 5
+  actionRange: 2
+  actionValue: 12
   stackable: 1
   consumable: 0
