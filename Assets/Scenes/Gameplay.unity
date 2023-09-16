@@ -12020,6 +12020,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90b48996f81072349849b4f0987c4a59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cursorSettings: {fileID: 1303687828}
 --- !u!81 &1303687825
 AudioListener:
   m_ObjectHideFlags: 0
@@ -12098,6 +12099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e8f75e7021418548a26425a4f8ec56f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newCursor: {fileID: 2800000, guid: b017dfab3916c1342b99c499d7ab500b, type: 3}
 --- !u!1 &1312559106
 GameObject:
   m_ObjectHideFlags: 0

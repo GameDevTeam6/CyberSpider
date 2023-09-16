@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class GameOverScript : MonoBehaviour
 {
+    [SerializeField] CursorSettings cursorSettings;
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +27,7 @@ public class GameOverScript : MonoBehaviour
 
     public void PlayerDied()
     {
+        cursorSettings.ShowCursor();
         // Implement death screen
         SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
     }
