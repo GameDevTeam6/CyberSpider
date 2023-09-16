@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
 
     public void UseItem(InputAction.CallbackContext context)
     {
-        if (context.performed && !isSolvingPuzzle)
+        if (context.performed)
         {
             Debug.Log("Use item method running");
             // Get selected item

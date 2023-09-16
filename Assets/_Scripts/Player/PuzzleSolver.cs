@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
-
+using UnityEngine.InputSystem;
 
 public class PuzzleSolver : MonoBehaviour
 {
@@ -13,12 +13,15 @@ public class PuzzleSolver : MonoBehaviour
 
     [SerializeField] CursorSettings cursorSettings;
 
+    private PlayerInput playerInput;
+
 
     // Start is called before the first frame update
     void Start()
     {
         // Initialize the audio source
         audioSource = gameObject.AddComponent<AudioSource>();
+        playerInput = gameObject.GetComponent<PlayerInput>();
     }
 
     // Update is called once per frame
@@ -38,7 +41,7 @@ public class PuzzleSolver : MonoBehaviour
             {
                 audioSource.PlayOneShot(puzzleAlertSound);
             }
-            //cursorSettings.ShowCursor();
+            playerInput.DeactivateInput();
             inputManager.OpenQuestionPanel(() => {
                 //trig.gameObject.GetComponent<ProgressPuzzleInfo>().platform.transform.GetComponent<ProgressPlatform>().solved = true;
                 trig.gameObject.GetComponent<ProgressPuzzleInfo>().UnlockPlatform();
@@ -47,7 +50,7 @@ public class PuzzleSolver : MonoBehaviour
 
                 // Call method to increase player points
                 gameObject.GetComponent<PlayerStats>().PuzzleSolved();
-                //cursorSettings.HideCursor();
+                playerInput.ActivateInput();
             });
         }
     }
