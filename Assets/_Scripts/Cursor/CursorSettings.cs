@@ -9,7 +9,7 @@ public class CursorSettings : MonoBehaviour
     void Start()
     {
         Cursor.SetCursor(newCursor, Vector2.zero, CursorMode.ForceSoftware);
-        HideCursor();
+        //HideCursor();
     }
 
     public void HideCursor()

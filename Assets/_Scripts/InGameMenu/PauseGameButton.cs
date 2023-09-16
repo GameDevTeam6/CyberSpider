@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class PauseGameButton : MonoBehaviour
@@ -42,10 +43,12 @@ public class PauseGameButton : MonoBehaviour
     public void PauseGame()
     {
         Time.timeScale = 0f;
+        EventSystem.current.SetSelectedGameObject(null);
     }
     public void ResumeGame()
     {
         Time.timeScale = 1;
+        EventSystem.current.SetSelectedGameObject(null);
     }
 
 }

@@ -38,7 +38,7 @@ public class PuzzleSolver : MonoBehaviour
             {
                 audioSource.PlayOneShot(puzzleAlertSound);
             }
-            cursorSettings.ShowCursor();
+            //cursorSettings.ShowCursor();
             inputManager.OpenQuestionPanel(() => {
                 //trig.gameObject.GetComponent<ProgressPuzzleInfo>().platform.transform.GetComponent<ProgressPlatform>().solved = true;
                 trig.gameObject.GetComponent<ProgressPuzzleInfo>().UnlockPlatform();
@@ -47,7 +47,7 @@ public class PuzzleSolver : MonoBehaviour
 
                 // Call method to increase player points
                 gameObject.GetComponent<PlayerStats>().PuzzleSolved();
-                cursorSettings.HideCursor();
+                //cursorSettings.HideCursor();
             });
         }
     }
