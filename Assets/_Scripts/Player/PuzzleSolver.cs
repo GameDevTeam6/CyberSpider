@@ -11,8 +11,6 @@ public class PuzzleSolver : MonoBehaviour
     public AudioClip puzzleAlertSound; // This is the PuzzleAlert sound effect
     private AudioSource audioSource; // AudioSource to play the sound effect
 
-    [SerializeField] CursorSettings cursorSettings;
-
     private PlayerInput playerInput;
 
 
@@ -22,12 +20,6 @@ public class PuzzleSolver : MonoBehaviour
         // Initialize the audio source
         audioSource = gameObject.AddComponent<AudioSource>();
         playerInput = gameObject.GetComponent<PlayerInput>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void OnTriggerEnter2D(Collider2D trig)
