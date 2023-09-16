@@ -11,6 +11,8 @@ public class PuzzleSolver : MonoBehaviour
     public AudioClip puzzleAlertSound; // This is the PuzzleAlert sound effect
     private AudioSource audioSource; // AudioSource to play the sound effect
 
+    [SerializeField] CursorSettings cursorSettings;
+
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +38,7 @@ public class PuzzleSolver : MonoBehaviour
             {
                 audioSource.PlayOneShot(puzzleAlertSound);
             }
-
+            cursorSettings.ShowCursor();
             inputManager.OpenQuestionPanel(() => {
                 //trig.gameObject.GetComponent<ProgressPuzzleInfo>().platform.transform.GetComponent<ProgressPlatform>().solved = true;
                 trig.gameObject.GetComponent<ProgressPuzzleInfo>().UnlockPlatform();
@@ -45,6 +47,7 @@ public class PuzzleSolver : MonoBehaviour
 
                 // Call method to increase player points
                 gameObject.GetComponent<PlayerStats>().PuzzleSolved();
+                cursorSettings.HideCursor();
             });
         }
     }
