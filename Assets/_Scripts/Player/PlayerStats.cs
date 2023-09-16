@@ -23,7 +23,7 @@ public class PlayerStats : MonoBehaviour
     private float playerScore = 0;
 
     // set initial number of seconds until game lost
-    private float playerTime = 120;
+    private float playerTime = 180;
     private bool isTimerRunning = true;
 
     private float speedTimer = 0;
