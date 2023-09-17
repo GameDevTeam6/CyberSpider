@@ -41,7 +41,7 @@ You'll need to use the following keys to progress with the game:
 - <b>move</b>: using up, down, left, right arrows
 - <b>jump</b>: using space
 - <b>select item from inventory</b>: using 1,2,3,4 keys depending on desired inventory slot.
-- <b>use item</b>: using f key or left clicl.
+- <b>use item</b>: using f key or left click.
 - <b>answer code puzzles and menues</b>: using the left mouse key
 
 ## Authors
