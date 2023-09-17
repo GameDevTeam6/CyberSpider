@@ -182,13 +182,10 @@ MonoBehaviour:
     - equip it by selecting
     its inventory slot with [1 2 3 4] keys.
 
-    - then press f or left click to
-    use equipped item
+    - then press f repeatedly when in
+    close proximity to enemy.
 
-    - attack repeatedly when in close proximity to enemy.
-
-    -
-    continue until the enemy healt-bar expires.
+    - continue until the enemy healt-bar expires.
 
 '
   m_isRightToLeft: 0
@@ -1949,7 +1946,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'equip tokens from inventory slots.
+  m_text: 'use tokens from inventory slots.
 
     make sure enemy is in close proximity.
 
@@ -2087,7 +2084,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: collect heart tokens to get +30 boost of health.
+  m_text: collect heart tokens to get +10 boost of health.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b9ee0cc5c43d76a4e97c3582c8dd4b9d, type: 2}
   m_sharedMaterial: {fileID: -3692868777687883031, guid: b9ee0cc5c43d76a4e97c3582c8dd4b9d,
@@ -2320,8 +2317,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1069200879}
   m_HandleRect: {fileID: 1069200878}
   m_Direction: 2
-  m_Value: 1.0000001
-  m_Size: 0.49979106
+  m_Value: 1
+  m_Size: 0.49979103
   m_NumberOfSteps: 11
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5049,8 +5046,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: collect energy tokens and activate them to get 10 seconds of accelarated
-    speed.
+  m_text: collect energy tokens to get 10 seconds of accelarated speed.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b9ee0cc5c43d76a4e97c3582c8dd4b9d, type: 2}
   m_sharedMaterial: {fileID: -3692868777687883031, guid: b9ee0cc5c43d76a4e97c3582c8dd4b9d,
