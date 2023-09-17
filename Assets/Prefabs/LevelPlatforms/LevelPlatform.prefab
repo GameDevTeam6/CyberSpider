@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 55f392bae63a4bf4db5e3cbca991f72f, type: 3}
-  m_Color: {r: 0.5849056, g: 0.5420852, b: 0, a: 0.6117647}
+  m_Color: {r: 0.078431375, g: 0, b: 0.10980392, a: 0.6117647}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -144,9 +144,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17684d069d4d65d4ea77e25897c932b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openCol: {r: 0.5849056, g: 0.5420852, b: 0, a: 0.6117647}
-  closedCol: {r: 0.5849056, g: 1, b: 0, a: 0.6117647}
+  openCol: {r: 0.078431375, g: 0, b: 0.10980392, a: 0.6117647}
+  closedCol: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 0.6117647}
   puzzleSolvedSound: {fileID: 8300000, guid: 5f76388773465944681bb8d978c97fad, type: 3}
+  locked: 0
 --- !u!82 &5384929630123493567
 AudioSource:
   m_ObjectHideFlags: 0
