@@ -115,8 +115,9 @@ MonoBehaviour:
   player: {fileID: 0}
   damage: 0
   shotDirection: {x: 0, y: 0, z: 0}
-  speed: 20
+  speed: 9
   rb: {fileID: 1345807909536638778}
+  virusHitSound: {fileID: 0}
 --- !u!50 &1345807909536638778
 Rigidbody2D:
   serializedVersion: 4

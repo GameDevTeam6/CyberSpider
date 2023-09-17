@@ -95,7 +95,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b621af2c4b9e8984380602b69fe0ef8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  puzzle: {fileID: 11400000, guid: c5edec40789ce5f42b5d96052ae868de, type: 2}
+  platform: {fileID: 0}
+  lockedCol: {r: 0, g: 0, b: 0, a: 0}
+  unlockedCol: {r: 0, g: 0, b: 0, a: 0}
 --- !u!58 &9111823999458281241
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -111,4 +113,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 1

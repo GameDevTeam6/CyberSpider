@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MuteAudioButton : MonoBehaviour
@@ -23,6 +24,7 @@ public class MuteAudioButton : MonoBehaviour
             colors.selectedColor = Color.white;
             mute_btn.colors = colors;
             Change2MuteImage();
+            EventSystem.current.SetSelectedGameObject(null);
         }
         else
         {
@@ -34,6 +36,7 @@ public class MuteAudioButton : MonoBehaviour
             colors.selectedColor = Color.red;
             mute_btn.colors = colors;
             Change2UnmuteImage();
+            EventSystem.current.SetSelectedGameObject(null);
         }
     }
 
@@ -47,17 +50,5 @@ public class MuteAudioButton : MonoBehaviour
     {
         // change to mute button icon
         mute_btn.image.sprite = mute_img;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

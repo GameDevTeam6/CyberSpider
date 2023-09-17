@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Images/Materials/matrix_bg8.mat.meta
+guid: 1db7f2bdccf00443e83512cc6bd8c3e8
+NativeFormatImporter:
+========
+guid: a3d27da68f632424b9da2c4abc7f1043
+folderAsset: yes
+DefaultImporter:
+>>>>>>>> 58110ec (Create a WebGl build, fix a couple of bugs):Assets/Editor.meta
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

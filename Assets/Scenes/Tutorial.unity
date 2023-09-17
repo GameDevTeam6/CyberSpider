@@ -182,10 +182,13 @@ MonoBehaviour:
     - equip it by selecting
     its inventory slot with [1 2 3 4] keys.
 
-    - then press f repeatedly when in
-    close proximity to enemy.
+    - then press f or left click to
+    use equipped item
 
-    - continue until the enemy healt-bar expires.
+    - attack repeatedly when in close proximity to enemy.
+
+    -
+    continue until the enemy healt-bar expires.
 
 '
   m_isRightToLeft: 0
@@ -5316,7 +5319,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: collect energy tokens to get 10 seconds of accelarated speed.
+  m_text: collect energy tokens and activate them to get 10 seconds of accelarated
+    speed.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: b9ee0cc5c43d76a4e97c3582c8dd4b9d, type: 2}
   m_sharedMaterial: {fileID: -3692868777687883031, guid: b9ee0cc5c43d76a4e97c3582c8dd4b9d,

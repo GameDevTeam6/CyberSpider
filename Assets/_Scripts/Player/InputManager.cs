@@ -22,9 +22,9 @@ public class InputManager : MonoBehaviour
     public GameObject puzzlePanel;
     private int currentQuestionIndex = 0;
 
-
     public List<QuestionData> questionDataList;
 
+    [SerializeField] GameObject dimOverlay;
     [SerializeField] Canvas mainCanvas;
     [SerializeField] Camera mainCamera;
     [SerializeField] float offset = 2.0f;
@@ -191,7 +191,6 @@ public class InputManager : MonoBehaviour
             }
         };
 
-
     }
 
     public void ShowNextQuestion()
@@ -210,7 +209,6 @@ public class InputManager : MonoBehaviour
             }
             feedbackText.text = ""; // Clear feedback text
 
-
             foreach (Toggle toggle in answerToggles)
             {
                 toggle.isOn = false;
@@ -223,9 +221,12 @@ public class InputManager : MonoBehaviour
         }
     }
 
-
     public void OpenQuestionPanel(Action onSuccess)
     {
+        if (dimOverlay != null)
+        {
+            dimOverlay.SetActive(true);
+        }
         GetComponent<PlayerController>().isSolvingPuzzle = true;
         PopulateWithRandomQuestions(5);
         puzzlePanel.SetActive(true);
@@ -244,6 +245,10 @@ public class InputManager : MonoBehaviour
                     feedbackText.text = "Correct!";
                     puzzlePanel.SetActive(false);
                     currentQuestionIndex++;
+                    if (dimOverlay != null)
+                    {
+                        dimOverlay.SetActive(false);
+                    }
                     onSuccess?.Invoke();
                 }
                 else

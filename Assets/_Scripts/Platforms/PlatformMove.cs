@@ -9,6 +9,7 @@ public class PlatformMove : MonoBehaviour
     [SerializeField] private float moveSpeed;
     [HideInInspector] public Vector3 movement;
 
+    // Enum to determine initial direction
     private enum direction
     {
         left,
@@ -17,59 +18,41 @@ public class PlatformMove : MonoBehaviour
     [SerializeField] private direction initialDirection;
 
     private Vector3 initialPos;
-    private Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
         initialPos = transform.position;
     }
 
     void FixedUpdate()
     {
+        // Check which direction to go
         CheckDir();
-        MovePlat();
+        // Move in that direction
+        transform.Translate(movement);
     }
 
+    /* 
+     * Function that evaluations initial direction setting,
+     * checks current position, and decides which way to do
+    */
     private void CheckDir()
     {
         if (initialDirection == direction.left)
         {
-            if (transform.position.x > initialPos.x - moveDistance)
-            {
-                initialDirection = direction.left;
-            }
-            else if (transform.position.x < initialPos.x - moveDistance)
-            {
-                initialDirection = direction.right;
-            }
-        }
-
-        if (initialDirection == direction.right)
-        {
-            if (transform.position.x < initialPos.x + moveDistance)
-            {
-                initialDirection = direction.right;
-            }
-            else if (transform.position.x > initialPos.x + moveDistance)
-            {
-                initialDirection = direction.left;
-            }
-        }
-    }
-
-    private void MovePlat()
-    {
-        if (initialDirection == direction.left)
-        {
             movement = new Vector3(1 * -moveSpeed, 0f, 0f);
-        }
-        else
+            if (transform.position.x < initialPos.x - moveDistance)
+            {
+                initialDirection = direction.right;
+            }
+        } else if (initialDirection == direction.right)
         {
             movement = new Vector3(1 * moveSpeed, 0f, 0f);
+            if (transform.position.x > initialPos.x + moveDistance)
+            {
+                initialDirection = direction.left;
+            }
         }
-
-        transform.Translate(movement);
     }
 }

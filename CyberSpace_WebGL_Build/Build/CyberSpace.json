@@ -1,0 +1,16 @@
+{
+"companyName": "DefaultCompany",
+"productName": "CyberSpace",
+"productVersion": "1.0",
+"dataUrl": "CyberSpace.data.unityweb",
+"wasmCodeUrl": "CyberSpace.wasm.code.unityweb",
+"wasmFrameworkUrl": "CyberSpace.wasm.framework.unityweb",
+"graphicsAPI": ["WebGL 2.0","WebGL 1.0"],
+"webglContextAttributes": {"preserveDrawingBuffer": false},
+"splashScreenStyle": "Dark",
+"backgroundColor": "#231F20",
+"cacheControl": {"default": "must-revalidate"},
+"developmentBuild": false,
+"multithreading": false,
+"unityVersion": "2019.4.16f1"
+}
