@@ -27,13 +27,13 @@ You must finish the game before the time runs out to prevent a nuclear cyber att
 
 Throughout the game, you'll be able to collect the following tokens:
 - <b>bitcoin</b>: get +1 of score.
-- <b>heart</b>: get +10 of life.
+- <b>heart</b>: get +30 of life.
 - <b>battery</b>: get 10 seconds of super speed.<br>
     select appropriate inventory slot with <b>1,2,3</b> or <b>4</b><br>
-    then pres <b>f</b> to start the 10 seconds of boosted speed.
+    then pres <b>f</b> or <b>left click</b> to start the 10 seconds of boosted speed.
 - <b>sword</b>: a weapon against bugs and viruses<br>
     select appropriate inventory slot with <b>1,2,3</b> or <b>4</b><br>
-    then pres <b>f</b> repeatedly when in close proximity to the enemy until its destroyed.
+    then pres <b>f</b> or <b>left click</b> repeatedly when in close proximity to the enemy until its destroyed.
 
 ### Action Keys
 
@@ -41,7 +41,7 @@ You'll need to use the following keys to progress with the game:
 - <b>move</b>: using up, down, left, right arrows
 - <b>jump</b>: using space
 - <b>select item from inventory</b>: using 1,2,3,4 keys depending on desired inventory slot.
-- <b>use item</b>: using f key.
+- <b>use item</b>: using f key or left clicl.
 - <b>answer code puzzles and menues</b>: using the left mouse key
 
 ## Authors
