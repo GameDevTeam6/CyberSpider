@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   openCol: {r: 0.078431375, g: 0, b: 0.10980392, a: 0.6117647}
-  closedCol: {r: 0.6431373, g: 0.6431373, b: 0.6431373, a: 0.6117647}
+  closedCol: {r: 0.6431373, g: 1, b: 0.6431373, a: 0.6117647}
   puzzleSolvedSound: {fileID: 8300000, guid: 5f76388773465944681bb8d978c97fad, type: 3}
   locked: 0
 --- !u!82 &5384929630123493567

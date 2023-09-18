@@ -40,5 +40,6 @@ public class LevelPlatform : MonoBehaviour
         boxCol.isTrigger = false;
         GetComponent<SpriteRenderer>().color = closedCol;
         audioSource.PlayOneShot(puzzleSolvedSound);
+        locked = true;
     }
 }
