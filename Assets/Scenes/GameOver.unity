@@ -816,7 +816,7 @@ MonoBehaviour:
   transitionPanel: {fileID: 0}
   transitionSpeed: 0.5
   buttonPressedClip: {fileID: 0}
-  audioMixer: {fileID: 0}
+  audioMixer: {fileID: 24100000, guid: 9abc2abd978350f4dbf2849c8b0cad48, type: 2}
   loadingBar: {fileID: 0}
 --- !u!1 &400339392
 GameObject:
